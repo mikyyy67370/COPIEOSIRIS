@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Histoire | OSIRIS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="notrehistoire.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
+</head>
+<body data-page-type="about">
+    <!-- En-tête standard -->
+    <div class="announcement-bar">
+        DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"
+    </div>
+
+    <header>
+        <div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div class="mobile-menu" aria-hidden="true">
+            <div class="mobile-menu-header">
+                <div class="logo">OSIRIS</div>
+                <div class="close-menu" aria-label="Fermer le menu">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <nav class="mobile-nav">
+                <div class="menu-item has-submenu">
+                    <a href="#">Collections</a>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="collections-signatures.html">Collections Signatures</a>
+                        <a href="collections-privees.html">Collections Privées</a>
+                        <a href="collection-royale.html">Collection Royale</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item has-submenu">
+                    <a href="#">Parfums</a>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="lesfeminins.html">Les Féminins</a>
+                        <a href="lesmasculins.html">Les Masculins</a>
+                        <a href="choisirsonparfum.html">Choisir son Parfum</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="notrehistoire.html">Notre Histoire</a>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+            
+            <div class="mobile-menu-footer">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-menu-overlay"></div>
+        
+        <nav>
+            <div class="nav-left">
+                <div class="location-selector">
+                    <span class="country">FRANCE</span>
+                    <span class="divider">|</span>
+                    <span class="language">FR</span>
+                </div>
+                <a href="#contact" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    NOUS CONTACTER
+                </a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                    <div class="logo-location">STRASBOURG</div>
+                </a>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <a href="#account" class="icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="#cart" class="icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Menu principal (desktop) -->
+        <div class="main-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="#limited" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="#collections" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+
+        <!-- Menu mobile -->
+        <div class="mobile-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="#limited" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="#collections" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section Hero -->
+        <section class="history-hero">
+            <div class="hero-overlay"></div>
+            <img src="images/histoire-hero.jpg" alt="Temple égyptien ancien" class="hero-background" style="display: flex;">
+            <div class="hero-content">
+                <div class="hero-badge">NOTRE HISTOIRE</div>
+                <h1>L'HÉRITAGE D'UNE PASSION</h1>
+                <p class="hero-subtitle">De l'Égypte antique à la haute parfumerie moderne</p>
+            </div>
+        </section>
+
+        <!-- Section Origines -->
+        <section class="origins">
+            <div class="section-container">
+                <div class="section-header">
+                    <div class="section-symbol">𓂀</div>
+                    <h2>LES ORIGINES</h2>
+                    <p class="subtitle">Une passion née des rives du Nil</p>
+                </div>
+                <div class="story-content">
+                    <div class="story-text">
+                        <p>C'est lors d'un voyage en Égypte, au cœur de la Vallée des Rois, que notre fondatrice Marie Laurent a eu la révélation. Face aux fresques millénaires décrivant les rituels de parfumerie des pharaons, elle découvre une tradition olfactive d'une richesse insoupçonnée.</p>
+                        <p>Fascinée par ces pratiques ancestrales où le parfum était considéré comme un pont entre le terrestre et le divin, elle décide de créer OSIRIS, une maison de haute parfumerie qui rendrait hommage à cet héritage tout en le réinventant pour le XXIe siècle.</p>
+                    </div>
+                    <div class="story-image">
+                        <img src="images/origins.jpg" alt="Fresques égyptiennes anciennes">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Vision -->
+        <section class="vision">
+            <div class="section-container">
+                <div class="vision-content">
+                    <blockquote>
+                        "Le parfum n'est pas qu'une simple fragrance, c'est une histoire millénaire qui se raconte à travers les notes olfactives. Chaque création OSIRIS est un voyage dans le temps."
+                        <cite>- Marie Laurent, Fondatrice</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Savoir-Faire -->
+        <section class="expertise">
+            <div class="section-container">
+                <div class="section-header">
+                    <div class="section-symbol">☥</div>
+                    <h2>NOTRE SAVOIR-FAIRE</h2>
+                    <p class="subtitle">L'alliance de la tradition et de l'innovation</p>
+                </div>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="card-icon">𓃭</div>
+                        <h3>INGRÉDIENTS NOBLES</h3>
+                        <p>Sélection rigoureuse des matières premières les plus précieuses, en suivant les traces des parfumeurs de l'Égypte antique.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="card-icon">𓆭</div>
+                        <h3>ARTISANAT D'EXCELLENCE</h3>
+                        <p>Chaque parfum est élaboré dans notre atelier de Grasse, capitale mondiale du parfum, selon des méthodes traditionnelles.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <div class="card-icon">𓃻</div>
+                        <h3>INNOVATION</h3>
+                        <p>Utilisation des dernières technologies pour sublimer les techniques ancestrales et créer des fragrances uniques.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Engagement -->
+        <section class="commitment">
+            <div class="section-container">
+                <div class="section-header">
+                    <div class="section-symbol">◈</div>
+                    <h2>NOS ENGAGEMENTS</h2>
+                    <p class="subtitle">Préserver l'héritage pour les générations futures</p>
+                </div>
+                <div class="commitment-grid">
+                    <div class="commitment-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>DÉVELOPPEMENT DURABLE</h3>
+                        <p>Sourcing responsable des ingrédients et packaging éco-conçu.</p>
+                    </div>
+                    <div class="commitment-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>PRÉSERVATION DU PATRIMOINE</h3>
+                        <p>Soutien à la restauration de sites archéologiques égyptiens.</p>
+                    </div>
+                    <div class="commitment-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>TRANSMISSION DU SAVOIR</h3>
+                        <p>Formation de la nouvelle génération de parfumeurs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>OSIRIS</h3>
+                <p>Une maison de parfumerie de luxe qui célèbre l'héritage des fragrances ancestrales.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>COLLECTIONS</h4>
+                <ul>
+                    <li><a href="lesmasculins.html">Les Masculins</a></li>
+                    <li><a href="lesfeminins.html">Les Féminins</a></li>
+                    <li><a href="collections-privees.html">Collections Privées</a></li>
+                    <li><a href="#">Éditions Limitées</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>MAISON</h4>
+                <ul>
+                    <li><a href="notrehistoire.html">Notre Histoire</a></li>
+                    <li><a href="#">Savoir-Faire</a></li>
+                    <li><a href="#">Nos Boutiques</a></li>
+                    <li><a href="#">Carrières</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>SERVICE CLIENT</h4>
+                <ul>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                    <li><a href="expedition.html">Livraison & Retours</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="#">Mentions Légales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>NEWSLETTER</h4>
+                <p>Inscrivez-vous pour recevoir nos actualités et offres exclusives</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre adresse email">
+                    <button type="submit">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 OSIRIS. Tous droits réservés.</p>
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/sections-animation.js" defer></script>
+</body>
+</html>

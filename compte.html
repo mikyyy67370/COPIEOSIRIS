@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte | OSIRIS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .account-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .account-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .account-forms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-submit {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .form-submit:hover {
+            background: #222;
+        }
+
+        .form-footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #666;
+        }
+
+        .form-footer a {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .account-forms {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .auth-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-tabs {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .auth-tab {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            background: #f7f7f7;
+            color: #333;
+        }
+
+        .auth-tab.active {
+            background: #333;
+            color: white;
+        }
+
+        .auth-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .auth-button:hover {
+            background: #222;
+        }
+
+        .forgot-password-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 1rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .switch-to-register {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 1rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .switch-to-login {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 1rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .user-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-header {
+            margin-bottom: 2rem;
+        }
+
+        .user-menu {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .menu-item {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            background: #f7f7f7;
+            color: #333;
+        }
+
+        .menu-item.active {
+            background: #333;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .orders-list {
+            margin-top: 2rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .addresses-list {
+            margin-top: 2rem;
+        }
+
+        .add-address-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .add-address-btn:hover {
+            background: #222;
+        }
+
+        .settings-form {
+            margin-top: 2rem;
+        }
+
+        .save-settings-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .save-settings-btn:hover {
+            background: #222;
+        }
+
+        .logout-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 2rem;
+        }
+
+        .logout-btn:hover {
+            background: #222;
+        }
+    </style>
+</head>
+<body data-page-type="account">
+    <div class="announcement-bar">
+        DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"
+    </div>
+
+    <header>
+        <div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div class="mobile-menu" aria-hidden="true">
+            <div class="mobile-menu-header">
+                <div class="logo">OSIRIS</div>
+                <div class="close-menu" aria-label="Fermer le menu">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <nav class="mobile-nav">
+                <div class="menu-item has-submenu">
+                    <a href="#">Collections</a>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="collections-signatures.html">Collections Signatures</a>
+                        <a href="collections-privees.html">Collections Privées</a>
+                        <a href="collection-royale.html">Collection Royale</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item has-submenu">
+                    <a href="#">Parfums</a>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="lesfeminins.html">Les Féminins</a>
+                        <a href="lesmasculins.html">Les Masculins</a>
+                        <a href="choisirsonparfum.html">Choisir son Parfum</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="notrehistoire.html">Notre Histoire</a>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+            
+            <div class="mobile-menu-footer">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-menu-overlay"></div>
+        
+        <nav>
+            <div class="nav-left">
+                <div class="location-selector">
+                    <span class="country">FRANCE</span>
+                    <span class="divider">|</span>
+                    <span class="language">FR</span>
+                </div>
+                <a href="contact.html" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    NOUS CONTACTER
+                </a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                    <div class="logo-location">STRASBOURG</div>
+                </a>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <a href="compte.html" class="icon active">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="panier.html" class="icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="main-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="collections-privees.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="collections-signatures.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="account-container">
+        <div class="auth-section">
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="auth.switchForm('login')">Connexion</button>
+                <button class="auth-tab" onclick="auth.switchForm('register')">Inscription</button>
+            </div>
+
+            <!-- Formulaire de connexion -->
+            <form id="login-form" class="login-form">
+                <h2>Connexion</h2>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="auth-button">Se connecter</button>
+                <button type="button" class="forgot-password-btn">Mot de passe oublié ?</button>
+                <button type="button" class="switch-to-register">Pas encore de compte ? S'inscrire</button>
+            </form>
+
+            <!-- Formulaire d'inscription -->
+            <form id="register-form" class="register-form" style="display: none;">
+                <h2>Inscription</h2>
+                <div class="form-group">
+                    <label for="register-name">Nom complet</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Mot de passe</label>
+                    <input type="password" id="register-password" required minlength="8">
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirmer le mot de passe</label>
+                    <input type="password" id="register-confirm-password" required minlength="8">
+                </div>
+                <button type="submit" class="auth-button">S'inscrire</button>
+                <button type="button" class="switch-to-login">Déjà un compte ? Se connecter</button>
+            </form>
+        </div>
+
+        <!-- Section utilisateur (visible après connexion) -->
+        <div class="user-section" style="display: none;">
+            <div class="user-header">
+                <h2>Mon compte</h2>
+                <p>Bienvenue, <span class="user-email"></span></p>
+            </div>
+
+            <div class="user-menu">
+                <div class="menu-item active" data-tab="orders">
+                    <i class="fas fa-shopping-bag"></i>
+                    Mes commandes
+                </div>
+                <div class="menu-item" data-tab="addresses">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Mes adresses
+                </div>
+                <div class="menu-item" data-tab="settings">
+                    <i class="fas fa-cog"></i>
+                    Paramètres
+                </div>
+            </div>
+
+            <div class="user-content">
+                <!-- Commandes -->
+                <div class="tab-content active" id="orders">
+                    <h3>Mes commandes</h3>
+                    <div class="orders-list">
+                        <p class="empty-state">Aucune commande pour le moment</p>
+                    </div>
+                </div>
+
+                <!-- Adresses -->
+                <div class="tab-content" id="addresses">
+                    <h3>Mes adresses</h3>
+                    <div class="addresses-list">
+                        <button class="add-address-btn">
+                            <i class="fas fa-plus"></i>
+                            Ajouter une adresse
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Paramètres -->
+                <div class="tab-content" id="settings">
+                    <h3>Paramètres du compte</h3>
+                    <form id="settings-form" class="settings-form">
+                        <div class="form-group">
+                            <label for="settings-name">Nom</label>
+                            <input type="text" id="settings-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="settings-email">Email</label>
+                            <input type="email" id="settings-email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="settings-current-password">Mot de passe actuel</label>
+                            <input type="password" id="settings-current-password">
+                        </div>
+                        <div class="form-group">
+                            <label for="settings-new-password">Nouveau mot de passe</label>
+                            <input type="password" id="settings-new-password">
+                        </div>
+                        <button type="submit" class="save-settings-btn">Enregistrer les modifications</button>
+                    </form>
+                </div>
+            </div>
+
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Se déconnecter
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>OSIRIS</h3>
+                <p>Une maison de parfumerie de luxe qui célèbre l'héritage des fragrances ancestrales.</p>
+            </div>
+            <div class="footer-section">
+                <h3>NAVIGATION</h3>
+                <ul>
+                    <li><a href="lesmasculins.html">Les Masculins</a></li>
+                    <li><a href="lesfeminins.html">Les Féminins</a></li>
+                    <li><a href="collections-privees.html">Collections Privées</a></li>
+                    <li><a href="collections-signatures.html">Collections Signatures</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>SERVICE CLIENT</h3>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Expédition</a></li>
+                    <li><a href="#">Retours</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>SUIVEZ-NOUS</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 OSIRIS. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/search.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/sections-animation.js" defer></script>
+    <script>
+        // Gérer les onglets du compte utilisateur
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Retirer la classe active de tous les onglets
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                
+                // Ajouter la classe active à l'onglet cliqué
+                item.classList.add('active');
+                document.getElementById(item.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

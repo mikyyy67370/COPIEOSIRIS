@@ -1,0 +1,153 @@
+/* Styles pour la validation des formulaires */
+
+/* Styles des champs */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+/* États des champs */
+input.error,
+textarea.error {
+    border-color: #dc3545;
+    background-color: #fff8f8;
+}
+
+input.success,
+textarea.success {
+    border-color: #28a745;
+    background-color: #f8fff8;
+}
+
+/* Messages d'erreur */
+.form-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Message de succès */
+.success-message {
+    color: #28a745;
+    background-color: #f8fff8;
+    border: 1px solid #28a745;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    text-align: center;
+    animation: slideIn 0.3s ease-in;
+}
+
+/* Icônes de validation */
+input.error + .validation-icon::before,
+textarea.error + .validation-icon::before {
+    content: "✕";
+    color: #dc3545;
+}
+
+input.success + .validation-icon::before,
+textarea.success + .validation-icon::before {
+    content: "✓";
+    color: #28a745;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles spécifiques pour les formulaires OSIRIS */
+.newsletter-form input.error,
+.contact-form input.error,
+.contact-form textarea.error,
+.login-form input.error,
+.register-form input.error {
+    border-color: var(--gold);
+    background-color: rgba(var(--gold-rgb), 0.05);
+}
+
+.form-error {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+}
+
+.success-message {
+    color: var(--dark);
+    background-color: rgba(var(--gold-rgb), 0.1);
+    border: 1px solid var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+}
+
+/* Accessibilité */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Styles pour le focus */
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--gold-rgb), 0.25);
+}
+
+/* Animation de succès */
+.form.success {
+    animation: successPulse 0.5s ease-in-out;
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Styles responsifs */
+@media (max-width: 768px) {
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-error {
+        font-size: 0.8rem;
+    }
+
+    .success-message {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}

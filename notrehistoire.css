@@ -1,0 +1,372 @@
+/* Variables */
+:root {
+    --gold: #C5A572;
+    --dark-gold: #8B7355;
+    --light-gold: #E2D4BA;
+    --black: #000000;
+    --white: #FFFFFF;
+    --sand: #F5E6D3;
+    --cream: #F8F5F1;
+}
+
+/* Hero Section */
+.history-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(4px);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-badge {
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f5f5f5;
+    letter-spacing: 0.1em;
+    max-width: 500px;
+    font-weight: 300;
+}
+
+/* Section Origines */
+.origins {
+    padding: 100px 0;
+    background: var(--cream);
+}
+
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-symbol {
+    font-size: 48px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    animation: rotateSymbol 12s linear infinite;
+}
+
+.section-header h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 42px;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    color: var(--black);
+}
+
+.subtitle {
+    font-size: 16px;
+    color: var(--dark-gold);
+    letter-spacing: 3px;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.story-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--dark-gold);
+    margin-bottom: 20px;
+}
+
+.story-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    box-shadow: 30px 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Vision */
+.vision {
+    padding: 120px 0;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.vision::before {
+    content: '𓂀';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Noto Sans Egyptian Hieroglyphs';
+    font-size: 400px;
+    color: rgba(197, 165, 114, 0.03);
+}
+
+.vision-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+blockquote {
+    font-family: 'Marcellus', serif;
+    font-size: 32px;
+    line-height: 1.6;
+    color: var(--white);
+    margin-bottom: 30px;
+}
+
+cite {
+    display: block;
+    font-size: 18px;
+    color: var(--gold);
+    margin-top: 20px;
+}
+
+/* Section Expertise */
+.expertise {
+    padding: 100px 0;
+    background: var(--cream);
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.expertise-card {
+    background: var(--white);
+    padding: 40px;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.expertise-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-icon {
+    font-size: 48px;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.expertise-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: var(--black);
+}
+
+.expertise-card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--dark-gold);
+}
+
+/* Section Engagement */
+.commitment {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.commitment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.commitment-card {
+    text-align: center;
+    padding: 40px;
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    transition: all 0.3s ease;
+}
+
+.commitment-card:hover {
+    border-color: var(--gold);
+    background: rgba(197, 165, 114, 0.05);
+}
+
+.commitment-card i {
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 25px;
+}
+
+.commitment-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: var(--black);
+}
+
+.commitment-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--dark-gold);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateSymbol {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+    .section-container {
+        padding: 0 30px;
+    }
+    
+    .story-content {
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 42px;
+    }
+    
+    .story-content,
+    .expertise-grid,
+    .commitment-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    blockquote {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 42px;
+        letter-spacing: 6px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+        letter-spacing: 3px;
+    }
+    
+    .story-content,
+    .expertise-grid,
+    .commitment-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header h2 {
+        font-size: 32px;
+    }
+    
+    blockquote {
+        font-size: 24px;
+    }
+    
+    .hero-badge {
+        padding: 10px 20px;
+        font-size: 11px;
+    }
+    
+    .hero-content {
+        margin-left: 5%;
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 28px;
+        letter-spacing: 4px;
+    }
+    
+    .hero-badge {
+        padding: 8px 16px;
+        font-size: 10px;
+    }
+    
+    .section-container {
+        padding: 0 20px;
+    }
+    
+    .hero-content {
+        margin-left: 20px;
+        padding: 20px;
+    }
+} 

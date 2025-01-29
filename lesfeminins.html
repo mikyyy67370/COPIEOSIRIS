@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Féminins | OSIRIS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="lesfeminins.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+</head>
+<body data-page-type="category">
+    <div class="announcement-bar">
+        DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"
+    </div>
+
+    <header>
+        <div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div class="mobile-menu" aria-hidden="true">
+            <div class="mobile-menu-header">
+                <div class="logo">OSIRIS</div>
+                <div class="close-menu" aria-label="Fermer le menu">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <nav class="mobile-nav">
+                <div class="menu-item has-submenu">
+                    <a href="#">Collections</a>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="collections-signatures.html">Collections Signatures</a>
+                        <a href="collections-privees.html">Collections Privées</a>
+                        <a href="collection-royale.html">Collection Royale</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item has-submenu">
+                    <a href="#">Parfums</a>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="lesfeminins.html">Les Féminins</a>
+                        <a href="lesmasculins.html">Les Masculins</a>
+                        <a href="choisirsonparfum.html">Choisir son Parfum</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="notrehistoire.html">Notre Histoire</a>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+            
+            <div class="mobile-menu-footer">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-menu-overlay"></div>
+        
+        <nav>
+            <div class="nav-left">
+                <div class="location-selector">
+                    <span class="country">FRANCE</span>
+                    <span class="divider">|</span>
+                    <span class="language">FR</span>
+                </div>
+                <a href="#contact" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    NOUS CONTACTER
+                </a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                    <div class="logo-location">STRASBOURG</div>
+                </a>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher..." aria-label="Rechercher">
+                    <button class="search-icon" aria-label="Lancer la recherche">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <a href="compte.html" class="icon" aria-label="Mon compte">
+                    <i class="fas fa-user"></i>
+                    <span class="sr-only">Mon compte</span>
+                </a>
+                <a href="panier.html" class="icon cart-icon" aria-label="Mon panier">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" aria-label="Nombre d'articles dans le panier">0</span>
+                    <span class="sr-only">Mon panier</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Menu principal (desktop) -->
+        <div class="main-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item active">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="collections-privees.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="collections-signatures.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+
+        <!-- Menu mobile -->
+        <div class="mobile-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="collections-privees.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="collections-signatures.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="collection-page feminine">
+        <section class="collection-hero feminine-hero">
+            <div class="hero-video-container">
+                <video 
+                    class="hero-video" 
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline
+                    preload="metadata"
+                    poster="images/hero-feminin-poster.jpg"
+                >
+                    <source src="video/hero-feminin.mp4" type="video/mp4" />
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            
+            <div class="collection-hero-content">
+                <div class="collection-badge">COLLECTION FÉMININE</div>
+                <h1>LES FÉMININS</h1>
+                <p class="collection-subtitle">L'ESSENCE DE LA GRÂCE</p>
+                <div class="collection-description">
+                    Une collection de fragrances sublimes, où la délicatesse des fleurs précieuses s'unit à la sensualité des notes orientales.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Collection Féminine -->
+        <section class="collection-showcase feminine">
+            <div class="showcase-header">
+                <div class="showcase-symbol">𓆸</div>
+                <h2>NOS COLLECTIONS POUR FEMME</h2>
+                <p class="showcase-subtitle">Découvrez notre sélection de parfums d'exception</p>
+            </div>
+
+            <div class="showcase-container">
+                <div class="showcase-grid">
+                    <!-- Néfertiti -->
+                    <article class="showcase-card">
+                        <div class="showcase-image">
+                            <img src="images/parfum2.jpg" alt="NÉFERTITI - Parfum féminin aux notes de jasmin et de rose de Damas">
+                            <div class="showcase-overlay"></div>
+                        </div>
+                        <div class="showcase-info">
+                            <span class="showcase-category" aria-label="Collection">Collection Royale</span>
+                            <h3>NÉFERTITI</h3>
+                            <p class="showcase-description">Une fragrance florale sublime aux notes de jasmin et de rose de Damas</p>
+                            <div class="showcase-footer">
+                                <div class="price-info">
+                                    <span class="showcase-price" aria-label="Prix">285€</span>
+                                    <span class="showcase-volume" aria-label="Volume">100 ML</span>
+                                </div>
+                                <button class="showcase-cta">
+                                    <a href="nefertiti.html" class="discover-link" data-transition="fade" aria-label="Découvrir NÉFERTITI">DÉCOUVRIR</a>
+                                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Cléopâtre -->
+                    <article class="showcase-card">
+                        <div class="showcase-image">
+                            <img src="images/parfum3.jpg" alt="Cléopâtre">
+                            <div class="showcase-overlay"></div>
+                        </div>
+                        <div class="showcase-info">
+                            <span class="showcase-category">Collection Légendaire</span>
+                            <h3>CLÉOPÂTRE</h3>
+                            <p class="showcase-description">Un accord envoûtant de fleur de lotus et d'ambre précieux</p>
+                            <div class="showcase-footer">
+                                <div class="price-info">
+                                    <span class="showcase-price">265€</span>
+                                    <span class="showcase-volume">100 ML</span>
+                                </div>
+                                <button class="showcase-cta">
+                                    <a href="cleopatre.html" class="discover-link" data-transition="fade">DÉCOUVRIR</a>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Isis -->
+                    <article class="showcase-card">
+                        <div class="showcase-image">
+                            <img src="images/collection6.jpg" alt="Isis">
+                            <div class="showcase-overlay"></div>
+                        </div>
+                        <div class="showcase-info">
+                            <span class="showcase-category">Collection Divine</span>
+                            <h3>ISIS</h3>
+                            <p class="showcase-description">Une composition délicate de pivoine et de musc blanc</p>
+                            <div class="showcase-footer">
+                                <div class="price-info">
+                                    <span class="showcase-price">275€</span>
+                                    <span class="showcase-volume">100 ML</span>
+                                </div>
+                                <button class="showcase-cta">
+                                    <a href="isis.html" class="discover-link" data-transition="fade">DÉCOUVRIR</a>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="collection-features">
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">𓆀</div>
+                    <h3>ESSENCES RARES</h3>
+                    <p>Des fleurs précieuses cueillies à la main dans les plus beaux jardins du monde</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">𓂀</div>
+                    <h3>RAFFINEMENT</h3>
+                    <p>L'art de la parfumerie française sublimé par l'héritage égyptien</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">𓃒</div>
+                    <h3>ÉLÉGANCE</h3>
+                    <p>Une signature olfactive unique et intemporelle</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="scent-guide">
+            <div class="guide-header">
+                <div class="guide-symbol">𓁢</div>
+                <h2>GUIDE OLFACTIF</h2>
+                <p class="subtitle">L'harmonie des notes précieuses</p>
+            </div>
+            <div class="scent-categories">
+                <div class="scent-category">
+                    <h3>NOTES DE TÊTE</h3>
+                    <p>Fleur d'oranger, Bergamote, Rose de mai</p>
+                    <div class="scent-icon">𓆸</div>
+                </div>
+                <div class="scent-category">
+                    <h3>NOTES DE CŒUR</h3>
+                    <p>Jasmin, Ylang-ylang, Iris de Florence</p>
+                    <div class="scent-icon">𓇳</div>
+                </div>
+                <div class="scent-category">
+                    <h3>NOTES DE FOND</h3>
+                    <p>Musc blanc, Ambre, Bois de santal</p>
+                    <div class="scent-icon">𓋯</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="usage-tips">
+            <div class="tips-content">
+                <h2>L'ART DU PARFUMAGE AU FÉMININ</h2>
+                <div class="tips-grid">
+                    <div class="tip">
+                        <div class="tip-icon">𓀭</div>
+                        <h3>RITUEL DE BEAUTÉ</h3>
+                        <p>Vaporisez sur les points de pulsation : poignets, cou, décolleté</p>
+                    </div>
+                    <div class="tip">
+                        <div class="tip-icon">𓃷</div>
+                        <h3>GESTUELLE</h3>
+                        <p>Laissez le parfum se déposer naturellement, sans frotter la peau</p>
+                    </div>
+                    <div class="tip">
+                        <div class="tip-icon">𓇯</div>
+                        <h3>LAYERING</h3>
+                        <p>Superposez les textures pour une signature unique</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="personalization">
+            <div class="personalization-content">
+                <h2>SERVICE DE PERSONNALISATION</h2>
+                <p class="subtitle">Créez votre signature olfactive</p>
+                <div class="personalization-options">
+                    <div class="option">
+                        <img src="images/collection5.jpg" alt="Service de gravure">
+                        <h3>GRAVURE PRÉCIEUSE</h3>
+                        <p>Personnalisez votre flacon avec une gravure en lettres d'or</p>
+                    </div>
+                    <div class="option">
+                        <img src="images/coffret-osiris.jpg" alt="Coffret sur mesure">
+                        <h3>ÉCRIN SUR MESURE</h3>
+                        <p>Composez votre coffret personnalisé orné de soie</p>
+                    </div>
+                </div>
+                <button class="cta-button">
+                    <span>DÉCOUVRIR LE SERVICE</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Même footer que index.html -->
+    <footer class="footer">
+        <!-- ... Copier le même footer ... -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/sections-animation.js" defer></script>
+</body>
+</html>

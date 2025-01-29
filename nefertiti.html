@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez NEFERTITI, un parfum d'une rare élégance qui célèbre la beauté éternelle, avec ses notes de rose de Damas, de jasmin et d'ambre royal.">
+    <meta name="keywords" content="parfum de luxe, OSIRIS, NEFERTITI, rose, jasmin, parfum féminin, parfumerie de luxe">
+    <title>NÉFERTITI - Parfum de Luxe | OSIRIS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="nefertiti.css">
+    <link rel="stylesheet" href="reviews.css">
+    <link rel="stylesheet" href="css/product-navigation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
+    
+    <!-- Scripts de base -->
+    <script src="js/product-config.js" defer></script>
+    <script src="js/security.js" defer></script>
+    <script src="js/performance.js" defer></script>
+    <script src="js/seo.js" defer></script>
+    <script src="js/product-page.js" defer></script>
+    <script src="js/product-images.js" defer></script>
+    <script src="js/reviews.js" defer></script>
+    <script src="js/product-navigation.js" defer></script>
+    <script src="js/cart.js" defer></script>
+
+    <style>
+        .announcement-bar a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .announcement-bar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .notification.error {
+            border-left: 4px solid #f44336;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification i {
+            font-size: 1.2rem;
+        }
+
+        .notification.success i {
+            color: #4CAF50;
+        }
+
+        .notification.error i {
+            color: #f44336;
+        }
+
+        .add-to-cart-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-btn.added::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .cart-icon.bounce {
+            animation: bounce 1s;
+        }
+    </style>
+</head>
+<body data-page-type="product">
+    <div class="announcement-bar">
+        DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"
+    </div>
+
+    <header>
+        <div class="hamburger-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <nav>
+            <div class="nav-left">
+                <div class="location-selector">
+                    <span class="country">FRANCE</span>
+                    <span class="divider">|</span>
+                    <span class="language">FR</span>
+                </div>
+                <a href="#contact" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    NOUS CONTACTER
+                </a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                    <div class="logo-location">STRASBOURG</div>
+                </a>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <a href="#account" class="icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="panier.html" class="icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Menu principal (desktop) -->
+        <div class="main-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="#limited" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="#collections" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+
+        <!-- Menu mobile -->
+        <div class="mobile-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="#limited" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="#collections" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="product-hero">
+        <section class="product-section">
+            <div class="product-container">
+                <div class="product-gallery">
+                    <div class="gallery-main">
+                        <img src="images/parfum2.jpg" alt="NÉFERTITI - flacon de parfum" class="main-image">
+                        <div class="gallery-badge">Édition Limitée</div>
+                    </div>
+                    <div class="gallery-thumbnails">
+                        <img src="images/parfum-detail1.jpg" alt="Détail du flacon" class="thumbnail active">
+                        <img src="images/parfum-detail2.jpg" alt="Notes olfactives" class="thumbnail">
+                        <img src="images/parfum-detail3.jpg" alt="Packaging luxueux" class="thumbnail">
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1>NÉFERTITI</h1>
+                        <div class="product-subtitle">L'essence de la féminité éternelle sublimée en fragrance</div>
+                    </div>
+
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count">156 avis</span>
+                    </div>
+
+                    <div class="product-description">
+                        <p class="luxury-text">Notes de jasmin et de rose s'entrelacent dans une danse sensuelle, évoquant la grâce légendaire de la reine Néfertiti. Une création d'exception qui incarne l'élégance féminine et le raffinement de l'Égypte antique.</p>
+                        
+                        <div class="fragrance-notes">
+                            <div class="note-group">
+                                <h3>Notes de Tête</h3>
+                                <p>Rose de Damas, Bergamote</p>
+                            </div>
+                            <div class="note-group">
+                                <h3>Notes de Cœur</h3>
+                                <p>Jasmin, Iris, Ylang-ylang</p>
+                            </div>
+                            <div class="note-group">
+                                <h3>Notes de Fond</h3>
+                                <p>Musc blanc, Ambre, Bois de santal</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-attributes">
+                        <div class="attribute">
+                            <i class="fas fa-crown"></i>
+                            <span>Collection Prestige</span>
+                        </div>
+                        <div class="attribute">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fabriqué en France</span>
+                        </div>
+                        <div class="attribute">
+                            <i class="fas fa-award"></i>
+                            <span>Ingrédients d'Exception</span>
+                        </div>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label>Volume</label>
+                            <div class="option-buttons">
+                                <button class="option-btn">50ml</button>
+                                <button class="option-btn active">100ml</button>
+                                <button class="option-btn">150ml</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-price">
+                        <div class="price-wrapper">
+                            <span class="price">289.00€</span>
+                            <span class="tax-info">TTC</span>
+                        </div>
+                        <div class="shipping-info">
+                            <i class="fas fa-truck"></i>
+                            <span>Livraison offerte en France</span>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity">
+                            <button class="qty-btn minus">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" value="1" min="1" max="10" id="quantity">
+                            <button class="qty-btn plus">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="add-to-cart-btn" aria-label="Ajouter au panier">
+                            <span>AJOUTER AU PANIER</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fragrance-story">
+            <div class="story-container">
+                <div class="story-grid">
+                    <div class="story-video">
+                        <div class="video-container">
+                            <video autoplay muted loop playsinline>
+                                <source src="video/NÉFERTITIcréation.mp4" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture de vidéos.
+                            </video>
+                            <div class="video-overlay">
+                                <div class="overlay-text">
+                                    <span>La Création de NÉFERTITI</span>
+                                    <p>Un voyage au cœur de notre atelier</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-content">
+                        <div class="story-badge">L'Art de la Parfumeuse</div>
+                        <h2>LA VISION DE LA MAÎTRE PARFUMEUSE</h2>
+                        <div class="story-subtitle">Par Marie Laurent, Maître Parfumeuse</div>
+                        <p class="story-text">"Néfertiti est une ode à la féminité éternelle. J'ai voulu capturer l'essence même de cette reine légendaire, mêlant la délicatesse de la rose à la sensualité du jasmin. Chaque note a été choisie pour évoquer la grâce et le mystère de l'une des femmes les plus fascinantes de l'histoire. Ce parfum est un hommage à la beauté intemporelle et au pouvoir de la féminité."</p>
+                        
+                        <div class="story-features">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-mortar-pestle"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Création Artisanale</h4>
+                                    <p>Élaboré dans notre atelier de Grasse avec des essences précieuses de rose et de jasmin</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Excellence Reconnue</h4>
+                                    <p>Prix de l'Innovation en Parfumerie de Luxe 2023</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="perfumer-quote">
+                            <div class="quote-symbol">❝</div>
+                            <p>Créer un parfum, c'est capturer l'essence d'une émotion. Avec Néfertiti, j'ai voulu immortaliser la grâce et l'élégance d'une reine légendaire.</p>
+                            <div class="perfumer-signature">
+                                <span>Marie Laurent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="application-ritual">
+            <div class="ritual-container">
+                <div class="ritual-header">
+                    <div class="section-badge">Art & Tradition</div>
+                    <h2>RITUELS D'APPLICATION</h2>
+                    <p class="section-intro">Découvrez l'art ancestral de l'application du parfum, transmis à travers les âges</p>
+                </div>
+
+                <div class="ritual-steps">
+                    <div class="ritual-step">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>POINTS DE PULSATION</h3>
+                            <p>Appliquez délicatement sur les points de pulsation : poignets, cou, derrière les oreilles. La chaleur naturelle de ces zones amplifiera le sillage du parfum.</p>
+                            <div class="step-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ritual-step">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>BRUME PARFUMÉE</h3>
+                            <p>Vaporisez le parfum devant vous et traversez le nuage odorant. Cette technique ancestrale permet une diffusion harmonieuse sur l'ensemble du corps.</p>
+                            <div class="step-icon">
+                                <i class="fas fa-spray-can"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ritual-step">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>PRÉSERVATION</h3>
+                            <p>Évitez de frotter les zones parfumées. Laissez le parfum se révéler naturellement au contact de votre peau pour préserver l'intégrité de ses notes.</p>
+                            <div class="step-icon">
+                                <i class="fas fa-feather"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ritual-tip">
+                    <div class="tip-symbol">◈</div>
+                    <p>Pour une expérience olfactive optimale, appliquez votre parfum sur une peau propre et hydratée</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="luxury-packaging">
+            <div class="packaging-container">
+                <div class="packaging-header">
+                    <span class="section-badge">Édition Limitée</span>
+                    <h2>COFFRET PRESTIGE</h2>
+                    <p class="section-intro">Une présentation digne des plus grands trésors de l'Égypte ancienne</p>
+                </div>
+
+                <div class="packaging-content">
+                    <div class="packaging-image">
+                        <div class="image-container">
+                            <img src="images/coffret-osiris.jpg" alt="Coffret Prestige Osiris Royal">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+
+                    <div class="packaging-details">
+                        <div class="detail-item fade-in">
+                            <span class="detail-number">01</span>
+                            <div class="detail-text">
+                                <h3>ÉCRIN ARTISANAL</h3>
+                                <p>Coffret en bois précieux laqué, orné de hiéroglyphes dorés à la feuille d'or</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item fade-in">
+                            <span class="detail-number">02</span>
+                            <div class="detail-text">
+                                <h3>CERTIFICAT D'AUTHENTICITÉ</h3>
+                                <p>Numéroté et signé par notre Maître Parfumeuse</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item fade-in">
+                            <span class="detail-number">03</span>
+                            <div class="detail-text">
+                                <h3>ACCESSOIRES EXCLUSIFS</h3>
+                                <p>Pochette en soie et applicateur en cristal taillé</p>
+                            </div>
+                        </div>
+
+                        <div class="packaging-cta fade-in">
+                            <div class="limited-badge">
+                                <span class="limited-number">500</span>
+                                <span class="limited-text">Exemplaires</span>
+                            </div>
+                            <button class="discover-btn">
+                                <span>Découvrir le coffret</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-container">
+            <!-- Les avis seront ajoutés dynamiquement par le JavaScript -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>OSIRIS</h3>
+                <p>Une maison de parfumerie de luxe qui célèbre l'héritage des fragrances ancestrales.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>COLLECTIONS</h4>
+                <ul>
+                    <li><a href="#">Les Masculins</a></li>
+                    <li><a href="#">Les Féminins</a></li>
+                    <li><a href="#">Collections Privées</a></li>
+                    <li><a href="#">Éditions Limitées</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>MAISON</h4>
+                <ul>
+                    <li><a href="#">Notre Histoire</a></li>
+                    <li><a href="#">Savoir-Faire</a></li>
+                    <li><a href="#">Nos Boutiques</a></li>
+                    <li><a href="#">Carrières</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>SERVICE CLIENT</h4>
+                <ul>
+                    <li><a href="#">Contactez-nous</a></li>
+                    <li><a href="#">Livraison & Retours</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Mentions Légales</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>NEWSLETTER</h4>
+                <p>Inscrivez-vous pour recevoir nos actualités et offres exclusives</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre adresse email">
+                    <button type="submit">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 OSIRIS. Tous droits réservés.</p>
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger-menu');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const body = document.body;
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                body.style.overflow = '';
+            }
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                body.style.overflow = '';
+            });
+        });
+
+        const addToCartBtn = document.querySelector('.add-to-cart-btn');
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', function() {
+                const productName = 'NÉFERTITI';
+                const price = 289.00;
+                const image = 'images/parfum2.jpg';
+                const quantity = parseInt(document.getElementById('quantity').value) || 1;
+                
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                const existingProduct = cart.find(item => 
+                    item.name === productName && 
+                    item.volume === document.querySelector('.option-buttons .option-btn.active').textContent
+                );
+                
+                if (existingProduct) {
+                    const newQuantity = Math.min(10, existingProduct.quantity + quantity);
+                    existingProduct.quantity = newQuantity;
+                } else {
+                    cart.push({
+                        name: productName,
+                        price: price,
+                        image: image,
+                        volume: document.querySelector('.option-buttons .option-btn.active').textContent,
+                        quantity: Math.min(10, quantity)
+                    });
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                updateCartCount();
+                
+                window.location.href = 'panier.html';
+            });
+        }
+    });
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCounts = document.querySelectorAll('.cart-count');
+        cartCounts.forEach(count => {
+            count.textContent = totalItems;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+    });
+    </script>
+    <script src="product-page.js"></script>
+    <script src="reviews.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new ReviewSystem('nefertiti');
+        });
+    </script>
+</body>
+</html>

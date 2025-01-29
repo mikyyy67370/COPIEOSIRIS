@@ -1,0 +1,98 @@
+/* Styles communs pour les pages produits */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gold: #C3A343;
+    --transition: all 0.3s ease;
+}
+
+/* Styles du bouton d'ajout au panier communs */
+.add-to-cart {
+    flex-grow: 1;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 0 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    height: 40px;
+}
+
+.add-to-cart:hover {
+    background: var(--gold);
+}
+
+/* Styles des boutons de quantité */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--gold);
+    margin-right: 1rem;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    color: var(--gold);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quantity-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.quantity-display {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+}
+
+/* Styles des sélecteurs de volume */
+.volume-selector {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.volume-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gold);
+    background: none;
+    color: var(--gold);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.volume-btn.selected {
+    background: var(--gold);
+    color: var(--white);
+}
+
+/* Styles des notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    background: var(--black);
+    color: var(--white);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+}

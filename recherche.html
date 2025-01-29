@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de recherche - OSIRIS Parfums de Luxe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .search-results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .search-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/search-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .search-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-query {
+            font-style: italic;
+            color: #C5A572;
+        }
+
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #C5A572;
+            color: white;
+            border-color: #C5A572;
+        }
+
+        .product-card {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            flex: 0 0 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-category {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: #444;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-notes {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #C5A572;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            align-self: flex-start;
+            padding: 0.8rem 1.5rem;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #C5A572;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: #C5A572;
+            margin-bottom: 1rem;
+        }
+
+        .no-results h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .no-results p {
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                flex-direction: column;
+            }
+
+            .product-image {
+                flex: 0 0 200px;
+            }
+
+            .product-info {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement-bar">
+        DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"
+    </div>
+
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="location-selector">
+                    <span class="country">FRANCE</span>
+                    <span class="divider">|</span>
+                    <span class="language">FR</span>
+                </div>
+                <a href="contact.html" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    NOUS CONTACTER
+                </a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                    <div class="logo-location">STRASBOURG</div>
+                </a>
+            </div>
+
+            <div class="nav-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <a href="compte.html" class="icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="panier.html" class="icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="main-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="collections-privees.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            </a>
+            <a href="collections-signatures.html" class="menu-item">
+                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="search-results-container">
+            <section class="search-header">
+                <h1>Résultats de recherche pour "<span id="search-query"></span>"</h1>
+            </section>
+
+            <div class="search-filters">
+                <button class="filter-btn active">Tous</button>
+                <button class="filter-btn">Les Masculins</button>
+                <button class="filter-btn">Les Féminins</button>
+                <button class="filter-btn">Collections Privées</button>
+                <button class="filter-btn">Collections Signatures</button>
+            </div>
+
+            <div id="search-results">
+                <!-- Les résultats de recherche seront injectés ici par JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>OSIRIS</h3>
+                <p>Une maison de parfumerie de luxe qui célèbre l'héritage des fragrances ancestrales.</p>
+            </div>
+            <div class="footer-section">
+                <h3>NAVIGATION</h3>
+                <ul>
+                    <li><a href="lesmasculins.html">Les Masculins</a></li>
+                    <li><a href="lesfeminins.html">Les Féminins</a></li>
+                    <li><a href="collections-privees.html">Collections Privées</a></li>
+                    <li><a href="collections-signatures.html">Collections Signatures</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>SERVICE CLIENT</h3>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="expedition.html">Expédition</a></li>
+                    <li><a href="retours.html">Retours</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>SUIVEZ-NOUS</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 OSIRIS. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/search.js"></script>
+    <script>
+        // Initialiser la recherche au chargement de la page
+        document.addEventListener('DOMContentLoaded', loadSearchResults);
+
+        // Gestion des filtres
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                btn.classList.add('active');
+                
+                // Recharger les résultats avec le filtre
+                const category = btn.textContent === 'Tous' ? '' : btn.textContent;
+                const urlParams = new URLSearchParams(window.location.search);
+                const query = urlParams.get('q');
+                
+                if (query) {
+                    const results = searchProducts(query).filter(product => 
+                        !category || product.category === category
+                    );
+                    displaySearchResults(results);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

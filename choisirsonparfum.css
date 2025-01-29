@@ -1,0 +1,760 @@
+/* Variables */
+:root {
+    --gold: #C5A572;
+    --dark-gold: #8B7355;
+    --light-gold: #E2D4BA;
+    --black: #000000;
+    --white: #FFFFFF;
+    --sand: #F5E6D3;
+    --cream: #F8F5F1;
+}
+
+/* Hero Section */
+.guide-hero {
+    height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, 
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.7)
+    );
+    overflow: hidden;
+}
+
+/* Effet de fond animé */
+.guide-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/guide-bg.jpg') center/cover no-repeat;
+    opacity: 0.3;
+    animation: slowZoom 20s infinite alternate;
+    z-index: -1;
+}
+
+/* Contenu Hero */
+.guide-hero-content {
+    text-align: center;
+    color: var(--white);
+    max-width: 800px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.guide-badge {
+    display: inline-block;
+    padding: 12px 25px;
+    background: rgba(197, 165, 114, 0.1);
+    border: 1px solid var(--gold);
+    backdrop-filter: blur(5px);
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.2s;
+}
+
+.guide-hero-content h1 {
+    font-family: 'Marcellus', serif;
+    font-size: 56px;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.4s;
+}
+
+.guide-subtitle {
+    font-size: 20px;
+    letter-spacing: 6px;
+    margin-bottom: 30px;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.6s;
+}
+
+.guide-description {
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.8s;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slowZoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+    .guide-hero-content h1 {
+        font-size: 48px;
+    }
+
+    .guide-subtitle {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .guide-hero {
+        height: 70vh;
+    }
+
+    .guide-hero-content h1 {
+        font-size: 40px;
+        letter-spacing: 6px;
+    }
+
+    .guide-badge {
+        padding: 10px 20px;
+        font-size: 11px;
+    }
+
+    .guide-description {
+        font-size: 15px;
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .guide-hero-content h1 {
+        font-size: 32px;
+        letter-spacing: 4px;
+    }
+
+    .guide-subtitle {
+        font-size: 16px;
+        letter-spacing: 4px;
+    }
+
+    .guide-description {
+        font-size: 14px;
+    }
+}
+
+/* Section Guide Olfactif */
+.fragrance-families {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, var(--cream), var(--sand));
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de motif hiéroglyphique */
+.fragrance-families::before {
+    content: '𓃭 𓆣 𓆸 𓇯 𓃭 𓆣 𓆸 𓇯';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'Noto Sans Egyptian Hieroglyphs';
+    font-size: 60px;
+    color: rgba(197, 165, 114, 0.05);
+    white-space: nowrap;
+    animation: scrollHieroglyphs 80s linear infinite;
+}
+
+.fragrance-families::after {
+    content: '𓃭 𓆣 𓆸 𓇯 𓃭 𓆣 𓆸 𓇯';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    font-family: 'Noto Sans Egyptian Hieroglyphs';
+    font-size: 60px;
+    color: rgba(197, 165, 114, 0.05);
+    white-space: nowrap;
+    animation: scrollHieroglyphsReverse 80s linear infinite;
+}
+
+/* En-tête de section */
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.section-symbol {
+    font-size: 48px;
+    color: var(--gold);
+    margin-bottom: 25px;
+    display: inline-block;
+    animation: rotateSymbol 12s linear infinite;
+}
+
+.section-header h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 42px;
+    color: var(--black);
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+}
+
+.section-header .subtitle {
+    font-size: 16px;
+    color: var(--dark-gold);
+    letter-spacing: 3px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Grille des familles */
+.families-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.family-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.family-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(197, 165, 114, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.family-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.family-card:hover::before {
+    opacity: 1;
+}
+
+.family-icon {
+    font-size: 42px;
+    color: var(--gold);
+    margin-bottom: 25px;
+    display: inline-block;
+    transition: transform 0.6s ease;
+}
+
+.family-card:hover .family-icon {
+    transform: translateY(-5px) rotate(10deg);
+}
+
+.family-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 24px;
+    color: var(--black);
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.family-card p {
+    font-size: 15px;
+    color: var(--dark-gold);
+    margin-bottom: 20px;
+}
+
+.family-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--dark-gold);
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes scrollHieroglyphs {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes scrollHieroglyphsReverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes rotateSymbol {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+    .families-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fragrance-families {
+        padding: 60px 0;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+        letter-spacing: 6px;
+    }
+
+    .family-card {
+        padding: 30px 20px;
+    }
+
+    .family-icon {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .families-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+        letter-spacing: 4px;
+    }
+
+    .family-card h3 {
+        font-size: 20px;
+    }
+}
+
+/* Section Comment Bien Choisir */
+.choosing-steps {
+    padding: 120px 0;
+    background: linear-gradient(to right, var(--black), #1A1A1A);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de particules dorées */
+.choosing-steps::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(197, 165, 114, 0.03) 0%,
+        transparent 50%
+    );
+    animation: rotateGlow 30s linear infinite;
+}
+
+/* En-tête sombre */
+.section-header.dark {
+    color: var(--white);
+    margin-bottom: 100px;
+}
+
+.section-header.dark .section-symbol {
+    color: var(--gold);
+    font-size: 42px;
+    opacity: 0.9;
+}
+
+.section-header.dark h2 {
+    color: var(--white);
+    margin-top: 20px;
+}
+
+.section-header.dark .subtitle {
+    color: var(--gold);
+    opacity: 0.8;
+}
+
+/* Grille des étapes */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.step-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+    border: 1px solid rgba(197, 165, 114, 0.1);
+    padding: 70px 30px 35px;
+    text-align: center;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.step-number {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Marcellus', serif;
+    font-size: 42px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--gold), var(--light-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(197, 165, 114, 0.3);
+}
+
+.step-card:hover .step-number {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.step-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, var(--gold), var(--light-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.step-card p {
+    background: linear-gradient(135deg, var(--gold), var(--light-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+.step-card:hover p {
+    opacity: 1;
+}
+
+/* Animation */
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .choosing-steps {
+        padding: 80px 0;
+    }
+
+    .section-header.dark {
+        margin-bottom: 60px;
+    }
+
+    .step-card {
+        padding: 60px 20px 30px;
+    }
+
+    .step-number {
+        font-size: 36px;
+        top: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .step-card {
+        padding: 55px 20px 25px;
+    }
+
+    .step-number {
+        font-size: 32px;
+        top: 18px;
+    }
+}
+
+/* Section Conseils Experts */
+.expert-advice {
+    padding: 120px 0;
+    background: linear-gradient(to bottom, var(--cream), var(--sand));
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de motif en arrière-plan */
+.expert-advice::before {
+    content: '𓃭 𓆣 𓆸 𓇯';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-family: 'Noto Sans Egyptian Hieroglyphs';
+    font-size: 200px;
+    color: rgba(197, 165, 114, 0.03);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.advice-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.advice-content h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 42px;
+    color: var(--black);
+    letter-spacing: 6px;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.advice-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.advice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+}
+
+.advice-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    backdrop-filter: blur(10px);
+    padding: 50px 30px;
+    border-radius: 2px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(197, 165, 114, 0.1);
+}
+
+.advice-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(197, 165, 114, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.advice-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.advice-card:hover::before {
+    opacity: 1;
+}
+
+.advice-icon {
+    font-size: 46px;
+    color: var(--gold);
+    margin-bottom: 30px;
+    display: inline-block;
+    transition: transform 0.6s ease;
+}
+
+.advice-card:hover .advice-icon {
+    transform: translateY(-5px) rotate(10deg);
+}
+
+.advice-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 22px;
+    color: var(--black);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.advice-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.advice-card:hover h3::after {
+    width: 50px;
+}
+
+.advice-card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--dark-gold);
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+    .advice-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .expert-advice {
+        padding: 80px 0;
+    }
+
+    .advice-content h2 {
+        font-size: 32px;
+        margin-bottom: 60px;
+    }
+
+    .advice-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .advice-card {
+        padding: 40px 25px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .advice-content h2 {
+        font-size: 28px;
+        letter-spacing: 4px;
+    }
+
+    .advice-icon {
+        font-size: 40px;
+    }
+
+    .advice-card h3 {
+        font-size: 20px;
+    }
+
+    .advice-card p {
+        font-size: 14px;
+    }
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none; /* Par défaut caché sur desktop */
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--gold);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: block; /* Afficher sur mobile */
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--white);
+        padding: 80px 20px 20px;
+        overflow-y: auto;
+        z-index: 999;
+    }
+
+    .mobile-menu.active {
+        display: block;
+    }
+} 
