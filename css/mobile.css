@@ -1,0 +1,226 @@
+/* Styles pour mobile */
+@media screen and (max-width: 768px) {
+    /* Ajustement de la barre d'annonce */
+    .announcement-bar {
+        font-size: 12px;
+        padding: 8px 5px;
+        letter-spacing: 1px;
+    }
+
+    /* Ajustement du logo */
+    .logo h1 {
+        font-size: 28px;
+    }
+
+    .logo-tagline {
+        font-size: 12px;
+    }
+
+    .logo-location {
+        font-size: 10px;
+    }
+
+    /* Ajustement des sections */
+    .section-header h2 {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    /* Ajustement des cartes produits */
+    .product-card .product-title {
+        font-size: 16px;
+    }
+
+    .product-card .product-price {
+        font-size: 14px;
+    }
+
+    .product-card .product-description {
+        font-size: 12px;
+    }
+
+    /* Ajustement des collections */
+    .collections-header h2 {
+        font-size: 24px;
+    }
+
+    .collection-card .collection-title {
+        font-size: 18px;
+    }
+
+    .collection-card .collection-description {
+        font-size: 12px;
+    }
+
+    /* Ajustement de la section expérience */
+    .experience-header h2 {
+        font-size: 24px;
+    }
+
+    .experience-text {
+        font-size: 14px;
+    }
+
+    /* Ajustement du footer */
+    .footer-section h3 {
+        font-size: 16px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+        font-size: 12px;
+    }
+
+    /* Ajustement du menu mobile */
+    .mobile-nav .menu-item a {
+        font-size: 16px;
+    }
+
+    .mobile-nav .submenu a {
+        font-size: 14px;
+    }
+
+    /* Ajustement des boutons */
+    .discover-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    /* Reset du body et html pour éviter les problèmes de hauteur */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Section hero - Design professionnel */
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: var(--black);
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        z-index: 2;
+        color: var(--white);
+        padding: 20px;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        background: rgba(197, 165, 114, 0.2);
+        color: var(--gold);
+        padding: 8px 16px;
+        border: 1px solid var(--gold);
+        margin-bottom: 25px;
+        backdrop-filter: blur(5px);
+    }
+
+    .hero h1 {
+        font-family: 'Marcellus', serif;
+        font-size: 36px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        margin: 15px 0;
+        line-height: 1.2;
+        color: var(--white);
+    }
+
+    .hero p {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+        letter-spacing: 3px;
+        margin: 15px 0;
+        font-weight: 300;
+        color: var(--white);
+    }
+
+    .hero-description {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 20px auto;
+        max-width: 90%;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Effet de parallaxe subtil */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at center,
+            rgba(197, 165, 114, 0.1) 0%,
+            rgba(0, 0, 0, 0) 70%
+        );
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Effet de brillance */
+    .hero::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        background: linear-gradient(
+            45deg,
+            transparent 45%,
+            rgba(197, 165, 114, 0.1) 50%,
+            transparent 55%
+        );
+        z-index: 1;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
