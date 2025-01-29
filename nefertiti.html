@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez NEFERTITI, un parfum d'une rare élégance qui célèbre la beauté éternelle, avec ses notes de rose de Damas, de jasmin et d'ambre royal.">
-    <meta name="keywords" content="parfum de luxe, OSIRIS, NEFERTITI, rose, jasmin, parfum féminin, parfumerie de luxe">
-    <title>NÉFERTITI - Parfum de Luxe | OSIRIS</title>
+    <meta name="description" content="Découvrez ANUBIS, une création d'exception qui capture l'essence même du dieu légendaire, alliant la sensualité des fleurs précieuses à la noblesse des bois rares.">
+    <meta name="keywords" content="parfum de luxe, OSIRIS, ANUBIS, rose, jasmin, parfum masculin, parfumerie de luxe">
+    <title>ANUBIS - Parfum de Luxe | OSIRIS</title>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="nefertiti.css">
+    <link rel="stylesheet" href="anubis.css">
     <link rel="stylesheet" href="reviews.css">
     <link rel="stylesheet" href="css/product-navigation.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/notifications.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
     
-    <!-- Scripts de base -->
-    <script src="js/product-config.js" defer></script>
-    <script src="js/security.js" defer></script>
-    <script src="js/performance.js" defer></script>
-    <script src="js/seo.js" defer></script>
-    <script src="js/product-page.js" defer></script>
-    <script src="js/product-images.js" defer></script>
-    <script src="js/reviews.js" defer></script>
-    <script src="js/product-navigation.js" defer></script>
-    <script src="js/cart.js" defer></script>
+    <!-- Scripts essentiels -->
+    <script src="js/simple-cart.js"></script>
 
     <style>
         .announcement-bar a {
@@ -36,7 +33,7 @@
         .announcement-bar a:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-
+        
         .notification {
             position: fixed;
             top: 20px;
@@ -52,63 +49,6 @@
 
         .notification.show {
             transform: translateX(0);
-        }
-
-        .notification.success {
-            border-left: 4px solid #4CAF50;
-        }
-
-        .notification.error {
-            border-left: 4px solid #f44336;
-        }
-
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .notification i {
-            font-size: 1.2rem;
-        }
-
-        .notification.success i {
-            color: #4CAF50;
-        }
-
-        .notification.error i {
-            color: #f44336;
-        }
-
-        .add-to-cart-btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .add-to-cart-btn.added::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .cart-icon.bounce {
-            animation: bounce 1s;
         }
     </style>
 </head>
@@ -205,7 +145,7 @@
             <div class="product-container">
                 <div class="product-gallery">
                     <div class="gallery-main">
-                        <img src="images/parfum2.jpg" alt="NÉFERTITI - flacon de parfum" class="main-image">
+                        <img src="images/parfum2.jpg" alt="ANUBIS - flacon de parfum" class="main-image">
                         <div class="gallery-badge">Édition Limitée</div>
                     </div>
                     <div class="gallery-thumbnails">
@@ -217,8 +157,8 @@
 
                 <div class="product-info">
                     <div class="product-header">
-                        <h1>NÉFERTITI</h1>
-                        <div class="product-subtitle">L'essence de la féminité éternelle sublimée en fragrance</div>
+                        <h1>ANUBIS</h1>
+                        <div class="product-subtitle">L'essence de la masculinité éternelle sublimée en fragrance</div>
                     </div>
 
                     <div class="product-rating">
@@ -233,12 +173,12 @@
                     </div>
 
                     <div class="product-description">
-                        <p class="luxury-text">Notes de jasmin et de rose s'entrelacent dans une danse sensuelle, évoquant la grâce légendaire de la reine Néfertiti. Une création d'exception qui incarne l'élégance féminine et le raffinement de l'Égypte antique.</p>
+                        <p class="luxury-text">Notes de bergamote et de lavande s'entrelacent dans une danse sensuelle, évoquant la puissance légendaire du dieu Anubis. Une création d'exception qui incarne la masculinité éternelle et le raffinement de l'Égypte antique.</p>
                         
                         <div class="fragrance-notes">
                             <div class="note-group">
                                 <h3>Notes de Tête</h3>
-                                <p>Rose de Damas, Bergamote</p>
+                                <p>Bergamote, Lavande</p>
                             </div>
                             <div class="note-group">
                                 <h3>Notes de Cœur</h3>
@@ -298,8 +238,9 @@
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <button class="add-to-cart-btn" aria-label="Ajouter au panier">
+                        <button onclick="addToCart('ANUBIS', 289, 'images/parfum2.jpg')" class="add-to-cart">
                             <span>AJOUTER AU PANIER</span>
+                            <i class="fas fa-shopping-bag"></i>
                         </button>
                     </div>
                 </div>
@@ -312,12 +253,12 @@
                     <div class="story-video">
                         <div class="video-container">
                             <video autoplay muted loop playsinline>
-                                <source src="video/NÉFERTITIcréation.mp4" type="video/mp4">
+                                <source src="video/ANUBIScréation.mp4" type="video/mp4">
                                 Votre navigateur ne supporte pas la lecture de vidéos.
                             </video>
                             <div class="video-overlay">
                                 <div class="overlay-text">
-                                    <span>La Création de NÉFERTITI</span>
+                                    <span>La Création de ANUBIS</span>
                                     <p>Un voyage au cœur de notre atelier</p>
                                 </div>
                             </div>
@@ -328,7 +269,7 @@
                         <div class="story-badge">L'Art de la Parfumeuse</div>
                         <h2>LA VISION DE LA MAÎTRE PARFUMEUSE</h2>
                         <div class="story-subtitle">Par Marie Laurent, Maître Parfumeuse</div>
-                        <p class="story-text">"Néfertiti est une ode à la féminité éternelle. J'ai voulu capturer l'essence même de cette reine légendaire, mêlant la délicatesse de la rose à la sensualité du jasmin. Chaque note a été choisie pour évoquer la grâce et le mystère de l'une des femmes les plus fascinantes de l'histoire. Ce parfum est un hommage à la beauté intemporelle et au pouvoir de la féminité."</p>
+                        <p class="story-text">"Anubis est une ode à la masculinité éternelle. J'ai voulu capturer l'essence même du dieu légendaire, mêlant la puissance de la bergamote à la noblesse des bois rares. Chaque note a été choisie pour évoquer la force et le mystère de l'un des dieux les plus fascinants de l'histoire. Ce parfum est un hommage à la masculinité intemporelle et au pouvoir de la nature."</p>
                         
                         <div class="story-features">
                             <div class="feature">
@@ -337,7 +278,7 @@
                                 </div>
                                 <div class="feature-text">
                                     <h4>Création Artisanale</h4>
-                                    <p>Élaboré dans notre atelier de Grasse avec des essences précieuses de rose et de jasmin</p>
+                                    <p>Élaboré dans notre atelier de Grasse avec des essences précieuses de bergamote et de lavande</p>
                                 </div>
                             </div>
                             <div class="feature">
@@ -353,7 +294,7 @@
 
                         <div class="perfumer-quote">
                             <div class="quote-symbol">❝</div>
-                            <p>Créer un parfum, c'est capturer l'essence d'une émotion. Avec Néfertiti, j'ai voulu immortaliser la grâce et l'élégance d'une reine légendaire.</p>
+                            <p>Créer un parfum, c'est capturer l'essence d'une émotion. Avec Anubis, j'ai voulu immortaliser la puissance et la noblesse d'un dieu légendaire.</p>
                             <div class="perfumer-signature">
                                 <span>Marie Laurent</span>
                             </div>
@@ -576,7 +517,7 @@
         const addToCartBtn = document.querySelector('.add-to-cart-btn');
         if (addToCartBtn) {
             addToCartBtn.addEventListener('click', function() {
-                const productName = 'NÉFERTITI';
+                const productName = 'ANUBIS';
                 const price = 289.00;
                 const image = 'images/parfum2.jpg';
                 const quantity = parseInt(document.getElementById('quantity').value) || 1;
@@ -623,12 +564,8 @@
         updateCartCount();
     });
     </script>
-    <script src="product-page.js"></script>
-    <script src="reviews.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            new ReviewSystem('nefertiti');
-        });
-    </script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/sections-animation.js" defer></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

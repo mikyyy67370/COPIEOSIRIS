@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez OSIRIS ROYAL, notre parfum signature d'exception qui incarne la quintessence du luxe et du raffinement, avec ses notes rares et précieuses.">
-    <meta name="keywords" content="parfum de luxe, OSIRIS, OSIRIS ROYAL, collection signature, parfum unisexe, parfumerie de luxe">
+    <meta name="description" content="Découvrez OSIRIS ROYAL, une création d'exception qui capture l'essence même du roi des dieux, alliant la puissance des résines précieuses à la noblesse des bois rares.">
+    <meta name="keywords" content="parfum de luxe, OSIRIS, OSIRIS ROYAL, encens, myrrhe, parfum masculin, parfumerie de luxe">
     <title>OSIRIS ROYAL - Parfum de Luxe | OSIRIS</title>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="osirisroyal.css">
     <link rel="stylesheet" href="reviews.css">
     <link rel="stylesheet" href="css/product-navigation.css">
     <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/notifications.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
     
-    <!-- Scripts de base -->
-    <script src="js/product-config.js" defer></script>
-    <script src="js/security.js" defer></script>
-    <script src="js/performance.js" defer></script>
-    <script src="js/seo.js" defer></script>
-    <script src="js/product-page.js" defer></script>
-    <script src="js/product-images.js" defer></script>
-    <script src="js/reviews.js" defer></script>
-    <script src="js/product-navigation.js" defer></script>
-    <script src="js/mobile-menu.js" defer></script>
-    <script src="js/sections-animation.js" defer></script>
+    <!-- Scripts essentiels -->
+    <script src="js/simple-cart.js"></script>
 
     <style>
         .announcement-bar a {
@@ -37,6 +32,23 @@
         
         .announcement-bar a:hover {
             background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -178,7 +190,7 @@
 
     <main class="product-hero">
         <section class="product-section">
-            <div class="product-container">
+            <div class="product-container" data-product-id="OSIRIS">
                 <div class="product-gallery">
                     <div class="gallery-main">
                         <img src="images/parfum1.jpg" alt="Osiris Royal - Flacon de parfum" class="main-image">
@@ -193,8 +205,9 @@
 
                 <div class="product-info">
                     <div class="product-header">
-                        <h1>OSIRIS ROYAL</h1>
-                        <div class="product-subtitle">Une fragrance envoûtante aux accents d'Orient</div>
+                        <h1 class="product-title">OSIRIS ROYAL</h1>
+                        <div class="product-subtitle">L'essence de la royauté</div>
+                        <div class="product-price">289 €</div>
                     </div>
 
                     <div class="product-rating">
@@ -253,30 +266,22 @@
                         </div>
                     </div>
 
-                    <div class="product-price">
-                        <div class="price-wrapper">
-                            <span class="price">399.00€</span>
-                            <span class="tax-info">TTC</span>
-                        </div>
-                        <div class="shipping-info">
-                            <i class="fas fa-truck"></i>
-                            <span>Livraison offerte en France</span>
-                        </div>
-                    </div>
-
                     <div class="product-actions">
                         <div class="quantity">
-                            <button class="qty-btn minus">
+                            <button class="qty-btn minus" aria-label="Diminuer la quantité">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <input type="number" value="1" min="1" max="10" id="quantity">
-                            <button class="qty-btn plus">
+                            <input type="number" value="1" min="1" max="10" id="quantity" aria-label="Quantité">
+                            <button class="qty-btn plus" aria-label="Augmenter la quantité">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <button class="add-to-cart" data-product-name="OSIRIS ROYAL" data-product-price="289.00" data-product-image="images/parfum1.jpg">
+                        <button onclick="addToCart('OSIRIS ROYAL', 289, 'images/osiris.jpg')" class="add-to-cart">
                             <span>AJOUTER AU PANIER</span>
                             <i class="fas fa-shopping-bag"></i>
+                        </button>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
 
@@ -470,7 +475,6 @@
     </main>
 
     <footer>
-        <!-- Scripts -->
         <script src="script.js"></script>
         <script src="reviews.js"></script>
     </footer>
@@ -527,5 +531,8 @@
             new ReviewSystem('osiris-royal');
         });
     </script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/sections-animation.js" defer></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

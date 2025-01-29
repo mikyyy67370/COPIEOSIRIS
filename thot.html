@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="thot.css">
     <link rel="stylesheet" href="reviews.css">
     <link rel="stylesheet" href="css/product-navigation.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/cart.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
@@ -23,6 +25,7 @@
     <script src="js/product-images.js" defer></script>
     <script src="js/reviews.js" defer></script>
     <script src="js/product-navigation.js" defer></script>
+    <script src="js/simple-cart.js" defer></script>
 
     <style>
         .announcement-bar a {
@@ -214,21 +217,8 @@
                     </div>
 
                     <div class="product-actions">
-                        <div class="quantity">
-                            <button class="qty-btn minus">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <input type="number" value="1" min="1" max="10" id="quantity">
-                            <button class="qty-btn plus">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <button class="add-to-cart" data-product-name="THOT" data-product-price="289.00" data-product-image="images/collection5.jpg">
-                            <span>AJOUTER AU PANIER</span>
-                            <i class="fas fa-shopping-bag"></i>
-                        </button>
-                        <button class="wishlist-btn">
-                            <i class="far fa-heart"></i>
+                        <button onclick="addToCart('THOT', 289.00, 'images/collection8.jpg')" class="add-to-cart">
+                            Ajouter au panier
                         </button>
                     </div>
 
@@ -421,96 +411,8 @@
         </section>
     </main>
 
-    <script src="script.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.querySelector('.hamburger-menu');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const body = document.body;
-        
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            
-            // Change l'icône
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                body.style.overflow = 'hidden'; // Empêche le défilement
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                body.style.overflow = ''; // Réactive le défilement
-            }
-        });
-
-        // Ferme le menu si on clique sur un lien
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                body.style.overflow = '';
-            });
-        });
-    });
-    </script>
-    <script>
-        function addToCart(productName, price, image) {
-            // Récupérer le panier actuel ou créer un nouveau tableau vide
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
-            // Vérifier si le produit est déjà dans le panier
-            const existingProduct = cart.find(item => item.name === productName);
-            
-            if (existingProduct) {
-                // Si le produit existe déjà, augmenter la quantité
-                existingProduct.quantity = Math.min(10, existingProduct.quantity + 1);
-            } else {
-                // Sinon, ajouter le nouveau produit
-                cart.push({
-                    name: productName,
-                    price: price,
-                    image: image,
-                    quantity: 1
-                });
-            }
-            
-            // Sauvegarder le panier mis à jour
-            localStorage.setItem('cart', JSON.stringify(cart));
-            
-            // Mettre à jour le compteur du panier
-            updateCartCount();
-            
-            // Rediriger vers la page panier
-            window.location.href = 'panier.html';
-        }
-
-        // Mettre à jour le compteur du panier
-        function updateCartCount() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            const cartCounts = document.querySelectorAll('.cart-count');
-            cartCounts.forEach(count => {
-                count.textContent = totalItems;
-            });
-        }
-
-        // Mettre à jour le compteur au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-            updateCartCount();
-        });
-    </script>
-    <script src="product-page.js"></script>
-    <script src="reviews.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            new ReviewSystem('thot');
-        });
-    </script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/sections-animation.js" defer></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

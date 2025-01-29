@@ -3,198 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panier | OSIRIS</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/panier.css">
-    <link rel="stylesheet" href="css/mobile-menu.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
+    <title>Votre Panier - OSIRIS</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/panier.css">
+    <link rel="stylesheet" href="css/notifications.css">
     <style>
         .cart-container {
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 2rem;
+            padding: 20px;
         }
 
         .cart-items {
-            background: #fff;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .cart-item {
             display: grid;
             grid-template-columns: 150px 1fr;
-            gap: 2rem;
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .cart-item:hover {
-            transform: translateX(5px);
-        }
-
-        .cart-item:last-child {
-            border-bottom: none;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .item-image {
             width: 150px;
             height: 150px;
             overflow: hidden;
-            border-radius: 8px;
-            position: relative;
+            border-radius: 4px;
         }
 
         .item-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .item-image:hover img {
-            transform: scale(1.05);
         }
 
         .item-details {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 10px;
+            position: relative;
         }
 
         .item-details h3 {
+            margin: 0;
             font-family: 'Marcellus', serif;
             font-size: 1.2rem;
-            color: #333;
-            margin: 0;
         }
 
-        .item-details p {
-            margin: 0.25rem 0;
-            color: #666;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .quantity-btn {
-            background: #f5f5f5;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .quantity-btn:hover {
-            background: #e0e0e0;
-            transform: scale(1.1);
-        }
-
-        .quantity {
-            font-size: 1rem;
-            font-weight: 500;
-            min-width: 30px;
-            text-align: center;
-            font-family: 'Marcellus', serif;
-        }
-
-        .cart-summary {
-            background: #fff;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            height: fit-content;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .summary-total {
-            border-top: 2px solid #eee;
-            padding-top: 1rem;
-            margin-top: 1rem;
-            font-weight: 600;
-            font-family: 'Marcellus', serif;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #C5A572;
-            color: white;
-            border: none;
-            border-radius: 5px;
+        .price {
             font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Marcellus', serif;
-        }
-
-        .checkout-btn:hover {
-            background: #B89355;
-            transform: translateY(-2px);
-        }
-
-        .empty-cart {
-            text-align: center;
-            padding: 3rem;
-            font-family: 'Marcellus', serif;
-        }
-
-        .empty-cart i {
-            font-size: 3rem;
-            color: #C5A572;
-            margin-bottom: 1rem;
+            color: #333;
         }
 
         .remove-item {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 0;
+            right: 0;
             background: none;
             border: none;
             color: #999;
             cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 5px;
         }
 
         .remove-item:hover {
             color: #C5A572;
-            transform: rotate(90deg);
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .cart-total h3 {
+            margin: 0 0 20px 0;
+            font-family: 'Marcellus', serif;
+        }
+
+        .clear-cart-btn, .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Marcellus', serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .clear-cart-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .checkout-btn {
+            background: #C5A572;
+            color: white;
+        }
+
+        .clear-cart-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .checkout-btn:hover {
+            background: #B89355;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .empty-cart h2 {
+            margin: 0 0 20px 0;
+            font-family: 'Marcellus', serif;
+        }
+
+        .empty-cart a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #C5A572;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: 'Marcellus', serif;
+            transition: background-color 0.3s;
+        }
+
+        .empty-cart a:hover {
+            background: #B89355;
         }
 
         @media (max-width: 768px) {
-            .cart-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
             .cart-item {
                 grid-template-columns: 100px 1fr;
-                gap: 1rem;
-                padding: 1rem;
             }
 
             .item-image {
@@ -204,147 +167,84 @@
         }
     </style>
 </head>
-<body data-page-type="cart">
-    <div class="announcement-bar">
-        <a href="#">DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"</a>
-    </div>
-
+<body>
+    <!-- Header -->
     <header>
-        <div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </div>
-        
-        <!-- Menu Mobile -->
-        <div class="mobile-menu" aria-hidden="true">
-            <div class="mobile-menu-header">
-                <div class="logo">OSIRIS</div>
-                <div class="close-menu" aria-label="Fermer le menu">
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
-            
-            <nav class="mobile-nav">
-                <div class="menu-item has-submenu">
-                    <a href="#">Collections</a>
-                    <div class="submenu" aria-expanded="false">
-                        <a href="collections-signatures.html">Collections Signatures</a>
-                        <a href="collections-privees.html">Collections Privées</a>
-                        <a href="collection-royale.html">Collection Royale</a>
-                    </div>
-                </div>
-                
-                <div class="menu-item has-submenu">
-                    <a href="#">Parfums</a>
-                    <div class="submenu" aria-expanded="false">
-                        <a href="lesfeminins.html">Les Féminins</a>
-                        <a href="lesmasculins.html">Les Masculins</a>
-                        <a href="choisirsonparfum.html">Choisir son Parfum</a>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="notrehistoire.html">Notre Histoire</a>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="contact.html">Contact</a>
-                </div>
-            </nav>
-            
-            <div class="mobile-menu-footer">
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mobile-menu-overlay"></div>
-        
-        <nav class="nav-container" role="navigation">
+        <nav class="navbar">
             <div class="nav-left">
-                <a href="index.html" class="logo">
-                    <span class="logo-symbol">◈</span>
-                    <span class="brand-name">OSIRIS</span>
-                </a>
+                <a href="index.html" class="logo">OSIRIS</a>
+            </div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="collection.html">Collection</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
             <div class="nav-right">
-                <a href="compte.html" class="nav-link" aria-label="Mon compte">
-                    <i class="fas fa-user"></i>
-                </a>
-                <a href="panier.html" class="nav-link active" aria-label="Mon panier">
+                <a href="panier.html" class="cart-icon">
                     <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count" aria-label="Nombre d'articles dans le panier">0</span>
+                    <span class="cart-count">0</span>
                 </a>
             </div>
         </nav>
     </header>
 
-    <main class="cart-page">
-        <h1>VOTRE PANIER</h1>
-        <button id="clearCart" class="clear-cart-btn">
-            <i class="fas fa-trash"></i> Vider le panier
-        </button>
-        
+    <!-- Main Content -->
+    <main>
         <div class="cart-container">
-            <div id="cartItems" class="cart-items"></div>
-
-            <div class="cart-summary">
-                <h2>RÉCAPITULATIF</h2>
-                <div class="summary-line">
-                    <span>Sous-total</span>
-                    <span id="subtotal">0,00 €</span>
-                </div>
-                <div class="summary-line">
-                    <span>Livraison</span>
-                    <span>GRATUITE</span>
-                </div>
-                <div class="summary-line total">
-                    <span>Total</span>
-                    <span id="total">0,00 €</span>
-                </div>
-                <button class="checkout-btn">
-                    PROCÉDER AU PAIEMENT
-                </button>
-                <a href="index.html" class="continue-shopping">Continuer vos achats</a>
+            <h1>Votre Panier</h1>
+            <div id="cartItems">
+                <!-- Le contenu du panier sera injecté ici par JavaScript -->
             </div>
         </div>
     </main>
 
-    <!-- Template pour un article dans le panier -->
-    <template id="cartItemTemplate">
-        <div class="cart-item">
-            <div class="item-image">
-                <img src="" alt="">
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos d'OSIRIS</h3>
+                <p>OSIRIS est une marque de parfums de luxe inspirée par l'Égypte ancienne, créant des fragrances uniques qui capturent l'essence du mystère et de l'élégance.</p>
             </div>
-            <div class="item-details">
-                <h3></h3>
-                <p class="item-size"></p>
-                <p class="item-price"></p>
-                <div class="quantity-controls">
-                    <button class="quantity-btn decrease" aria-label="Diminuer la quantité">-</button>
-                    <span class="quantity">1</span>
-                    <button class="quantity-btn increase" aria-label="Augmenter la quantité">+</button>
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="collection.html">Collection</a></li>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@osiris.com</p>
+                <p>Téléphone: +33 1 23 45 67 89</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-            <button class="remove-item" aria-label="Retirer l'article">
-                <i class="fas fa-times"></i>
-            </button>
         </div>
-    </template>
-
-    <!-- Template pour panier vide -->
-    <template id="emptyCartTemplate">
-        <div class="empty-cart">
-            <i class="fas fa-shopping-bag"></i>
-            <p>Votre panier est vide</p>
-            <a href="index.html" class="continue-shopping">Continuer vos achats</a>
+        <div class="footer-bottom">
+            <p>&copy; 2024 OSIRIS. Tous droits réservés.</p>
         </div>
-    </template>
+    </footer>
 
-    <script src="js/cart.js"></script>
+    <!-- Scripts -->
     <script src="js/mobile-menu.js" defer></script>
-    <script src="js/sections-animation.js" defer></script>
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM chargé sur la page panier');
+            console.log('Contenu du localStorage:', localStorage.getItem('cart'));
+            const cartItems = document.getElementById('cartItems');
+            console.log('Element cartItems trouvé:', cartItems !== null);
+            
+            // La classe Cart s'initialise automatiquement et affiche le panier
+        });
+    </script>
 </body>
 </html>
