@@ -17,66 +17,79 @@
     <div class="announcement-bar">
         DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"
     </div>
-
+    
     <header>
         <div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </div>
         
-        <!-- Section recherche -->
-        <div class="mobile-search-section">
-            <div class="search-title">Rechercher</div>
-            <div class="search-wrapper">
-                <input type="text" placeholder="Rechercher une fragrance...">
-                <button type="button" class="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-        
-        <nav class="mobile-nav">
-            <div class="menu-item">
-                <a href="index.html">
-                    <span class="menu-text">Accueil</span>
-                </a>
-            </div>
-        
-            
-            <div class="menu-item has-submenu">
-                <div class="menu-header">
-                    <span class="menu-text">Parfums</span>
-                    <span class="menu-icon">+</span>
+        <!-- Menu Mobile -->
+        <div class="mobile-menu" aria-hidden="true">
+            <div class="mobile-menu-header">
+                <div class="mobile-logo">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
                 </div>
-                <div class="submenu" aria-expanded="false">
-                    <a href="lesfeminins.html">Les Féminins</a>
-                    <a href="lesmasculins.html">Les Masculins</a>
-                    <a href="choisirsonparfum.html">Choisir son Parfum</a>
+                <div class="close-menu" aria-label="Fermer le menu">
+                    <span class="close-icon"></span>
                 </div>
             </div>
             
-            <div class="menu-item">
-                <a href="notrehistoire.html">
-                    <span class="menu-text">Notre Histoire</span>
-                </a>
+            <!-- Section recherche -->
+            <div class="mobile-search-section">
+                <div class="search-title">Rechercher</div>
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Rechercher une fragrance...">
+                    <button type="button" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
             
-            <div class="menu-item">
-                <a href="contact.html">
-                    <span class="menu-text">Contact</span>
-                </a>
-            </div>
-        </nav>
-        
-        <div class="mobile-menu-footer">
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            <nav class="mobile-nav">
+                <div class="menu-item">
+                    <a href="index.html">
+                        <span class="menu-text">Accueil</span>
+                    </a>
+                </div>
+            
+                
+                <div class="menu-item has-submenu">
+                    <div class="menu-header">
+                        <span class="menu-text">Parfums</span>
+                        <span class="menu-icon">+</span>
+                    </div>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="lesfeminins.html">Les Féminins</a>
+                        <a href="lesmasculins.html">Les Masculins</a>
+                        <a href="choisirsonparfum.html">Choisir son Parfum</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="notrehistoire.html">
+                        <span class="menu-text">Notre Histoire</span>
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="contact.html">
+                        <span class="menu-text">Contact</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="mobile-menu-footer">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="mobile-menu-overlay"></div>
+        
+        <div class="mobile-menu-overlay"></div>
 
         <nav>
             <div class="nav-left">
@@ -92,13 +105,12 @@
             </div>
             
             <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <div class="logo-symbol">◈</div>
-                    <h1>OSIRIS</h1>
-                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
-                    <div class="logo-location">STRASBOURG</div>
-                </a>
+                <div class="logo-symbol">◈</div>
+                <h1>OSIRIS</h1>
+                <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                <div class="logo-location">STRASBOURG</div>
             </div>
+
             <div class="nav-right">
                 <div class="search-bar">
                     <input type="text" placeholder="Rechercher...">
@@ -186,7 +198,9 @@
     </div>
     <div class="mobile-menu-overlay"></div>
 
-    <main class="guide-page">
+    
+
+     <main class="guide-page">
         <section class="guide-hero">
             <div class="guide-hero-content">
                 <div class="guide-badge">GUIDE OLFACTIF</div>
