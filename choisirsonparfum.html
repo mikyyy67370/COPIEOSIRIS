@@ -5,70 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comment Choisir Son Parfum | OSIRIS</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="choisirsonparfum.css">
     <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="choisirsonparfum.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
+    <script src="js/parfum-guide.js"></script>
 </head>
 <body data-page-type="guide">
     <div class="announcement-bar">
         DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"
     </div>
 
-    <header class="header">
+    <header>
         <div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </div>
         
-        <!-- Menu Mobile -->
-        <div class="mobile-menu" aria-hidden="true">
-            <div class="mobile-menu-header">
-                <div class="logo">OSIRIS</div>
-                <div class="close-menu" aria-label="Fermer le menu">
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
-            
-            <nav class="mobile-nav">
-                <div class="menu-item has-submenu">
-                    <a href="#">Collections</a>
-                    <div class="submenu" aria-expanded="false">
-                        <a href="collections-signatures.html">Collections Signatures</a>
-                        <a href="collections-privees.html">Collections Privées</a>
-                        <a href="collection-royale.html">Collection Royale</a>
-                    </div>
-                </div>
-                
-                <div class="menu-item has-submenu">
-                    <a href="#">Parfums</a>
-                    <div class="submenu" aria-expanded="false">
-                        <a href="lesfeminins.html">Les Féminins</a>
-                        <a href="lesmasculins.html">Les Masculins</a>
-                        <a href="choisirsonparfum.html">Choisir son Parfum</a>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="notrehistoire.html">Notre Histoire</a>
-                </div>
-                
-                <div class="menu-item">
-                    <a href="contact.html">Contact</a>
-                </div>
-            </nav>
-            
-            <div class="mobile-menu-footer">
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
-                </div>
+        <!-- Section recherche -->
+        <div class="mobile-search-section">
+            <div class="search-title">Rechercher</div>
+            <div class="search-wrapper">
+                <input type="text" placeholder="Rechercher une fragrance...">
+                <button type="button" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </div>
         
-        <div class="mobile-menu-overlay"></div>
+        <nav class="mobile-nav">
+            <div class="menu-item">
+                <a href="index.html">
+                    <span class="menu-text">Accueil</span>
+                </a>
+            </div>
         
+            
+            <div class="menu-item has-submenu">
+                <div class="menu-header">
+                    <span class="menu-text">Parfums</span>
+                    <span class="menu-icon">+</span>
+                </div>
+                <div class="submenu" aria-expanded="false">
+                    <a href="lesfeminins.html">Les Féminins</a>
+                    <a href="lesmasculins.html">Les Masculins</a>
+                    <a href="choisirsonparfum.html">Choisir son Parfum</a>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <a href="notrehistoire.html">
+                    <span class="menu-text">Notre Histoire</span>
+                </a>
+            </div>
+            
+            <div class="menu-item">
+                <a href="contact.html">
+                    <span class="menu-text">Contact</span>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="mobile-menu-footer">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mobile-menu-overlay"></div>
+
         <nav>
             <div class="nav-left">
                 <div class="location-selector">
@@ -76,7 +85,7 @@
                     <span class="divider">|</span>
                     <span class="language">FR</span>
                 </div>
-                <a href="#contact" class="contact-link">
+                <a href="contact.html" class="contact-link">
                     <i class="fas fa-envelope"></i>
                     NOUS CONTACTER
                 </a>
@@ -115,61 +124,67 @@
             <a href="lesfeminins.html" class="menu-item">
                 <span class="menu-text">LES FÉMININS</span>
             </a>
-            <a href="collections-privees.html" class="menu-item">
-                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
             </a>
-            <a href="collections-signatures.html" class="menu-item">
-                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
             </a>
-            <a href="choisirsonparfum.html" class="menu-item active">
+            <a href="choisirsonparfum.html" class="menu-item">
                 <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
             </a>
         </div>
+    </header>
 
-        <!-- Menu mobile -->
-        <div class="mobile-menu">
-
-            <div class="mobile-menu-section">
-                <h3>COLLECTIONS</h3>
-                <a href="lesmasculins.html" class="menu-item">
-                    <span class="menu-text">LES MASCULINS</span>
-                </a>
-                <a href="lesfeminins.html" class="menu-item">
-                    <span class="menu-text">LES FÉMININS</span>
-                </a>
-                <a href="collections-privees.html" class="menu-item">
-                    <span class="menu-text">COLLECTIONS PRIVÉES</span>
-                </a>
-                <a href="collections-signatures.html" class="menu-item">
-                    <span class="menu-text">COLLECTIONS SIGNATURES</span>
-                </a>
-                <a href="choisirsonparfum.html" class="menu-item active">
-                    <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
-                </a>
-            </div>
-
-            <div class="mobile-menu-section">
-                <h3>INFORMATIONS</h3>
-                <a href="#about" class="menu-item">
-                    <span class="menu-text">À PROPOS</span>
-                </a>
-                <a href="#stores" class="menu-item">
-                    <span class="menu-text">NOS BOUTIQUES</span>
-                </a>
-                <a href="#contact" class="menu-item">
-                    <span class="menu-text">NOUS CONTACTER</span>
-                </a>
-            </div>
-
-            <div class="mobile-menu-footer">
-                <div class="location-selector">
-                    <span class="country">FRANCE</span>
-                    <span class="divider">|</span>
-                    <span class="language">FR</span>
-                </div>
+    <!-- Menu mobile -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-search-section">
+            <div class="search-title">Rechercher</div>
+            <div class="search-wrapper">
+                <input type="text" placeholder="Rechercher une fragrance...">
+                <button type="button" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </div>
-    </header>
+        <div class="mobile-location">
+            <span class="country">FRANCE</span>
+            <span class="divider">|</span>
+            <span class="language">FR</span>
+        </div>
+        <nav class="mobile-nav">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </nav>
+        <a href="contact.html" class="mobile-contact">
+            <i class="fas fa-envelope"></i>
+            NOUS CONTACTER
+        </a>
+    </div>
+    <div class="mobile-menu-overlay"></div>
 
     <main class="guide-page">
         <section class="guide-hero">
@@ -255,6 +270,30 @@
             </div>
         </section>
 
+        <section id="notes-olfactives" class="olfactive-notes section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">NOTES OLFACTIVES POPULAIRES</h2>
+                    <p class="section-description">Explorez nos parfums par notes dominantes</p>
+                </div>
+                <div class="olfactive-filters">
+                    <!-- Les notes seront injectées ici par JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz-parfum" class="quiz-section section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">DÉCOUVREZ VOTRE PARFUM IDÉAL</h2>
+                    <p class="section-description">Répondez à quelques questions pour trouver votre fragrance</p>
+                </div>
+                <div class="quiz-container">
+                    <!-- Le quiz sera injecté ici par JavaScript -->
+                </div>
+            </div>
+        </section>
+
         <section class="expert-advice">
             <div class="advice-content">
                 <h2>CONSEILS DE NOS EXPERTS</h2>
@@ -277,6 +316,46 @@
                 </div>
             </div>
         </section>
+
+        <div class="recommendations">
+            <div class="guide-section">
+                <h3>POUR LES FEMMES</h3>
+                <ul>
+                    <li data-parfum-id="isis">
+                        <a href="isis.html">ISIS - Floral et ambré</a>
+                        <div class="similar-perfumes">
+                            <p>Parfums similaires :</p>
+                            <a href="nefertiti.html">NEFERTITI</a>,
+                            <a href="hathor.html">HATHOR</a>
+                        </div>
+                    </li>
+                    <li><a href="nefertiti.html">NEFERTITI - Notes d'iris et de lotus</a></li>
+                    <li><a href="hathor.html">HATHOR - Vanille et fleurs exotiques</a></li>
+                    <li><a href="sekhmet.html">SEKHMET - Notes épicées et sauvages</a></li>
+                    <li><a href="bastet.html">BASTET - Musc et fleurs blanches</a></li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>POUR LES HOMMES</h3>
+                <ul>
+                    <li><a href="anubis.html">ANUBIS - Boisé et épicé</a></li>
+                    <li><a href="osirisroyal.html">OSIRIS ROYAL - Encens et bois précieux</a></li>
+                    <li><a href="thot.html">THOT - Notes de papyrus et d'encre</a></li>
+                    <li><a href="horus.html">HORUS - Oriental et ambré</a></li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>CONSEILS DE CHOIX</h3>
+                <ul>
+                    <li><a href="lesfeminins.html">Explorer la collection féminine</a></li>
+                    <li><a href="lesmasculins.html">Explorer la collection masculine</a></li>
+                    <li><a href="collections-privees.html">Découvrir les collections privées</a></li>
+                    <li><a href="contact.html">Prendre rendez-vous pour un conseil personnalisé</a></li>
+                </ul>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -344,13 +423,40 @@
         </div>
     </footer>
 
-    <script src="js/mobile-menu.js" defer></script>
-    <script src="js/sections-animation.js" defer></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/sections-animation.js"></script>
     <script>
         document.querySelector('.hamburger-menu').addEventListener('click', function() {
             this.classList.toggle('active');
             document.querySelector('.mobile-menu').classList.toggle('active');
         });
+
+        window.addEventListener('load', function() {
+            console.log('Chargement de la page...');
+            
+            // Initialisation des sections
+            initSections();
+        });
+
+        function initSections() {
+            console.log('Initialisation des sections...');
+            
+            // Section Notes Olfactives
+            const olfactiveSection = document.getElementById('notes-olfactives');
+            if (olfactiveSection) {
+                initializeOlfactiveFilters();
+            } else {
+                console.error('Section notes olfactives non trouvée');
+            }
+            
+            // Section Quiz
+            const quizSection = document.getElementById('quiz-parfum');
+            if (quizSection) {
+                initializeQuiz();
+            } else {
+                console.error('Section quiz non trouvée');
+            }
+        }
     </script>
 </body>
 </html>

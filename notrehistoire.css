@@ -369,4 +369,42 @@ cite {
         margin-left: 20px;
         padding: 20px;
     }
+}
+
+.mobile-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-menu-header .search-icon {
+    background: none;
+    border: none;
+    color: var(--black);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-menu-header .search-icon:hover {
+    color: var(--gold);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-right .search-icon {
+    background: none;
+    border: none;
+    color: var(--black);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-right .search-icon:hover {
+    color: var(--gold);
 } 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="css/form-validation.css">
     <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/mobile.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -26,15 +27,33 @@
         <!-- Menu Mobile -->
         <div class="mobile-menu" aria-hidden="true">
             <div class="mobile-menu-header">
-                <div class="logo">OSIRIS</div>
+                <div class="mobile-logo">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                </div>
                 <div class="close-menu" aria-label="Fermer le menu">
-                    <i class="fas fa-times"></i>
+                    <span class="close-icon"></span>
+                </div>
+            </div>
+            
+            <!-- Section recherche -->
+            <div class="mobile-search-section">
+                <div class="search-title">Rechercher</div>
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Rechercher une fragrance...">
+                    <button type="button" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
             
             <nav class="mobile-nav">
                 <div class="menu-item has-submenu">
-                    <a href="#">Collections</a>
+                    <div class="menu-header">
+                        <span class="menu-text">Collections</span>
+                        <span class="menu-icon">+</span>
+                    </div>
                     <div class="submenu" aria-expanded="false">
                         <a href="collections-signatures.html">Collections Signatures</a>
                         <a href="collections-privees.html">Collections Privées</a>
@@ -43,7 +62,10 @@
                 </div>
                 
                 <div class="menu-item has-submenu">
-                    <a href="#">Parfums</a>
+                    <div class="menu-header">
+                        <span class="menu-text">Parfums</span>
+                        <span class="menu-icon">+</span>
+                    </div>
                     <div class="submenu" aria-expanded="false">
                         <a href="lesfeminins.html">Les Féminins</a>
                         <a href="lesmasculins.html">Les Masculins</a>
@@ -52,11 +74,15 @@
                 </div>
                 
                 <div class="menu-item">
-                    <a href="notrehistoire.html">Notre Histoire</a>
+                    <a href="notrehistoire.html">
+                        <span class="menu-text">Notre Histoire</span>
+                    </a>
                 </div>
                 
                 <div class="menu-item">
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.html">
+                        <span class="menu-text">Contact</span>
+                    </a>
                 </div>
             </nav>
             
@@ -70,7 +96,7 @@
         </div>
         
         <div class="mobile-menu-overlay"></div>
-        
+
         <nav>
             <div class="nav-left">
                 <div class="location-selector">
@@ -100,10 +126,10 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-                <a href="#account" class="icon">
+                <a href="compte.html" class="icon">
                     <i class="fas fa-user"></i>
                 </a>
-                <a href="#cart" class="icon cart-icon">
+                <a href="panier.html" class="icon cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
                 </a>
@@ -118,17 +144,67 @@
             <a href="lesfeminins.html" class="menu-item">
                 <span class="menu-text">LES FÉMININS</span>
             </a>
-            <a href="collections-privees.html" class="menu-item">
-                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
             </a>
-            <a href="collections-signatures.html" class="menu-item">
-                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
             </a>
             <a href="choisirsonparfum.html" class="menu-item">
                 <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
             </a>
         </div>
     </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-search-section">
+            <div class="search-title">Rechercher</div>
+            <div class="search-wrapper">
+                <input type="text" placeholder="Rechercher une fragrance...">
+                <button type="button" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-location">
+            <span class="country">FRANCE</span>
+            <span class="divider">|</span>
+            <span class="language">FR</span>
+        </div>
+        <nav class="mobile-nav">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </nav>
+        <a href="contact.html" class="mobile-contact">
+            <i class="fas fa-envelope"></i>
+            NOUS CONTACTER
+        </a>
+    </div>
+    <div class="mobile-menu-overlay"></div>
 
     <main>
         <div class="contact-container">
@@ -329,3 +405,4 @@
     <script src="js/contact.js" defer></script>
 </body>
 </html>
+

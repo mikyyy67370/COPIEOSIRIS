@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez ANUBIS, une création d'exception qui capture l'essence même de la déesse de l'amour, alliant la sensualité des fleurs précieuses à la noblesse des bois rares.">
-    <meta name="keywords" content="parfum de luxe, OSIRIS, ANUBIS, rose, jasmin, parfum féminin, parfumerie de luxe">
-    <title>ANUBIS - Parfum de Luxe | OSIRIS</title>
+    <meta name="description" content="Découvrez HATHOR, une création d'exception célébrant la déesse de l'amour et de la beauté, alliant vanille précieuse et fleurs exotiques.">
+    <meta name="keywords" content="parfum de luxe, OSIRIS, HATHOR, vanille, fleurs, parfum féminin, parfumerie de luxe">
+    <title>HATHOR - Parfum de Luxe | OSIRIS</title>
+    
+    <!-- Préchargement des images critiques -->
+    <link rel="preload" as="image" href="images/collection1.jpg">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -14,15 +17,177 @@
     <link rel="stylesheet" href="css/product-navigation.css">
     <link rel="stylesheet" href="css/mobile-menu.css">
     <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="css/notifications.css">
+   
+    <link rel="stylesheet" href="css/mobile.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
     
     <!-- Scripts essentiels -->
     <script src="js/simple-cart.js"></script>
+    <script src="js/icons.js"></script>
+    <script src="js/test-cache.js"></script>
 
     <style>
+        /* Variables de couleurs optimisées pour le contraste */
+        :root {
+            --color-primary: #C5A572;
+            --color-primary-dark: #A88445;  /* Version plus foncée pour meilleur contraste */
+            --color-text-dark: #1A1A1A;     /* Texte presque noir pour contraste maximal */
+            --color-text-medium: #2D2D2D;   /* Texte gris foncé */
+            --color-text-light: #FFFFFF;    /* Texte blanc */
+            --color-background-light: #F9F9F9;
+            --color-background-dark: #1A1A1A;
+            --color-accent: #8B6B3D;        /* Version plus foncée de l'or pour meilleur contraste */
+            --color-error: #D32F2F;         /* Rouge accessible */
+            --color-success: #2E7D32;       /* Vert accessible */
+        }
+
+        /* Styles de base optimisés */
+        body {
+            color: var(--color-text-dark);
+            background-color: var(--color-background-light);
+        }
+
+        /* En-tête et navigation */
+        .announcement-bar {
+            background-color: var(--color-background-dark);
+            color: var(--color-text-light);
+        }
+
+        /* Titres et texte */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--color-text-dark);
+        }
+
+        .product-subtitle {
+            color: var(--color-text-medium);
+        }
+
+        .product-price {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Boutons et interactions */
+        .add-to-cart {
+            background-color: var(--color-primary-dark);
+            color: var(--color-text-light);
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--color-accent);
+        }
+
+        .option-btn {
+            border: 2px solid var(--color-primary-dark);
+            color: var(--color-text-dark);
+        }
+
+        .option-btn.active {
+            background-color: var(--color-primary-dark);
+            color: var(--color-text-light);
+        }
+
+        /* Notes de parfum */
+        .note-item {
+            color: var(--color-text-medium);
+        }
+
+        .note-title {
+            color: var(--color-text-dark);
+            font-weight: 600;
+        }
+
+        /* FAQ */
+        .faq-question {
+            color: var(--color-text-dark);
+        }
+
+        .faq-answer p {
+            color: var(--color-text-medium);
+        }
+
+        /* Trust indicators */
+        .trust-item i {
+            color: var(--color-primary-dark);
+        }
+
+        .trust-content h4 {
+            color: var(--color-text-dark);
+        }
+
+        .trust-content p {
+            color: var(--color-text-medium);
+        }
+
+        /* Messages et notifications */
+        .notification.success {
+            background-color: var(--color-success);
+            color: var(--color-text-light);
+        }
+
+        .notification.error {
+            background-color: var(--color-error);
+            color: var(--color-text-light);
+        }
+
+        /* Stock indicator */
+        .stock-indicator {
+            color: var(--color-text-medium);
+        }
+
+        .stock-indicator.low {
+            color: var(--color-error);
+        }
+
+        .stock-indicator.available {
+            color: var(--color-success);
+        }
+
+        /* Links */
+        a {
+            color: var(--color-primary-dark);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Focus styles */
+        *:focus {
+            outline: 3px solid var(--color-primary-dark);
+            outline-offset: 2px;
+        }
+
+        /* Badges et labels */
+        .section-badge {
+            background-color: var(--color-primary-dark);
+            color: var(--color-text-light);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        /* Reviews */
+        .rating-stars {
+            color: var(--color-primary-dark);
+        }
+
+        .review-text {
+            color: var(--color-text-medium);
+        }
+
+        /* Prix et informations */
+        .price-wrapper {
+            color: var(--color-text-dark);
+        }
+
+        .tax-info {
+            color: var(--color-text-medium);
+        }
+
         .announcement-bar a {
             display: block;
             width: 100%;
@@ -50,11 +215,918 @@
         .notification.show {
             transform: translateX(0);
         }
+
+        .notification.success {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .notification.error {
+            border-left: 4px solid #f44336;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification i {
+            font-size: 1.2rem;
+        }
+
+        .notification.success i {
+            color: #4CAF50;
+        }
+
+        .notification.error i {
+            color: #f44336;
+        }
+
+        .add-to-cart-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-btn.added::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .cart-icon.bounce {
+            animation: bounce 1s;
+        }
+
+        /* Styles des éléments d'interaction produit */
+        .product-options {
+            margin: 2rem 0;
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group label {
+            display: block;
+            font-family: 'Marcellus', serif;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .size-selector {
+            width: 100%;
+            padding: 1rem;
+            font-family: 'Marcellus', serif;
+            font-size: 1rem;
+            color: #333;
+            border: 1px solid rgba(197, 165, 114, 0.3);
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="%23C5A572" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+        }
+
+        .size-selector:hover {
+            border-color: #C5A572;
+        }
+
+        .size-selector:focus {
+            outline: none;
+            border-color: #C5A572;
+            box-shadow: 0 0 0 2px rgba(197, 165, 114, 0.1);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(197, 165, 114, 0.3);
+            background: transparent;
+            color: #333;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            border-color: #C5A572;
+            color: #C5A572;
+            background: rgba(197, 165, 114, 0.05);
+        }
+
+        .quantity {
+            font-family: 'Marcellus', serif;
+            font-size: 1.1rem;
+            color: #333;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .add-to-cart {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1.2rem;
+            background: #C5A572;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Marcellus', serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .add-to-cart:hover::before {
+            left: 100%;
+        }
+
+        .add-to-cart:hover {
+            background: #A88B5C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(197, 165, 114, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quantity-controls {
+                justify-content: center;
+            }
+
+            .size-selector {
+                max-width: 100%;
+            }
+
+            .add-to-cart {
+                width: 100%;
+            }
+        }
+
+        .stock-indicator {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .stock-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4CAF50;
+        }
+
+        .stock-status.low-stock {
+            color: #ff9800;
+        }
+
+        .stock-status i {
+            font-size: 1.1rem;
+        }
+
+        .option-btn {
+            position: relative;
+            padding: 10px 20px;
+            border: 1px solid #C5A572;
+            background: transparent;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn.active {
+            background: #C5A572;
+            color: white;
+        }
+
+        .option-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #ccc;
+        }
+
+        /* Styles pour le zoom */
+        .product-gallery {
+            position: relative;
+        }
+
+        .gallery-main {
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .zoom-lens {
+            position: absolute;
+            border: 2px solid #C5A572;
+            width: 100px;
+            height: 100px;
+            display: none;
+            cursor: crosshair;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .zoom-result {
+            position: absolute;
+            top: 0;
+            left: 105%;
+            width: 400px;
+            height: 400px;
+            border: 2px solid #C5A572;
+            display: none;
+            overflow: hidden;
+            background-color: #fff;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 1200px) {
+            .zoom-result {
+                display: none !important;
+            }
+            .zoom-lens {
+                display: none !important;
+            }
+            .gallery-main {
+                cursor: default;
+            }
+        }
+
+        /* Styles pour le lazy loading */
+        img[data-src] {
+            opacity: 0;
+        }
+
+        img {
+            transition: opacity 0.3s ease-in;
+        }
+
+        .lazy-placeholder {
+            background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+            background-size: 200% 100%;
+            animation: 1.5s shine linear infinite;
+            min-height: 200px;
+            width: 100%;
+        }
+
+        @keyframes shine {
+            to {
+                background-position-x: -200%;
+            }
+        }
+
+        /* Styles pour les avis clients */
+        .reviews-section {
+            padding: 4rem 0;
+            background: #fafafa;
+        }
+
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background: #C5A572;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .reviewer-info {
+            flex: 1;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .review-date {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .review-stars {
+            color: #C5A572;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-content {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Styles pour le cross-selling */
+        .similar-products {
+            padding: 4rem 0;
+        }
+
+        .similar-products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .similar-products-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-card-content {
+            padding: 1.5rem;
+        }
+
+        .product-card-title {
+            font-family: 'Marcellus', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-card-price {
+            color: #C5A572;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Styles pour les indicateurs de confiance améliorés */
+        .trust-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            margin-top: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            background: #C5A572;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .trust-content h4 {
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .trust-content p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Styles pour l'accessibilité */
+        *:focus {
+            outline: 2px solid #C5A572;
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #C5A572;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .option-btn:focus,
+        .quantity-btn:focus,
+        .add-to-cart:focus {
+            outline: 2px solid #C5A572;
+            outline-offset: 2px;
+        }
+
+        /* Styles pour la FAQ */
+        .faq-section {
+            padding: 4rem 0;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header h2 {
+            font-family: 'Marcellus', serif;
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            background: white;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            font-family: 'Marcellus', serif;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq-question:focus {
+            outline: 2px solid #C5A572;
+            outline-offset: -2px;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #C5A572;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question[aria-expanded="true"]::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer[aria-hidden="false"] {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(197, 165, 114, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(197, 165, 114, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 165, 114, 0); }
+        }
+
+        /* Animation des éléments au chargement */
+        .product-title {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .product-subtitle {
+            animation: fadeIn 0.8s ease-out 0.2s backwards;
+        }
+
+        .product-price {
+            animation: fadeIn 0.8s ease-out 0.4s backwards;
+        }
+
+        .product-description {
+            animation: fadeIn 0.8s ease-out 0.6s backwards;
+        }
+
+        /* Animations des interactions */
+        .option-btn {
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .option-btn.active {
+            animation: pulseGlow 2s infinite;
+        }
+
+        .add-to-cart {
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(197, 165, 114, 0.2);
+        }
+
+        .add-to-cart::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .add-to-cart:hover::after {
+            transform: translate(-50%, -50%) rotate(45deg) translateX(100%);
+        }
+
+        /* Animation des images de la galerie */
+        .gallery-main img {
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-main:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Animation des trust indicators */
+        .trust-item {
+            animation: slideIn 0.6s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Animation de la notification d'ajout au panier */
+        @keyframes slideInNotification {
+            from { transform: translateX(120%); }
+            to { transform: translateX(0); }
+        }
+
+        .notification {
+            animation: slideInNotification 0.5s ease-out;
+        }
+
+        /* Animation du hover sur les notes de parfum */
+        .note-item {
+            transition: all 0.3s ease;
+        }
+
+        .note-item:hover {
+            transform: translateY(-3px);
+            background: rgba(197, 165, 114, 0.05);
+        }
+
+        /* Animation des reviews */
+        .review-card {
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation du scroll smooth */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation des sections au scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Styles complémentaires pour l'image produit */
+        .product-gallery {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-gallery:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .gallery-main {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            overflow: hidden;
+            background: linear-gradient(45deg, #f8f8f8, #ffffff);
+        }
+
+        .gallery-main img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            padding: 2rem;
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+        }
+
+        .gallery-main:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
+        }
+
+        /* Effet de brillance */
+        .gallery-main::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        /* Badge nouveau */
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #C5A572;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(197, 165, 114, 0.3);
+        }
+
+        /* Zoom au hover */
+        .zoom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .gallery-main:hover .zoom-overlay {
+            opacity: 1;
+        }
+
+        /* Style pour le placeholder */
+        .lazy-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                #f5f5f5 25%,
+                #ececec 37%,
+                #f5f5f5 63%
+            );
+            background-size: 400% 400%;
+            animation: placeholderShimmer 1.5s ease infinite;
+        }
+
+        @keyframes placeholderShimmer {
+            0% {
+                background-position-x: 100%;
+            }
+            100% {
+                background-position-x: 0%;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-gallery {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-gallery {
+                max-width: 100%;
+                border-radius: 8px;
+            }
+
+            .product-badge {
+                top: 15px;
+                right: 15px;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
     </style>
-</head>
+
+    <!-- Ajout du badge nouveau -->
+    
 <body data-page-type="product">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <div class="announcement-bar">
-        <a href="#">DÉCOUVREZ LA COLLECTION EXCLUSIVE "HÉRITAGE DES PHARAONS"</a>
+        <a href="anubis.html" style="text-decoration: none; color: inherit;">
+            DÉCOUVREZ ANUBIS - LE GARDIEN DES ÂMES
+        </a>
     </div>
 
     <header>
@@ -65,24 +1137,40 @@
         <!-- Menu Mobile -->
         <div class="mobile-menu" aria-hidden="true">
             <div class="mobile-menu-header">
-                <div class="logo">OSIRIS</div>
+                <div class="mobile-logo">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                </div>
                 <div class="close-menu" aria-label="Fermer le menu">
-                    <i class="fas fa-times"></i>
+                    <span class="close-icon"></span>
+                </div>
+            </div>
+            
+            <!-- Section recherche -->
+            <div class="mobile-search-section">
+                <div class="search-title">Rechercher</div>
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Rechercher une fragrance...">
+                    <button type="button" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
             
             <nav class="mobile-nav">
-                <div class="menu-item has-submenu">
-                    <a href="#">Collections</a>
-                    <div class="submenu" aria-expanded="false">
-                        <a href="collections-signatures.html">Collections Signatures</a>
-                        <a href="collections-privees.html">Collections Privées</a>
-                        <a href="collection-royale.html">Collection Royale</a>
-                    </div>
+                <div class="menu-item">
+                    <a href="index.html">
+                        <span class="menu-text">Accueil</span>
+                    </a>
                 </div>
+            
                 
                 <div class="menu-item has-submenu">
-                    <a href="#">Parfums</a>
+                    <div class="menu-header">
+                        <span class="menu-text">Parfums</span>
+                        <span class="menu-icon">+</span>
+                    </div>
                     <div class="submenu" aria-expanded="false">
                         <a href="lesfeminins.html">Les Féminins</a>
                         <a href="lesmasculins.html">Les Masculins</a>
@@ -91,11 +1179,15 @@
                 </div>
                 
                 <div class="menu-item">
-                    <a href="notrehistoire.html">Notre Histoire</a>
+                    <a href="notrehistoire.html">
+                        <span class="menu-text">Notre Histoire</span>
+                    </a>
                 </div>
                 
                 <div class="menu-item">
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.html">
+                        <span class="menu-text">Contact</span>
+                    </a>
                 </div>
             </nav>
             
@@ -109,7 +1201,6 @@
         </div>
         
         <div class="mobile-menu-overlay"></div>
-        
         <nav>
             <div class="nav-left">
                 <div class="location-selector">
@@ -117,7 +1208,7 @@
                     <span class="divider">|</span>
                     <span class="language">FR</span>
                 </div>
-                <a href="#contact" class="contact-link">
+                <a href="contact.html" class="contact-link">
                     <i class="fas fa-envelope"></i>
                     NOUS CONTACTER
                 </a>
@@ -139,7 +1230,7 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-                <a href="#account" class="icon">
+                <a href="compte.html" class="icon">
                     <i class="fas fa-user"></i>
                 </a>
                 <a href="panier.html" class="icon cart-icon">
@@ -157,30 +1248,11 @@
             <a href="lesfeminins.html" class="menu-item">
                 <span class="menu-text">LES FÉMININS</span>
             </a>
-            <a href="#limited" class="menu-item">
-                <span class="menu-text">COLLECTIONS PRIVÉES</span>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
             </a>
-            <a href="#collections" class="menu-item">
-                <span class="menu-text">COLLECTIONS SIGNATURES</span>
-            </a>
-            <a href="choisirsonparfum.html" class="menu-item">
-                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
-            </a>
-        </div>
-
-        <!-- Menu mobile -->
-        <div class="mobile-menu">
-            <a href="lesmasculins.html" class="menu-item">
-                <span class="menu-text">LES MASCULINS</span>
-            </a>
-            <a href="lesfeminins.html" class="menu-item">
-                <span class="menu-text">LES FÉMININS</span>
-            </a>
-            <a href="#limited" class="menu-item">
-                <span class="menu-text">COLLECTIONS PRIVÉES</span>
-            </a>
-            <a href="#collections" class="menu-item">
-                <span class="menu-text">COLLECTIONS SIGNATURES</span>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
             </a>
             <a href="choisirsonparfum.html" class="menu-item">
                 <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
@@ -188,25 +1260,82 @@
         </div>
     </header>
 
-    <main class="product-hero">
-        <section class="product-section">
-            <div class="product-container">
-                <div class="product-gallery">
-                    <div class="gallery-main">
-                        <img src="images/collection1.jpg" alt="ANUBIS - Flacon de parfum" class="main-image">
-                        <div class="gallery-badge">Édition Limitée</div>
+    <!-- Menu mobile -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-search-section">
+            <div class="search-title">Rechercher</div>
+            <div class="search-wrapper">
+                <input type="text" placeholder="Rechercher une fragrance...">
+                <button type="button" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-location">
+            <span class="country">FRANCE</span>
+            <span class="divider">|</span>
+            <span class="language">FR</span>
+        </div>
+        <nav class="mobile-nav">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </nav>
+        <a href="contact.html" class="mobile-contact">
+            <i class="fas fa-envelope"></i>
+            NOUS CONTACTER
+        </a>
+    </div>
+    <div class="mobile-menu-overlay"></div>
+
+
+            
+            
+
+    <main id="main-content" class="product-hero" role="main">
+        <section class="product-section" aria-label="Détails du produit">
+            <div class="product-container" data-product-id="HATHOR" role="region" aria-label="Information produit HATHOR">
+                <div class="product-gallery" role="region" aria-label="Galerie photos du produit">
+                    <div class="gallery-main" role="img" aria-label="Image principale du parfum HATHOR">
+                        <div class="product-badge">Nouveau</div>
+                        <img src="images/collection1.jpg" 
+                             alt="HATHOR - Flacon de parfum" 
+                             class="main-image loaded">
                     </div>
                     <div class="gallery-thumbnails">
-                        <img src="images/parfum-detail1.jpg" alt="Détail du flacon" class="thumbnail active">
-                        <img src="images/parfum-detail2.jpg" alt="Notes olfactives" class="thumbnail">
-                        <img src="images/parfum-detail3.jpg" alt="Packaging luxueux" class="thumbnail">
+                        <img src="images/hathor/detail1.jpg" alt="Détail du flacon HATHOR" class="thumbnail active">
+                        <img src="images/hathor/detail2.jpg" alt="Notes olfactives HATHOR" class="thumbnail">
+                        <img src="images/hathor/detail3.jpg" alt="Coffret luxueux HATHOR" class="thumbnail">
                     </div>
                 </div>
 
-                <div class="product-info">
+                <div class="product-info" role="region" aria-label="Informations produit">
                     <div class="product-header">
-                        <h1>ANUBIS</h1>
-                        <div class="product-subtitle">Une fragrance voluptueuse aux accents d'amour</div>
+                        <h1 class="product-title" tabindex="0">HATHOR</h1>
+                        <div class="product-subtitle" tabindex="0" aria-label="Description courte">L'amour et la beauté incarnés</div>
+                        <div class="product-price" tabindex="0" aria-label="Prix">289 €</div>
                     </div>
 
                     <div class="product-rating">
@@ -220,21 +1349,21 @@
                         <span class="rating-count">128 avis</span>
                     </div>
 
-                    <div class="product-description">
-                        <p class="luxury-text">Notes de rose et de fleur d'oranger s'entrelacent dans une danse amoureuse, évoquant la grâce et la beauté de la déesse de l'amour. Une création d'exception qui célèbre la féminité dans toute sa splendeur, alliant la douceur des fleurs blanches à la sensualité des muscs précieux.</p>
+                    <div class="product-description" tabindex="0" role="region" aria-label="Description du produit">
+                        <p class="luxury-text">Une création voluptueuse qui célèbre Hathor, déesse de l'amour et de la joie. La vanille bourbon s'unit aux pétales de rose et de lotus, créant une fragrance qui évoque la douceur et la félicité divine.</p>
                         
                         <div class="fragrance-notes">
                             <div class="note-group">
                                 <h3>Notes de Tête</h3>
-                                <p>Fleur d'Oranger, Néroli</p>
+                                <p>Vanille Bourbon, Rose, Lotus</p>
                             </div>
                             <div class="note-group">
                                 <h3>Notes de Cœur</h3>
-                                <p>Rose de Mai, Jasmin, Fleur de Tiaré</p>
+                                <p>Vanille Bourbon, Rose, Lotus</p>
                             </div>
                             <div class="note-group">
                                 <h3>Notes de Fond</h3>
-                                <p>Vanille de Tahiti, Musc, Ambre Doré</p>
+                                <p>Vanille Bourbon, Rose, Lotus</p>
                             </div>
                         </div>
                     </div>
@@ -254,57 +1383,80 @@
                         </div>
                     </div>
 
-                    <div class="product-options">
+                    <div class="product-options" role="group" aria-label="Options du produit">
                         <div class="option-group">
-                            <label>Volume</label>
-                            <div class="option-buttons">
-                                <button class="option-btn">50ml</button>
-                                <button class="option-btn active">100ml</button>
-                                <button class="option-btn">150ml</button>
+                            <label id="volume-label">Volume</label>
+                            <div class="option-buttons" role="radiogroup" aria-labelledby="volume-label">
+                                <button class="option-btn" role="radio" aria-checked="false" tabindex="0">50ml</button>
+                                <button class="option-btn active" role="radio" aria-checked="true" tabindex="0">100ml</button>
+                                <button class="option-btn" role="radio" aria-checked="false" tabindex="0">150ml</button>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="product-price">
-                        <div class="price-wrapper">
-                            <span class="price">289€</span>
-                            <span class="tax-info">TTC</span>
+                        <div class="quantity-controls" role="group" aria-label="Contrôle de la quantité">
+                            <button class="quantity-btn minus" aria-label="Diminuer la quantité" tabindex="0">-</button>
+                            <input type="number" 
+                                   class="quantity-input" 
+                                   value="1" 
+                                   min="1" 
+                                   max="10"
+                                   aria-label="Quantité" 
+                                   role="spinbutton"
+                                   aria-valuemin="1"
+                                   aria-valuemax="10"
+                                   aria-valuenow="1">
+                            <button class="quantity-btn plus" aria-label="Augmenter la quantité" tabindex="0">+</button>
                         </div>
-                        <div class="shipping-info">
-                            <i class="fas fa-truck"></i>
-                            <span>Livraison offerte en France</span>
-                        </div>
-                    </div>
 
-                    <div class="product-actions">
-                        <button onclick="addToCart('ANUBIS', 289.00, 'images/collection5.jpg')" class="add-to-cart">
+                        <button class="add-to-cart" 
+                                role="button" 
+                                aria-label="Ajouter au panier" 
+                                tabindex="0">
                             Ajouter au panier
                         </button>
                     </div>
 
-                    <div class="product-trust">
-                        <div class="trust-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <div class="trust-text">
-                                <h4>Paiement Sécurisé</h4>
-                                <p>Transactions 100% sécurisées</p>
-                            </div>
-                        </div>
-                        <div class="trust-item">
-                            <i class="fas fa-undo"></i>
-                            <div class="trust-text">
-                                <h4>Retours Gratuits</h4>
-                                <p>Sous 30 jours</p>
-                            </div>
-                        </div>
-                        <div class="trust-item">
-                            <i class="fas fa-certificate"></i>
-                            <div class="trust-text">
-                                <h4>Authenticité Garantie</h4>
-                                <p>Certificat d'authenticité inclus</p>
-                            </div>
-                        </div>
+                    <!-- Indicateur du panier -->
+                    <div class="cart-indicator">
+                        <span class="cart-count" style="display: none;">0</span>
                     </div>
+
+                    <!-- Notification -->
+                    <style>
+                        .notification {
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            padding: 15px 25px;
+                            background: var(--color-success);
+                            color: white;
+                            border-radius: 4px;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            transform: translateX(120%);
+                            transition: transform 0.3s ease;
+                            z-index: 1000;
+                        }
+
+                        .notification.show {
+                            transform: translateX(0);
+                        }
+
+                        .cart-count {
+                            position: absolute;
+                            top: -8px;
+                            right: -8px;
+                            background: var(--color-primary-dark);
+                            color: white;
+                            border-radius: 50%;
+                            width: 20px;
+                            height: 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 12px;
+                            font-weight: bold;
+                        }
+                    </style>
                 </div>
             </div>
         </section>
@@ -324,7 +1476,7 @@
                         <div class="story-badge">L'Art du Parfumeur</div>
                         <h2>LA VISION DU MAÎTRE PARFUMEUR</h2>
                         <div class="story-subtitle">Par Antoine DuBois, Maître Parfumeur</div>
-                        <p class="story-text">"ANUBIS est né de mon désir de capturer l'essence même de l'amour divin. Chaque note a été méticuleusement sélectionnée pour raconter une histoire d'amour éternel : la fleur d'oranger évoque la pureté des sentiments, la rose symbolise l'amour passionnel, tandis que la vanille apporte une touche de volupté envoûtante. J'ai voulu créer plus qu'un parfum - une célébration de l'amour et de la beauté qui caractérisent Anubis."</p>
+                        <p class="story-text">"HATHOR célèbre la déesse de l'amour et de la joie. La vanille bourbon s'unit aux pétales de rose et de lotus, créant une fragrance voluptueuse. Les notes de fleur d'oranger et de jasmin évoquent la douceur et la félicité divine, tandis que l'ambre apporte une sensualité envoûtante."</p>
                         
                         <div class="story-features">
                             <div class="feature">
@@ -349,7 +1501,7 @@
 
                         <div class="perfumer-quote">
                             <div class="quote-symbol">❝</div>
-                            <p>Il existe des parfums qui ont le pouvoir d'éveiller l'amour. ANUBIS est mon hommage à la déesse de l'amour et de la beauté, une fragrance qui célèbre la grâce et la féminité éternelles.</p>
+                            <p>Dans la parfumerie, certaines créations transcendent le temps. HATHOR est mon hommage au gardien mystique des âmes, une fragrance qui unit le monde des vivants à celui de l'éternité.</p>
                             <div class="perfumer-signature">
                                 
                                 <span>Antoine DuBois</span>
@@ -466,10 +1618,778 @@
             </div>
         </section>
 
-        <section class="reviews-container">
-            <!-- Les avis seront ajoutés dynamiquement par le JavaScript -->
+        <section class="reviews-section">
+            <div class="reviews-container">
+                <div class="reviews-header">
+                    <h2>Avis de nos clients</h2>
+                    <div class="global-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half"></i>
+                        </div>
+                        <span>4.8/5 basé sur 128 avis</span>
+                    </div>
+                </div>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">M</div>
+                            <div class="reviewer-info">
+                                <div class="reviewer-name">Michel D.</div>
+                                <div class="review-date">15 janvier 2025</div>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-content">
+                            "Un parfum d'exception qui allie mystère et élégance. La note d'encens est particulièrement réussie, subtile et envoûtante."
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">S</div>
+                            <div class="reviewer-info">
+                                <div class="reviewer-name">Sophie L.</div>
+                                <div class="review-date">3 janvier 2025</div>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-content">
+                            "La tenue est exceptionnelle et le flacon est magnifique. Un véritable bijou de parfumerie qui mérite sa place dans une collection."
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">A</div>
+                            <div class="reviewer-info">
+                                <div class="reviewer-name">Alexandre M.</div>
+                                <div class="review-date">28 décembre 2024</div>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-content">
+                            "Un parfum qui ne ressemble à aucun autre. L'association des notes boisées et de l'encens crée une signature unique."
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <section class="similar-products">
+            <div class="similar-products-container">
+                <div class="similar-products-header">
+                    <h2>Vous aimerez aussi</h2>
+                </div>
+                <div class="products-grid">
+                    <a href="isis.html" class="product-card">
+                        <img data-src="images/isis-parfum.jpg" alt="ISIS - Parfum">
+                        <div class="product-card-content">
+                            <h3 class="product-card-title">ISIS</h3>
+                            <div class="product-card-price">289 €</div>
+                        </div>
+                    </a>
+                    <a href="horus.html" class="product-card">
+                        <img data-src="images/horus-parfum.jpg" alt="HORUS - Parfum">
+                        <div class="product-card-content">
+                            <h3 class="product-card-title">HORUS</h3>
+                            <div class="product-card-price">289 €</div>
+                        </div>
+                    </a>
+                    <a href="osiris.html" class="product-card">
+                        <img data-src="images/osiris-parfum.jpg" alt="OSIRIS - Parfum">
+                        <div class="product-card-content">
+                            <h3 class="product-card-title">OSIRIS</h3>
+                            <div class="product-card-price">289 €</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section" aria-labelledby="faq-title">
+            <div class="faq-container">
+                <div class="faq-header">
+                    <h2 id="faq-title">Questions Fréquentes</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" 
+                                aria-expanded="false" 
+                                aria-controls="faq1">
+                            Quelle est la durée de tenue du parfum ANUBIS ?
+                        </button>
+                        <div class="faq-answer" 
+                             id="faq1" 
+                             aria-hidden="true">
+                            <p>ANUBIS est un parfum de haute concentration qui offre une excellente tenue, généralement entre 8 et 12 heures. Les notes de fond, particulièrement les résines et les bois précieux, persistent délicatement sur la peau jusqu'à 24 heures.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" 
+                                aria-expanded="false" 
+                                aria-controls="faq2">
+                            Le parfum est-il unisexe ?
+                        </button>
+                        <div class="faq-answer" 
+                             id="faq2" 
+                             aria-hidden="true">
+                            <p>Bien qu'ANUBIS soit traditionnellement classé dans notre collection masculine, sa composition sophistiquée de notes d'encens, de myrrhe et de bois précieux en fait un parfum qui transcende les genres, pouvant être porté par toute personne appréciant les fragrances orientales profondes.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" 
+                                aria-expanded="false" 
+                                aria-controls="faq3">
+                            Comment conserver au mieux mon flacon ANUBIS ?
+                        </button>
+                        <div class="faq-answer" 
+                             id="faq3" 
+                             aria-hidden="true">
+                            <p>Pour préserver la qualité exceptionnelle de votre parfum ANUBIS, nous recommandons de le conserver à l'abri de la lumière directe du soleil et de la chaleur. La température idéale se situe entre 15°C et 25°C. Le flacon est spécialement conçu pour protéger le parfum, mais évitez les variations extrêmes de température.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" 
+                                aria-expanded="false" 
+                                aria-controls="faq4">
+                            Quelle est la politique de retour ?
+                        </button>
+                        <div class="faq-answer" 
+                             id="faq4" 
+                             aria-hidden="true">
+                            <p>Nous offrons une garantie de satisfaction de 14 jours. Si le parfum ne vous convient pas, vous pouvez nous le retourner dans son emballage d'origine, non ouvert et non utilisé, pour un remboursement complet. Les frais de retour sont gratuits en France métropolitaine.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" 
+                                aria-expanded="false" 
+                                aria-controls="faq5">
+                            Le parfum est-il testé sur les animaux ?
+                        </button>
+                        <div class="faq-answer" 
+                             id="faq5" 
+                             aria-hidden="true">
+                            <p>Non, OSIRIS s'engage fermement contre les tests sur les animaux. Tous nos parfums, y compris ANUBIS, sont développés et testés selon des méthodes éthiques, sans cruauté animale. Nous utilisons uniquement des ingrédients conformes aux réglementations européennes les plus strictes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="trust-indicators">
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div class="trust-content">
+                    <h4>Livraison Express</h4>
+                    <p>Livraison gratuite en France sous 48h</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="trust-content">
+                    <h4>Paiement Sécurisé</h4>
+                    <p>Transactions 100% sécurisées</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fa-solid fa-medal"></i>
+                </div>
+                <div class="trust-content">
+                    <h4>Qualité Garantie</h4>
+                    <p>Produits authentiques et certifiés</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">
+                    <i class="fa-solid fa-right-left"></i>
+                </div>
+                <div class="trust-content">
+                    <h4>Retours Gratuits</h4>
+                    <p>14 jours pour changer d'avis</p>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script>
+        // Enregistrement du Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/js/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker enregistré avec succès:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de l\'enregistrement du Service Worker:', error);
+                    });
+            });
+        }
+
+        // Fonction pour le chargement progressif des images
+        function loadImage(img) {
+            const src = img.dataset.src;
+            if (!src) return;
+
+            // Créer une nouvelle image pour le préchargement
+            const preloadImage = new Image();
+            
+            preloadImage.onload = function() {
+                img.src = src;
+                img.classList.add('loaded');
+                img.removeAttribute('data-src');
+            };
+            
+            preloadImage.src = src;
+        }
+
+        // Observer pour le chargement lazy des images
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        loadImage(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+
+            // Observer toutes les images avec data-src
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+                // Ajouter un effet de fade-in
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease-in';
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Gestion du stock
+        const productStock = {
+            '50ml': 15,
+            '100ml': 25,
+            '150ml': 10
+        };
+
+        // Validation du formulaire et gestion du stock
+        document.addEventListener('DOMContentLoaded', function() {
+            const volumeButtons = document.querySelectorAll('.option-btn');
+            const quantityInput = document.querySelector('.quantity-input');
+            const addToCartButton = document.querySelector('.add-to-cart');
+            const stockIndicator = document.createElement('div');
+            stockIndicator.className = 'stock-indicator';
+            
+            // Ajouter l'indicateur de stock après les boutons de volume
+            document.querySelector('.option-buttons').after(stockIndicator);
+
+            function updateStockDisplay(selectedVolume) {
+                const stock = productStock[selectedVolume];
+                stockIndicator.innerHTML = `
+                    <div class="stock-status ${stock < 5 ? 'low-stock' : ''}">
+                        ${stock < 5 ? '<i class="fas fa-exclamation-circle"></i>' : '<i class="fas fa-check-circle"></i>'}
+                        ${stock < 5 ? `Plus que ${stock} en stock` : 'En stock'}
+                    </div>
+                `;
+            }
+
+            // Gestion des boutons de volume
+            volumeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    volumeButtons.forEach(btn => btn.classList.remove('active'));
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    // Mettre à jour le volume sélectionné
+                    selectedVolume = this.textContent;
+                    // Mettre à jour l'affichage du prix
+                    updatePrice();
+                });
+            });
+
+            // Fonction de mise à jour du prix
+            function updatePrice() {
+                const priceElement = document.querySelector('.product-price');
+                if (priceElement) {
+                    priceElement.textContent = `${currentPrice} €`;
+                }
+            }
+
+            // Gestion de la quantité
+            if (quantityInput) {
+                quantityInput.addEventListener('change', function() {
+                    const value = parseInt(this.value);
+                    if (value < 1) this.value = 1;
+                    if (value > 10) this.value = 10;
+                });
+            }
+
+            // Fonction d'ajout au panier
+            function addToCart() {
+                const quantity = parseInt(quantityInput.value) || 1;
+                const productData = {
+                    id: 'HATHOR',
+                    name: 'HATHOR',
+                    volume: selectedVolume,
+                    price: currentPrice,
+                    quantity: quantity,
+                    image: 'images/collection1.jpg'
+                };
+
+                // Récupérer le panier existant
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                // Vérifier si le produit existe déjà dans le panier avec le même volume
+                const existingProductIndex = cart.findIndex(item => 
+                    item.id === productData.id && item.volume === productData.volume
+                );
+
+                if (existingProductIndex > -1) {
+                    // Mettre à jour la quantité si le produit existe déjà
+                    cart[existingProductIndex].quantity += quantity;
+                    if (cart[existingProductIndex].quantity > 10) {
+                        cart[existingProductIndex].quantity = 10;
+                    }
+                } else {
+                    // Ajouter le nouveau produit
+                    cart.push(productData);
+                }
+
+                // Sauvegarder le panier
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Afficher la notification
+                showNotification('Produit ajouté au panier', 'success');
+                
+                // Mettre à jour le compteur du panier
+                updateCartCount();
+            }
+
+            // Fonction d'affichage de notification
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                // Animation d'entrée
+                setTimeout(() => notification.classList.add('show'), 100);
+                
+                // Suppression après 3 secondes
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+
+            // Fonction de mise à jour du compteur du panier
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                const cartCounter = document.querySelector('.cart-count');
+                if (cartCounter) {
+                    cartCounter.textContent = totalItems;
+                    cartCounter.style.display = totalItems > 0 ? 'block' : 'none';
+                }
+            }
+
+            // Ajouter l'événement au bouton
+            if (addToCartButton) {
+                addToCartButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    addToCart();
+                });
+            }
+
+            // Initialiser le compteur du panier au chargement
+            updateCartCount();
+        });
+    </script>
+
+    <script>
+        // Lazy Loading des images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            });
+
+            lazyImages.forEach(img => {
+                observer.observe(img);
+                // Ajouter un effet de fade-in
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease-in';
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Gestion de la navigation au clavier
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion des boutons de volume avec le clavier
+            const volumeButtons = document.querySelectorAll('.option-btn');
+            
+            volumeButtons.forEach(button => {
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+
+            // Gestion de la quantité avec le clavier
+            const quantityInput = document.querySelector('.quantity-input');
+            const minusBtn = document.querySelector('.quantity-btn.minus');
+            const plusBtn = document.querySelector('.quantity-btn.plus');
+
+            minusBtn.addEventListener('keydown', function(e) {
+                if (e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    const currentValue = parseInt(quantityInput.value);
+                    if (currentValue > 1) {
+                        quantityInput.value = currentValue - 1;
+                        quantityInput.dispatchEvent(new Event('change'));
+                    }
+                }
+            });
+
+            plusBtn.addEventListener('keydown', function(e) {
+                if (e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    const currentValue = parseInt(quantityInput.value);
+                    quantityInput.value = currentValue + 1;
+                    quantityInput.dispatchEvent(new Event('change'));
+                }
+            });
+
+            // Annonce des changements pour les lecteurs d'écran
+            function announceChange(message) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.className = 'sr-only';
+                announcement.textContent = message;
+                document.body.appendChild(announcement);
+                setTimeout(() => announcement.remove(), 1000);
+            }
+
+            // Mise à jour des annonces
+            quantityInput.addEventListener('change', function() {
+                announceChange(`Quantité mise à jour : ${this.value}`);
+            });
+
+            volumeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    announceChange(`Volume sélectionné : ${this.textContent}`);
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Gestion de l'accordéon FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                    // Ferme toutes les autres réponses
+                    faqQuestions.forEach(q => {
+                        if (q !== this) {
+                            q.setAttribute('aria-expanded', 'false');
+                            q.nextElementSibling.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+
+                    // Toggle l'état actuel
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    answer.setAttribute('aria-hidden', isExpanded);
+                });
+
+                // Gestion du clavier
+                question.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Animation des sections au scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.fade-in-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Animation du panier
+            const addToCartBtn = document.querySelector('.add-to-cart');
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', function() {
+                    this.style.animation = 'pulseGlow 0.6s';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 600);
+                });
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Éléments du DOM
+            const volumeButtons = document.querySelectorAll('.option-btn');
+            const quantityInput = document.querySelector('.quantity-input');
+            const addToCartButton = document.querySelector('.add-to-cart');
+            const quantityMinus = document.querySelector('.quantity-btn.minus');
+            const quantityPlus = document.querySelector('.quantity-btn.plus');
+            
+            // Configuration des prix
+            const prices = {
+                '50ml': 189,
+                '100ml': 289,
+                '150ml': 389
+            };
+
+            // État initial
+            let selectedVolume = '100ml';
+            let currentPrice = prices[selectedVolume];
+
+            // Mise à jour du prix affiché
+            function updatePrice() {
+                const priceElement = document.querySelector('.product-price');
+                if (priceElement) {
+                    priceElement.textContent = `${prices[selectedVolume]} €`;
+                    currentPrice = prices[selectedVolume];
+                }
+            }
+
+            // Gestion des boutons de volume
+            volumeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    volumeButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-checked', 'false');
+                    });
+                    this.classList.add('active');
+                    this.setAttribute('aria-checked', 'true');
+                    selectedVolume = this.textContent;
+                    updatePrice();
+                });
+            });
+
+            // Gestion des boutons + et - pour la quantité
+            if (quantityMinus && quantityPlus && quantityInput) {
+                quantityMinus.addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    if (value > 1) {
+                        quantityInput.value = value - 1;
+                        quantityInput.dispatchEvent(new Event('change'));
+                    }
+                });
+
+                quantityPlus.addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    if (value < 10) {
+                        quantityInput.value = value + 1;
+                        quantityInput.dispatchEvent(new Event('change'));
+                    }
+                });
+
+                // Validation de la quantité
+                quantityInput.addEventListener('change', function() {
+                    let value = parseInt(this.value);
+                    if (isNaN(value) || value < 1) {
+                        this.value = 1;
+                    } else if (value > 10) {
+                        this.value = 10;
+                    }
+                    // Mise à jour de l'attribut ARIA
+                    this.setAttribute('aria-valuenow', this.value);
+                });
+            }
+
+            // Fonction d'ajout au panier
+            function addToCart() {
+                const quantity = parseInt(quantityInput.value) || 1;
+                const productData = {
+                    id: 'HATHOR',
+                    name: 'HATHOR',
+                    volume: selectedVolume,
+                    price: currentPrice,
+                    quantity: quantity,
+                    image: 'images/collection1.jpg'
+                };
+
+                try {
+                    // Récupérer le panier existant
+                    let cart = [];
+                    try {
+                        cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    } catch (e) {
+                        console.error('Erreur lors de la lecture du panier:', e);
+                        cart = [];
+                    }
+
+                    // Vérifier si le produit existe déjà
+                    const existingProductIndex = cart.findIndex(item => 
+                        item.id === productData.id && item.volume === productData.volume
+                    );
+
+                    if (existingProductIndex > -1) {
+                        // Mettre à jour la quantité
+                        cart[existingProductIndex].quantity += quantity;
+                        if (cart[existingProductIndex].quantity > 10) {
+                            cart[existingProductIndex].quantity = 10;
+                        }
+                    } else {
+                        // Ajouter le nouveau produit
+                        cart.push(productData);
+                    }
+
+                    // Sauvegarder le panier
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    // Feedback utilisateur
+                    showNotification('Produit ajouté au panier', 'success');
+                    
+                    // Feedback pour les lecteurs d'écran
+                    announceChange(`${quantity} ${quantity > 1 ? 'flacons' : 'flacon'} de parfum HATHOR ${selectedVolume} ${quantity > 1 ? 'ajoutés' : 'ajouté'} au panier`);
+
+                } catch (error) {
+                    console.error('Erreur lors de l\'ajout au panier:', error);
+                    showNotification('Une erreur est survenue', 'error');
+                }
+            }
+
+            // Fonction d'affichage des notifications
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                notification.setAttribute('role', 'alert');
+                
+                document.body.appendChild(notification);
+                
+                // Animation d'entrée
+                requestAnimationFrame(() => {
+                    notification.classList.add('show');
+                });
+                
+                // Suppression après 3 secondes
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+
+            // Mise à jour du compteur du panier
+            function updateCartCount() {
+                try {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    
+                    const cartCounter = document.querySelector('.cart-count');
+                    if (cartCounter) {
+                        cartCounter.textContent = totalItems;
+                        cartCounter.style.display = totalItems > 0 ? 'block' : 'none';
+                    }
+                } catch (error) {
+                    console.error('Erreur lors de la mise à jour du compteur:', error);
+                }
+            }
+
+            // Annonce pour les lecteurs d'écran
+            function announceChange(message) {
+                const announcer = document.createElement('div');
+                announcer.setAttribute('role', 'status');
+                announcer.setAttribute('aria-live', 'polite');
+                announcer.className = 'sr-only';
+                announcer.textContent = message;
+                document.body.appendChild(announcer);
+                setTimeout(() => announcer.remove(), 3000);
+            }
+
+            // Initialisation
+            if (addToCartButton) {
+                addToCartButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    addToCart();
+                });
+            }
+
+            // Initialiser le compteur du panier au chargement
+            updateCartCount();
+        });
+    </script>
 
     <footer>
         <div class="footer-content">
@@ -486,9 +2406,9 @@
             <div class="footer-section">
                 <h4>COLLECTIONS</h4>
                 <ul>
-                    <li><a href="#">Les Masculins</a></li>
-                    <li><a href="#">Les Féminins</a></li>
+                    <li><a href="#">Collections Signatures</a></li>
                     <li><a href="#">Collections Privées</a></li>
+                    <li><a href="#">Collection Royale</a></li>
                     <li><a href="#">Éditions Limitées</a></li>
                 </ul>
             </div>

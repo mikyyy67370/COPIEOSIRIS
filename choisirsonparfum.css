@@ -757,4 +757,848 @@
     .mobile-menu.active {
         display: block;
     }
+}
+
+/* Notes olfactives et Quiz sections */
+.olfactive-notes,
+.quiz-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+.olfactive-notes {
+    background: linear-gradient(rgba(197, 165, 114, 0.05), rgba(197, 165, 114, 0.02));
+}
+
+.olfactive-family {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(197, 165, 114, 0.03);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.olfactive-family:hover {
+    transform: translateY(-5px);
+}
+
+.family-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+}
+
+/* Style des icônes égyptiennes */
+.egyptian-icon {
+    font-family: 'Noto Sans Egyptian Hieroglyphs', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    background: linear-gradient(135deg, rgba(197, 165, 114, 0.1), rgba(197, 165, 114, 0.05));
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    transition: all 0.3s ease;
+}
+
+.olfactive-family:hover .egyptian-icon {
+    transform: rotate(360deg);
+    background: linear-gradient(135deg, rgba(197, 165, 114, 0.2), rgba(197, 165, 114, 0.1));
+}
+
+.family-text {
+    flex: 1;
+}
+
+.family-text h4 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.25rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.family-description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* Style des badges de notes */
+.note-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 5rem; /* Aligner avec l'icône */
+}
+
+.note-badge {
+    background: white;
+    border: 1px solid rgba(197, 165, 114, 0.3);
+    padding: 0.75rem 1.25rem;
+    border-radius: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.note-badge .badge-icon {
+    font-size: 0.8rem;
+    color: var(--gold);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.note-badge:hover {
+    background: rgba(197, 165, 114, 0.05);
+    border-color: var(--gold);
+    transform: translateX(5px);
+}
+
+.note-badge:hover .badge-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.note-badge.active {
+    background: var(--gold);
+    color: white;
+    border-color: var(--gold);
+}
+
+.note-badge.active .badge-icon {
+    opacity: 1;
+    transform: translateX(0);
+    color: white;
+}
+
+/* Animation d'entrée */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.olfactive-family {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.olfactive-family:nth-child(1) { animation-delay: 0.1s; }
+.olfactive-family:nth-child(2) { animation-delay: 0.2s; }
+.olfactive-family:nth-child(3) { animation-delay: 0.3s; }
+.olfactive-family:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .family-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .note-badges {
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .egyptian-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 2rem;
+    }
+}
+
+/* Quiz section */
+.quiz-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.05));
+}
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-question {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.quiz-question h3 {
+    font-family: 'Marcellus', serif;
+    color: var(--black);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.quiz-question p {
+    color: var(--dark-gold);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.quiz-option {
+    padding: 1.5rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--black);
+    font-family: 'Cormorant Garamond', serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.quiz-option::after {
+    content: '◈';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    color: var(--gold);
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quiz-option:hover::after {
+    opacity: 1;
+}
+
+.quiz-option:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+/* Recommendations section */
+.recommendations {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.recommendations .guide-section {
+    background: var(--white);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recommendations .guide-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.recommendations h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.8rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.recommendations h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background: var(--gold);
+}
+
+.similar-perfumes {
+    font-size: 0.9rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(197, 165, 114, 0.2);
+}
+
+.similar-perfumes p {
+    color: var(--dark-gold);
+    margin-bottom: 0.5rem;
+}
+
+.similar-perfumes a {
+    display: inline-block;
+    margin-right: 1rem;
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.similar-perfumes a::after {
+    content: '◈';
+    font-size: 0.6rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.similar-perfumes a:hover::after {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .olfactive-notes,
+    .quiz-section,
+    .recommendations {
+        padding: 3rem 1rem;
+    }
+
+    .note-badges {
+        gap: 0.5rem;
+    }
+
+    .note-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .quiz-container {
+        padding: 1.5rem;
+    }
+
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-option {
+        padding: 1rem;
+    }
+
+    .recommendations h3 {
+        font-size: 1.5rem;
+    }
+
+    .similar-perfumes {
+        padding: 0.8rem;
+    }
+
+    .similar-perfumes a {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Quiz Results */
+.quiz-results {
+    text-align: left;
+    padding: 2rem;
+}
+
+.quiz-results h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--black);
+}
+
+.perfume-recommendation {
+    position: relative;
+    padding: 3rem;
+    margin: 3rem 0;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(197, 165, 114, 0.1);
+}
+
+.perfume-header {
+    margin-right: 100px; /* Espace pour le score */
+}
+
+.perfume-header h4 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.8rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+
+.seasonal-advice {
+    background: linear-gradient(rgba(197, 165, 114, 0.05), rgba(197, 165, 114, 0.1));
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--dark-gold);
+}
+
+.wearing-tips {
+    margin: 2rem 0;
+}
+
+.wearing-tips h5,
+.complementary-products h5 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.2rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.wearing-tips h5::after,
+.complementary-products h5::after {
+    content: '◈';
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 0.8rem;
+}
+
+.wearing-tips ul,
+.complementary-products ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wearing-tips li,
+.complementary-products li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.8rem;
+    color: var(--dark-gold);
+}
+
+.wearing-tips li::before,
+.complementary-products li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+.perfume-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+}
+
+.trait-badge {
+    padding: 0.5rem 1.2rem;
+    background: rgba(197, 165, 114, 0.1);
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--gold);
+    transition: all 0.3s ease;
+}
+
+.trait-badge:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.perfume-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.discover-btn,
+.sample-btn {
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-family: 'Marcellus', serif;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.discover-btn {
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.discover-btn:hover {
+    background: var(--dark-gold);
+    transform: translateY(-2px);
+}
+
+.sample-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+}
+
+.sample-btn:hover {
+    background: rgba(197, 165, 114, 0.1);
+}
+
+.quiz-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .quiz-results {
+        padding: 1rem;
+    }
+
+    .perfume-recommendation {
+        padding: 2rem 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .perfume-header {
+        margin-right: 0;
+        margin-top: 3rem; /* Espace pour le score en mobile */
+    }
+
+    .perfume-actions {
+        flex-direction: column;
+    }
+
+    .discover-btn,
+    .sample-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .trait-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* Gender Choice */
+.gender-choice {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.gender-btn {
+    padding: 1rem 2rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--black);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Marcellus', serif;
+    font-size: 1.1rem;
+}
+
+.gender-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+/* Context Questions Styling */
+.context-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(rgba(197, 165, 114, 0.02), rgba(197, 165, 114, 0.05));
+    border-radius: 12px;
+}
+
+.context-group {
+    text-align: center;
+}
+
+.context-group label {
+    display: block;
+    font-family: 'Marcellus', serif;
+    font-size: 1.2rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.context-group label::after {
+    content: '◈';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -1.5rem;
+    color: var(--gold);
+    font-size: 0.8rem;
+}
+
+.context-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.context-btn {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--black);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.context-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.context-btn.selected {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.context-btn:hover:not(.selected)::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.context-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Style spécifique pour les boutons d'âge */
+[data-age] {
+    min-width: 120px;
+}
+
+/* Style spécifique pour les boutons de style */
+[data-style] {
+    min-width: 140px;
+}
+
+/* Animation pour la sélection */
+.context-btn.selected {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(197, 165, 114, 0.2);
+}
+
+/* Séparateur entre les sections */
+.context-group:not(:last-child)::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 1px;
+    background: rgba(197, 165, 114, 0.2);
+    margin: 2rem auto 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .context-questions {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .context-options {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .context-btn {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    [data-age],
+    [data-style] {
+        min-width: unset;
+    }
+
+    .context-group label {
+        font-size: 1.1rem;
+    }
+
+    .context-group:not(:last-child)::after {
+        width: 80%;
+        margin: 1.5rem auto 0;
+    }
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.context-questions {
+    animation: fadeInScale 0.5s ease-out;
+}
+
+.context-btn {
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.context-btn:nth-child(1) { animation-delay: 0.1s; }
+.context-btn:nth-child(2) { animation-delay: 0.2s; }
+.context-btn:nth-child(3) { animation-delay: 0.3s; }
+
+/* Animations et transitions */
+.quiz-question {
+    transition: all 0.3s ease;
+}
+
+.quiz-option {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-option .option-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.quiz-option.selected {
+    background: var(--gold);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+.quiz-option.disabled {
+    pointer-events: none;
+}
+
+.progress-bar {
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.perfume-recommendation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effects améliorés */
+.quiz-option:hover {
+    transform: translateX(10px);
+    box-shadow: 0 4px 15px rgba(197, 165, 114, 0.2);
+}
+
+.quiz-option:active {
+    transform: scale(0.98);
+}
+
+/* Feedback visuel pour la progression */
+.quiz-progress {
+    height: 4px;
+    background: rgba(197, 165, 114, 0.1);
+    margin-bottom: 2rem;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+}
+
+/* Styles pour les messages d'erreur */
+.quiz-error {
+    margin: 1rem 0;
+    animation: slideIn 0.3s ease-out;
+}
+
+.error-message {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    padding: 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Styles pour les boutons sélectionnés */
+.context-btn.selected,
+.gender-btn.selected {
+    background: var(--gold);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+/* Animation pour les erreurs */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 } 

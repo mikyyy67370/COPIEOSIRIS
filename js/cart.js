@@ -1,6 +1,47 @@
 // Fonctions du panier
 let cart = [];
 
+// Amélioration des performances du panier
+const cartCache = {
+    items: null,
+    total: 0,
+    lastUpdate: 0
+};
+
+function getCartItems() {
+    const now = Date.now();
+    // Utiliser le cache si moins de 2 secondes se sont écoulées
+    if (cartCache.items && now - cartCache.lastUpdate < 2000) {
+        return cartCache.items;
+    }
+    
+    const items = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCache.items = items;
+    cartCache.lastUpdate = now;
+    return items;
+}
+
+function updateCartTotal() {
+    const items = getCartItems();
+    cartCache.total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    return cartCache.total;
+}
+
+// Debounce pour les mises à jour fréquentes
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+const debouncedUpdateCart = debounce(updateCartDisplay, 150);
+
 // Charger le panier au démarrage
 function loadCart() {
     const savedCart = localStorage.getItem('cart');

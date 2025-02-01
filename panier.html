@@ -16,175 +16,201 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/panier.css">
     <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/mobile.css">
     <style>
-        .cart-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 20px;
+        /* Variables globales */
+        :root {
+            --gold: #C5A572;
+            --dark-gold: #A88445;
+            --light-gold: #E2D4BA;
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray: #f8f8f8;
+            --border-color: rgba(197, 165, 114, 0.2);
         }
 
-        .cart-items {
+        /* Style de la page panier */
+        .cart-page {
+            background-color: var(--gray);
+            min-height: calc(100vh - 200px);
+            padding: 80px 0;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* En-tête du panier */
+        .cart-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .cart-header h1 {
+            font-family: 'Marcellus', serif;
+            font-size: 2.8rem;
+            color: var(--black);
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Étapes du panier */
+        .cart-steps {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Marcellus', serif;
+            font-size: 1.1rem;
+        }
+
+        .step-label {
+            font-family: 'Marcellus', serif;
+            color: var(--black);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Liste des articles */
+        .cart-items {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
         }
 
         .cart-item {
             display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 20px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            grid-template-columns: 140px 1fr auto;
+            gap: 30px;
+            padding: 25px;
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
         }
 
         .item-image {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
             overflow: hidden;
-            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .item-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .item-image:hover img {
+            transform: scale(1.05);
         }
 
         .item-details {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            position: relative;
+            gap: 12px;
         }
 
         .item-details h3 {
-            margin: 0;
             font-family: 'Marcellus', serif;
+            font-size: 1.3rem;
+            color: var(--black);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .item-price {
+            font-family: 'Marcellus', serif;
+            color: var(--gold);
             font-size: 1.2rem;
         }
 
-        .price {
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        .remove-item {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: none;
-            border: none;
-            color: #999;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .remove-item:hover {
-            color: #C5A572;
-        }
-
-        .cart-total {
-            margin-top: 20px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .cart-total h3 {
-            margin: 0 0 20px 0;
-            font-family: 'Marcellus', serif;
-        }
-
-        .clear-cart-btn, .checkout-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 4px;
-            font-family: 'Marcellus', serif;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .clear-cart-btn {
-            background: #f0f0f0;
-            color: #333;
-        }
-
-        .checkout-btn {
-            background: #C5A572;
-            color: white;
-        }
-
-        .clear-cart-btn:hover {
-            background: #e0e0e0;
-        }
-
-        .checkout-btn:hover {
-            background: #B89355;
-        }
-
-        .empty-cart {
-            text-align: center;
+        /* Résumé du panier */
+        .cart-summary {
+            background: var(--white);
+            border-radius: 20px;
             padding: 40px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
         }
 
-        .empty-cart h2 {
-            margin: 0 0 20px 0;
+        .summary-details {
+            margin-bottom: 35px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
             font-family: 'Marcellus', serif;
+            color: var(--black);
         }
 
-        .empty-cart a {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #C5A572;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-family: 'Marcellus', serif;
-            transition: background-color 0.3s;
+        .summary-row.total {
+            border-bottom: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding-top: 25px;
+            color: var(--gold);
         }
 
-        .empty-cart a:hover {
-            background: #B89355;
-        }
-
+        /* Boutons d'action */
         .cart-actions {
             display: flex;
-            gap: 1.5rem;
-            justify-content: space-between;
-            margin-top: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            gap: 25px;
+            margin-top: 35px;
         }
 
         .clear-cart {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
+            padding: 18px 35px;
             background: transparent;
-            color: #333333;
-            border: 1px solid rgba(197, 165, 114, 0.3);
-            border-radius: 8px;
-            font-size: 1rem;
-            letter-spacing: 1px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Marcellus', serif;
+            color: var(--black);
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Marcellus', serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .clear-cart:hover {
-            border-color: #C5A572;
-            color: #C5A572;
+            border-color: var(--gold);
+            color: var(--gold);
             background: rgba(197, 165, 114, 0.05);
         }
 
@@ -194,25 +220,25 @@
         }
 
         .clear-cart:hover i {
-            transform: rotate(45deg);
+            transform: rotate(90deg);
         }
 
         .checkout-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.2rem 3rem;
-            background: #C5A572;
-            color: white;
+            flex: 1;
+            padding: 18px 35px;
+            background: var(--gold);
+            color: var(--white);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
+            font-family: 'Marcellus', serif;
             font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Marcellus', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
         }
@@ -238,13 +264,12 @@
         }
 
         .checkout-btn:hover {
-            background: #A88B5C;
+            background: var(--dark-gold);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(197, 165, 114, 0.3);
+            box-shadow: 0 8px 20px rgba(197, 165, 114, 0.3);
         }
 
         .checkout-btn i {
-            font-size: 1.2rem;
             transition: transform 0.3s ease;
         }
 
@@ -252,62 +277,384 @@
             transform: translateX(5px);
         }
 
-        @media (max-width: 768px) {
+        /* Responsive */
+        @media (max-width: 992px) {
+            .cart-steps {
+                gap: 40px;
+            }
+
             .cart-item {
-                grid-template-columns: 100px 1fr;
+                grid-template-columns: 120px 1fr auto;
             }
 
             .item-image {
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
         }
 
         @media (max-width: 768px) {
-            .cart-actions {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1.5rem;
+            .cart-page {
+                padding: 40px 0;
             }
 
-            .clear-cart, 
+            .cart-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .cart-steps {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .step-label {
+                font-size: 0.9rem;
+            }
+
+            .cart-item {
+                grid-template-columns: 90px 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .item-image {
+                width: 90px;
+                height: 90px;
+            }
+
+            .cart-actions {
+                flex-direction: column;
+            }
+
+            .clear-cart,
             .checkout-btn {
                 width: 100%;
-                justify-content: center;
+                padding: 15px;
             }
         }
+
+        @media (max-width: 480px) {
+            .cart-container {
+                padding: 0 20px;
+            }
+
+            .cart-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .cart-items,
+            .cart-summary {
+                padding: 20px;
+            }
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .empty-cart p {
+            font-family: 'Marcellus', serif;
+            font-size: 1.2rem;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Marcellus', serif;
+            transition: all 0.3s ease;
+        }
+
+        .continue-shopping:hover {
+            background: var(--dark-gold);
+            transform: translateY(-2px);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .item-volume {
+            color: #666;
+            font-size: 0.9rem;
+        }
     </style>
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <!-- Header -->
     <header>
-        <nav class="navbar">
-            <div class="nav-left">
-                <a href="index.html" class="logo">OSIRIS</a>
+        <div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div class="mobile-menu" aria-hidden="true">
+            <div class="mobile-menu-header">
+                <div class="mobile-logo">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                </div>
+                <div class="close-menu" aria-label="Fermer le menu">
+                    <span class="close-icon"></span>
+                </div>
             </div>
-            <div class="nav-center">
-                <ul class="nav-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="collection.html">Collection</a></li>
-                    <li><a href="about.html">À propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+            
+            <!-- Section recherche -->
+            <div class="mobile-search-section">
+                <div class="search-title">Rechercher</div>
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Rechercher une fragrance...">
+                    <button type="button" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <nav class="mobile-nav">
+                <!-- Lien Accueil -->
+                <div class="menu-item">
+                    <a href="index.html">
+                        <span class="menu-text">Accueil</span>
+                    </a>
+                </div>
+                
+                <div class="menu-item has-submenu">
+                    <div class="menu-header">
+                        <span class="menu-text">Parfums</span>
+                        <span class="menu-icon">+</span>
+                    </div>
+                    <div class="submenu" aria-expanded="false">
+                        <a href="lesfeminins.html">Les Féminins</a>
+                        <a href="lesmasculins.html">Les Masculins</a>
+                        <a href="choisirsonparfum.html">Choisir son Parfum</a>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="notrehistoire.html">
+                        <span class="menu-text">Notre Histoire</span>
+                    </a>
+                </div>
+                
+                <div class="menu-item">
+                    <a href="contact.html">
+                        <span class="menu-text">Contact</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="mobile-menu-footer">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-menu-overlay"></div>
+
+        <nav>
+            <div class="nav-left">
+                <div class="location-selector">
+                    <span class="country">FRANCE</span>
+                    <span class="divider">|</span>
+                    <span class="language">FR</span>
+                </div>
+                <a href="contact.html" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    NOUS CONTACTER
+                </a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                    <div class="logo-location">STRASBOURG</div>
+                </a>
             </div>
             <div class="nav-right">
-                <a href="panier.html" class="cart-icon">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <a href="compte.html" class="icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="panier.html" class="icon cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
                 </a>
             </div>
         </nav>
+
+        <!-- Menu principal (desktop) -->
+        <div class="main-menu">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+            </a>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
+            </a>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+            </a>
+        </div>
     </header>
 
+    <!-- Menu mobile -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-search-section">
+            <div class="search-title">Rechercher</div>
+            <div class="search-wrapper">
+                <input type="text" placeholder="Rechercher une fragrance...">
+                <button type="button" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-location">
+            <span class="country">FRANCE</span>
+            <span class="divider">|</span>
+            <span class="language">FR</span>
+        </div>
+        <nav class="mobile-nav">
+            <a href="lesmasculins.html" class="menu-item">
+                <span class="menu-text">LES MASCULINS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="lesfeminins.html" class="menu-item">
+                <span class="menu-text">LES FÉMININS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="notrehistoire.html" class="menu-item">
+                <span class="menu-text">NOTRE HISTOIRE</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="contact.html" class="menu-item">
+                <span class="menu-text">CONTACTEZ-NOUS</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="choisirsonparfum.html" class="menu-item">
+                <span class="menu-text">COMMENT CHOISIR SON PARFUM</span>
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </nav>
+        <a href="contact.html" class="mobile-contact">
+            <i class="fas fa-envelope"></i>
+            NOUS CONTACTER
+        </a>
+    </div>
+    <div class="mobile-menu-overlay"></div>
+
     <!-- Main Content -->
-    <main>
+    <main class="cart-page">
         <div class="cart-container">
-            <h1>Votre Panier</h1>
-            <div id="cartItems">
+            <div class="cart-header">
+                <h1>Votre Panier</h1>
+                <div class="cart-steps">
+                    <div class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Panier</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Livraison</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Paiement</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cartItems" class="cart-items">
                 <!-- Le contenu du panier sera injecté ici par JavaScript -->
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Sous-total</span>
+                        <span class="subtotal">0 €</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Livraison</span>
+                        <span class="shipping">Calculée à l'étape suivante</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span class="total-amount">0 €</span>
+                    </div>
+                </div>
+                
+                <div class="cart-actions">
+                    <button class="clear-cart">
+                        <i class="fas fa-times"></i>
+                        Vider le panier
+                    </button>
+                    <button class="checkout-btn">
+                        Procéder au paiement
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </main>
@@ -349,13 +696,96 @@
     <script src="js/cart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM chargé sur la page panier');
-            console.log('Contenu du localStorage:', localStorage.getItem('cart'));
             const cartItems = document.getElementById('cartItems');
-            console.log('Element cartItems trouvé:', cartItems !== null);
+            const subtotalElement = document.querySelector('.subtotal');
+            const totalElement = document.querySelector('.total-amount');
+            const clearCartButton = document.querySelector('.clear-cart');
             
-            // La classe Cart s'initialise automatiquement et affiche le panier
+            function displayCart() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = `
+                        <div class="empty-cart">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>Votre panier est vide</p>
+                            <a href="index.html" class="continue-shopping">Continuer mes achats</a>
+                        </div>
+                    `;
+                    updateTotals(0);
+                    return;
+                }
+
+                let cartHTML = '';
+                let subtotal = 0;
+
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    cartHTML += `
+                        <div class="cart-item" data-index="${index}">
+                            <div class="item-image">
+                                <img src="${item.image || 'images/collection4.jpg'}" alt="${item.name}">
+                            </div>
+                            <div class="item-details">
+                                <h3>${item.name}</h3>
+                                <p class="item-volume">${item.volume}</p>
+                                <div class="item-controls">
+                                    <div class="quantity-controls">
+                                        <button class="quantity-btn minus" onclick="updateQuantity(${index}, -1)">-</button>
+                                        <span class="quantity">${item.quantity}</span>
+                                        <button class="quantity-btn plus" onclick="updateQuantity(${index}, 1)">+</button>
+                                    </div>
+                                    <span class="item-price">${item.price} €</span>
+                                </div>
+                            </div>
+                            <button class="remove-item" onclick="removeItem(${index})">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+
+                cartItems.innerHTML = cartHTML;
+                updateTotals(subtotal);
+            }
+
+            function updateTotals(subtotal) {
+                subtotalElement.textContent = `${subtotal.toFixed(2)} €`;
+                totalElement.textContent = `${subtotal.toFixed(2)} €`;
+            }
+
+            window.updateQuantity = function(index, change) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart[index]) {
+                    cart[index].quantity += change;
+                    if (cart[index].quantity < 1) cart[index].quantity = 1;
+                    if (cart[index].quantity > 10) cart[index].quantity = 10;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    displayCart();
+                }
+            }
+
+            window.removeItem = function(index) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+            }
+
+            clearCartButton.addEventListener('click', () => {
+                if (confirm('Êtes-vous sûr de vouloir vider votre panier ?')) {
+                    localStorage.setItem('cart', JSON.stringify([]));
+                    displayCart();
+                }
+            });
+
+            // Afficher le panier au chargement
+            displayCart();
         });
     </script>
 </body>
 </html>
+
+

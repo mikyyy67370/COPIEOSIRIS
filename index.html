@@ -9,9 +9,16 @@
     <link rel="stylesheet" href="css/product-common.css">
     <link rel="stylesheet" href="css/mobile-menu.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/style.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Marcellus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/Marcellus-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="images/hero-bg.jpg" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         body {
             opacity: 1;
@@ -62,24 +69,40 @@
         <!-- Menu Mobile -->
         <div class="mobile-menu" aria-hidden="true">
             <div class="mobile-menu-header">
-                <div class="logo">OSIRIS</div>
+                <div class="mobile-logo">
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                </div>
                 <div class="close-menu" aria-label="Fermer le menu">
-                    <i class="fas fa-times"></i>
+                    <span class="close-icon"></span>
+                </div>
+            </div>
+            
+            <!-- Section recherche -->
+            <div class="mobile-search-section">
+                <div class="search-title">Rechercher</div>
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Rechercher une fragrance...">
+                    <button type="button" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
             
             <nav class="mobile-nav">
-                <div class="menu-item has-submenu">
-                    <a href="#">Collections</a>
-                    <div class="submenu" aria-expanded="false">
-                        <a href="collections-signatures.html">Collections Signatures</a>
-                        <a href="collections-privees.html">Collections Privées</a>
-                        <a href="collection-royale.html">Collection Royale</a>
-                    </div>
+                <div class="menu-item">
+                    <a href="index.html">
+                        <span class="menu-text">Accueil</span>
+                    </a>
                 </div>
+            
                 
                 <div class="menu-item has-submenu">
-                    <a href="#">Parfums</a>
+                    <div class="menu-header">
+                        <span class="menu-text">Parfums</span>
+                        <span class="menu-icon">+</span>
+                    </div>
                     <div class="submenu" aria-expanded="false">
                         <a href="lesfeminins.html">Les Féminins</a>
                         <a href="lesmasculins.html">Les Masculins</a>
@@ -88,11 +111,15 @@
                 </div>
                 
                 <div class="menu-item">
-                    <a href="notrehistoire.html">Notre Histoire</a>
+                    <a href="notrehistoire.html">
+                        <span class="menu-text">Notre Histoire</span>
+                    </a>
                 </div>
                 
                 <div class="menu-item">
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.html">
+                        <span class="menu-text">Contact</span>
+                    </a>
                 </div>
             </nav>
             
@@ -171,8 +198,14 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="mobile-search">
-            <input type="text" placeholder="Rechercher...">
+        <div class="mobile-search-section">
+            <div class="search-title">Rechercher</div>
+            <div class="search-wrapper">
+                <input type="text" placeholder="Rechercher une fragrance...">
+                <button type="button" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
         </div>
         <div class="mobile-location">
             <span class="country">FRANCE</span>
@@ -636,153 +669,30 @@
         </div>
     </footer>
 
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script src="js/mobile-menu.js" defer></script>
+    <script src="js/carousel.js" defer></script>
     <script>
-        // Sélectionner toutes les sections et les points de navigation
-        const sections = document.querySelectorAll('section');
-        const dots = document.querySelectorAll('.dot');
+    document.addEventListener('DOMContentLoaded', () => {
+        // Précharger les images suivantes du carousel
+        const preloadImages = [
+            'images/collection2.jpg',
+            'images/collection3.jpg'
+        ];
         
-        // Configuration de l'Intersection Observer
-        const observerOptions = {
-            root: null,
-            threshold: 0.5, // Déclenche quand 50% de la section est visible
-            rootMargin: "0px"
-        };
-
-        // Créer l'observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Trouver l'index de la section active
-                    const index = Array.from(sections).indexOf(entry.target);
-                    
-                    // Mettre à jour la navigation
-                    updateNavigation(index);
-                }
-            });
-        }, observerOptions);
-
-        // Observer chaque section
-        sections.forEach(section => {
-            observer.observe(section);
+        preloadImages.forEach(image => {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = image;
+            document.head.appendChild(link);
         });
-
-        // Fonction pour mettre à jour la navigation
-        function updateNavigation(activeIndex) {
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        // Ajouter la navigation au clic
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                sections[index].scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Observer pour les animations au scroll
-        const animateOnScroll = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('bestsellers')) {
-                        entry.target.classList.add('animate');
-                        
-                        // Animer les cartes produits séquentiellement
-                        const cards = entry.target.querySelectorAll('.product-card');
-                        cards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.classList.add('animate');
-                            }, 200 * (index + 1));
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observer la section bestsellers
-        const bestsellersSection = document.querySelector('.bestsellers');
-        animateOnScroll.observe(bestsellersSection);
-
-        // Gestion du tap sur mobile pour les cartes de collection
-        document.addEventListener('DOMContentLoaded', function() {
-            const collectionCards = document.querySelectorAll('.collection-card');
-            let activeCard = null;
-
-            collectionCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Si une carte est déjà active, on la désactive
-                    if (activeCard && activeCard !== this) {
-                        activeCard.classList.remove('active');
-                    }
-
-                    // Toggle la classe active sur la carte cliquée
-                    this.classList.toggle('active');
-                    activeCard = this.classList.contains('active') ? this : null;
-                });
-            });
-
-            // Fermer la carte active si on clique ailleurs
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.collection-card') && activeCard) {
-                    activeCard.classList.remove('active');
-                    activeCard = null;
-                }
-            });
-        });
-
-        // Ajout du script pour gérer l'indicateur de défilement
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainMenu = document.querySelector('.main-menu');
-            const dots = document.querySelectorAll('.scroll-dot');
-            
-            mainMenu.addEventListener('scroll', function() {
-                const scrollPosition = mainMenu.scrollLeft;
-                const maxScroll = mainMenu.scrollWidth - mainMenu.clientWidth;
-                const scrollPercentage = scrollPosition / maxScroll;
-                
-                // Mise à jour des points indicateurs
-                dots.forEach((dot, index) => {
-                    const dotPosition = index / (dots.length - 1);
-                    dot.classList.toggle('active', 
-                        Math.abs(dotPosition - scrollPercentage) < 0.2);
-                });
-            });
-        });
-
-        // Gestion du menu hamburger
-        document.querySelector('.hamburger-menu').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.mobile-menu').classList.toggle('active');
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('[data-transition="fade"]');
-            
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const href = this.getAttribute('href');
-                    
-                    document.body.classList.add('fade-out');
-                    
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 500); // Délai correspondant à la durée de l'animation
-                });
-            });
-        });
+    });
     </script>
-    <script src="js/main.js"></script>
+    <script src="js/test-cache.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/search.js"></script>
     <script src="js/form-validation.js"></script>
-    <script src="js/mobile-menu.js" defer></script>
     <script src="js/error-handler.js" defer></script>
     <script src="js/image-loader.js" defer></script>
     <script src="js/sections-animation.js" defer></script>

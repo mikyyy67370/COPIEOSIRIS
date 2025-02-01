@@ -1,85 +1,130 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerMenu = document.querySelector('.hamburger-menu');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const closeMenu = document.querySelector('.close-menu');
-    const overlay = document.querySelector('.mobile-menu-overlay');
-    const body = document.body;
-    const menuItems = document.querySelectorAll('.mobile-nav .menu-item.has-submenu');
+// Amélioration de la navigation mobile
+const mobileMenu = {
+    isOpen: false,
+    lastScrollPosition: 0,
 
-    // Fonction pour ouvrir le menu
-    const openMenu = () => {
-        mobileMenu.classList.add('active');
-        overlay.classList.add('active');
-        body.style.overflow = 'hidden';
-        mobileMenu.setAttribute('aria-expanded', 'true');
-        closeMenu.focus();
-    };
-
-    // Fonction pour fermer le menu
-    const closeMenuMobile = () => {
-        mobileMenu.classList.remove('active');
-        overlay.classList.remove('active');
-        body.style.overflow = '';
-        mobileMenu.setAttribute('aria-expanded', 'false');
-        hamburgerMenu.focus();
-    };
-
-    // Gestionnaires d'événements pour l'ouverture/fermeture
-    hamburgerMenu.addEventListener('click', openMenu);
-    closeMenu.addEventListener('click', closeMenuMobile);
-    overlay.addEventListener('click', closeMenuMobile);
-
-    // Fermer avec la touche Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-            closeMenuMobile();
-        }
-    });
-
-    // Gestion des sous-menus
-    menuItems.forEach(item => {
-        const link = item.querySelector('a');
-        const submenu = item.querySelector('.submenu');
+    init() {
+        const menu = document.querySelector('.mobile-menu');
+        const hamburger = document.querySelector('.hamburger-menu');
+        const closeBtn = document.querySelector('.close-menu');
         
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            item.classList.toggle('active');
-            
-            const isExpanded = item.classList.contains('active');
-            submenu.setAttribute('aria-expanded', isExpanded);
-            
-            if (isExpanded) {
-                submenu.style.display = 'block';
-            } else {
-                submenu.style.display = 'none';
+        // Gestionnaire pour le bouton hamburger
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.isOpen ? this.close() : this.open();
+        });
+
+        // Gestionnaire pour le bouton de fermeture
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.close();
+        });
+
+        // Gestion du touch
+        let touchStartY = 0;
+        menu.addEventListener('touchstart', e => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        menu.addEventListener('touchmove', e => {
+            const touchY = e.touches[0].clientY;
+            const diff = touchStartY - touchY;
+
+            if (diff < -50) {
+                this.close();
+            }
+        }, { passive: true });
+
+        // Fermer le menu sur clic en dehors
+        document.addEventListener('click', e => {
+            if (this.isOpen && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+                this.close();
             }
         });
-    });
 
-    // Gestion du swipe sur mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
+        // Fermer le menu avec la touche Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.close();
+            }
+        });
 
-    mobileMenu.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, false);
+        // Gestion des sous-menus
+        const menuItems = document.querySelectorAll('.menu-item.has-submenu');
+        menuItems.forEach(item => {
+            const menuHeader = item.querySelector('.menu-header');
+            menuHeader?.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                item.classList.toggle('active');
+            });
+        });
+    },
 
-    mobileMenu.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, false);
+    open() {
+        if (this.isOpen) return;
+        
+        const menu = document.querySelector('.mobile-menu');
+        this.isOpen = true;
+        this.lastScrollPosition = window.scrollY;
+        
+        // Empêcher le défilement du body
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${this.lastScrollPosition}px`;
+        
+        // Afficher le menu
+        menu.style.display = 'block';
+        requestAnimationFrame(() => {
+            menu.classList.add('active');
+        });
+    },
 
-    const handleSwipe = () => {
-        const swipeThreshold = 100;
-        if (touchStartX - touchEndX > swipeThreshold) {
-            closeMenuMobile();
-        }
-    };
+    close() {
+        if (!this.isOpen) return;
+        
+        const menu = document.querySelector('.mobile-menu');
+        this.isOpen = false;
+        
+        // Restaurer le défilement
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, this.lastScrollPosition);
+        
+        // Masquer le menu avec animation
+        menu.classList.remove('active');
+        setTimeout(() => {
+            if (!this.isOpen) { // Vérifier si toujours fermé
+                menu.style.display = 'none';
+            }
+        }, 300); // Correspond à la durée de l'animation CSS
+    }
+};
 
-    // Fermer le menu lors du redimensionnement
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 1024 && mobileMenu.classList.contains('active')) {
-            closeMenuMobile();
-        }
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => mobileMenu.init());
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Gestion des sous-menus
+    const subMenuItems = document.querySelectorAll('.menu-item.has-submenu');
+    
+    subMenuItems.forEach(item => {
+        const menuHeader = item.querySelector('.menu-header');
+        const submenu = item.querySelector('.submenu');
+        const menuIcon = item.querySelector('.menu-icon');
+        
+        menuHeader.addEventListener('click', () => {
+            const isExpanded = submenu.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle du sous-menu
+            submenu.setAttribute('aria-expanded', !isExpanded);
+            submenu.style.display = isExpanded ? 'none' : 'block';
+            
+            // Change l'icône + en -
+            menuIcon.textContent = isExpanded ? '+' : '-';
+        });
     });
 });

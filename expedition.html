@@ -134,6 +134,9 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="announcement-bar">
@@ -141,6 +144,74 @@
     </div>
 
     <header>
+<!-- Menu Hamburger et Menu Mobile -->
+<div class="hamburger-menu" aria-label="Menu principal" role="button" aria-expanded="false">
+    <i class="fas fa-bars"></i>
+</div>
+
+<!-- Menu Mobile -->
+<div class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-header">
+        <div class="mobile-logo">
+            <div class="logo-symbol">◈</div>
+            <h1>OSIRIS</h1>
+            <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+        </div>
+        <div class="close-menu" aria-label="Fermer le menu">
+            <span class="close-icon"></span>
+        </div>
+    </div>
+    
+    <!-- Section recherche -->
+    <div class="mobile-search-section">
+        <div class="search-title">Rechercher</div>
+        <div class="search-wrapper">
+            <input type="text" placeholder="Rechercher une fragrance...">
+            <button type="button" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+    
+    <nav class="mobile-nav">
+        <div class="menu-item has-submenu">
+            <div class="menu-header">
+                <span class="menu-text">Collections</span>
+                <span class="menu-icon">+</span>
+            </div>
+            <div class="submenu" aria-expanded="false">
+                <a href="collections-signatures.html">Collections Signatures</a>
+                <a href="collections-privees.html">Collections Privées</a>
+                <a href="collection-royale.html">Collection Royale</a>
+            </div>
+        </div>
+        
+        <div class="menu-item has-submenu">
+            <div class="menu-header">
+                <span class="menu-text">Parfums</span>
+                <span class="menu-icon">+</span>
+            </div>
+            <div class="submenu" aria-expanded="false">
+                <a href="lesfeminins.html">Les Féminins</a>
+                <a href="lesmasculins.html">Les Masculins</a>
+                <a href="choisirsonparfum.html">Choisir son Parfum</a>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <a href="notrehistoire.html">
+                <span class="menu-text">Notre Histoire</span>
+            </a>
+        </div>
+        
+        <div class="menu-item">
+            <a href="contact.html">
+                <span class="menu-text">Contact</span>
+            </a>
+        </div>
+    </nav>
+</div>
+
         <nav>
             <div class="nav-left">
                 <div class="location-selector">
@@ -311,5 +382,7 @@
             <p>&copy; 2024 OSIRIS. Tous droits réservés.</p>
         </div>
     </footer>
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html>
+

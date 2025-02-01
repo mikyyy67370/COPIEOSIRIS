@@ -1,558 +1,104 @@
-/* Styles du header */
-:root {
-    --gold: #C5A572;
-    --dark-gold: #8B7355;
-    --light-gold: #E2D4BA;
-    --black: #000000;
-    --white: #FFFFFF;
-    --sand: #F5E6D3;
-    --cream: #F8F5F1;
-    --transition: all 0.3s ease-in-out;
+/* Styles spécifiques à la page Anubis */
+.anubis-product-hero {
+    padding: 1rem 0 4rem;
+    background: var(--cream);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Section packaging */
+.anubis-packaging-container {
+    padding: 20px;
 }
 
-body {
-    font-family: 'Cormorant Garamond', serif;
-}
-
-header {
-    background: var(--white);
-    position: relative;
-    padding: 20px 40px;
-}
-
-nav {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    padding: 20px 40px;
-    gap: 20px;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.location-selector {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    letter-spacing: 2px;
-}
-
-.divider {
-    color: var(--gold);
-}
-
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    color: var(--black);
-}
-
-/* Style du logo */
-.logo {
-    text-align: center;
-    position: relative;
-    padding: 15px 0;
-}
-
-.logo a {
+.anubis-packaging-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: inherit;
+    gap: 0;
 }
 
-.logo-symbol {
-    font-size: 20px;
-    color: var(--gold);
-    margin-bottom: 8px;
+/* Image en haut */
+.anubis-packaging-image {
+    width: 100%;
+    margin-bottom: 30px;
 }
 
-.logo h1 {
-    font-family: 'Marcellus', serif;
-    font-size: 38px;
-    letter-spacing: 8px;
-    margin: 5px 0;
-    font-weight: 400;
+.anubis-image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
 }
 
-.logo-tagline {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--dark-gold);
-    margin-top: 8px;
-}
-
-.logo-location {
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    margin-top: 5px;
-    font-weight: 300;
-}
-
-/* Menu principal */
-.main-menu {
+/* Détails en dessous de l'image */
+.anubis-packaging-details {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-    padding: 25px 0;
-    border-top: 1px solid rgba(197, 165, 114, 0.2);
-    border-bottom: 1px solid rgba(197, 165, 114, 0.2);
-    background: var(--white);
-}
-
-/* Par défaut (desktop) */
-.hamburger-menu {
-    display: none;
-}
-
-.mobile-menu {
-    display: none;
-}
-
-/* Version mobile */
-@media screen and (max-width: 768px) {
-    /* Structure du header mobile */
-    header {
-        padding: 15px 20px;
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        height: 60px;
-        margin-bottom: 15px;
-    }
-
-    /* Masquer les éléments desktop */
-    .nav-left {
-        display: none;
-    }
-
-    /* Menu hamburger à gauche */
-    .hamburger-menu {
-        display: block;
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 24px;
-        color: var(--black);
-        cursor: pointer;
-        transition: var(--transition);
-        z-index: 100;
-    }
-
-    /* Logo au centre */
-    .logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-        padding: 8px 0 3px;
-        width: auto;
-    }
-
-    .logo-symbol {
-        font-size: 18px;
-        margin-bottom: 5px;
-        margin-top: 5px;
-    }
-
-    .logo h1 {
-        font-size: 32px;
-        letter-spacing: 6px;
-    }
-
-    .logo-tagline {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-
-    /* Icons à droite */
-    .nav-right {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .search-bar input {
-        display: none;
-    }
-
-    .icon {
-        font-size: 18px;
-    }
-
-    /* Cacher le menu principal */
-    .main-menu {
-        display: none;
-    }
-
-    /* Ajustement de la section produit */
-    .product-hero {
-        padding: 0.3rem 0 0.5rem;
-        margin-top: 10px;
-    }
-
-    /* Ajustement de la bannière */
-    .announcement-bar {
-        margin-bottom: 5px;
-    }
-
-    /* Section packaging */
-    .packaging-container {
-        padding: 20px;
-    }
-
-    .packaging-content {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    /* Image en haut */
-    .packaging-image {
-        width: 100%;
-        margin-bottom: 30px;
-    }
-
-    .image-container img {
-        width: 100%;
-        height: auto;
-        max-height: 400px;
-        object-fit: cover;
-    }
-
-    /* Détails en dessous de l'image */
-    .packaging-details {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .detail-item {
-        width: 100%;
-        text-align: center;
-        padding: 20px;
-        border-bottom: 1px solid rgba(197, 165, 114, 0.2);
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.5s ease forwards;
-    }
-
-    .detail-item:nth-child(1) { animation-delay: 0.2s; }
-    .detail-item:nth-child(2) { animation-delay: 0.4s; }
-    .detail-item:nth-child(3) { animation-delay: 0.6s; }
-
-    .detail-text h3 {
-        font-size: 16px;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-        color: var(--black);
-    }
-
-    .detail-text p {
-        font-size: 14px;
-        line-height: 1.4;
-        color: var(--dark-gold);
-    }
-
-    /* CTA en bas */
-    .packaging-cta {
-        width: 100%;
-        text-align: center;
-        padding: 20px;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.5s ease forwards 0.8s;
-    }
-
-    .limited-info {
-        font-size: 14px;
-        color: var(--gold);
-        margin-bottom: 15px;
-        letter-spacing: 1px;
-    }
-
-    .discover-btn {
-        width: 100%;
-        max-width: 280px;
-        padding: 12px 25px;
-        background: var(--gold);
-        color: var(--white);
-        border: none;
-        font-size: 13px;
-        letter-spacing: 2px;
-        cursor: pointer;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-}
-
-/* Trait vertical entre les éléments */
-.menu-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: -30px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 15px;
-    width: 1px;
-    background: var(--gold);
-    opacity: 0.3;
-}
-
-/* Animation au survol */
-.menu-item::before {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--gold);
-    transition: var(--transition);
-}
-
-.menu-item:hover {
-    color: var(--gold);
-}
-
-.menu-item:hover::before {
+    flex-direction: column;
     width: 100%;
 }
 
-/* Style pour l'élément actif */
-.menu-item.active {
-    color: var(--gold);
-}
-
-.menu-item.active::before {
+.anubis-detail-item {
     width: 100%;
-}
-
-/* Styles pour la sélection du pays et le contact */
-.location-selector span,
-.contact-link {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--black);
-    text-transform: uppercase;
-    font-weight: 300;
-    transition: var(--transition);
-}
-
-.location-selector .country,
-.location-selector .language {
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.location-selector .country:hover,
-.location-selector .language:hover,
-.contact-link:hover {
-    color: var(--gold);
-    opacity: 0.8;
-}
-
-.contact-link:hover i {
-    opacity: 0.8;
-}
-
-/* Ajout des styles pour la barre d'annonce */
-.announcement-bar {
-    background-color: var(--black);
-    color: var(--white);
     text-align: center;
-    padding: 12px;
+    padding: 20px;
+    border-bottom: 1px solid rgba(197, 165, 114, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: anubisDetailFadeIn 0.5s ease forwards;
+}
+
+.anubis-detail-item:nth-child(1) { animation-delay: 0.2s; }
+.anubis-detail-item:nth-child(2) { animation-delay: 0.4s; }
+.anubis-detail-item:nth-child(3) { animation-delay: 0.6s; }
+
+.anubis-detail-text h3 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--black);
+}
+
+.anubis-detail-text p {
     font-size: 14px;
-    letter-spacing: 1.5px;
-    font-weight: 300;
+    line-height: 1.4;
+    color: var(--dark-gold);
 }
 
-/* Ajustement des liens du menu */
-.menu-item {
-    text-decoration: none;
-    color: var(--black);
-    position: relative;
-    transition: var(--transition);
-}
-
-.menu-item:hover {
-    color: var(--gold);
-}
-
-.menu-item::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--gold);
-    transition: var(--transition);
-}
-
-.menu-item:hover::after {
+/* CTA en bas */
+.anubis-packaging-cta {
     width: 100%;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: anubisDetailFadeIn 0.5s ease forwards 0.8s;
 }
 
-/* Ajustement des icônes */
-.icon {
-    color: var(--black);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.icon:hover {
+.limited-info {
+    font-size: 14px;
     color: var(--gold);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
-.search-icon i {
-    color: var(--black);
-    transition: var(--transition);
+.discover-btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 25px;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    cursor: pointer;
 }
 
-.search-icon:hover i {
-    color: var(--gold);
-}
-
-/* Media Queries pour le header */
-@media screen and (max-width: 1200px) {
-    .main-menu {
-        gap: 40px;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .main-menu {
-        gap: 30px;
-        padding: 20px 0;
-        overflow-x: auto;
-        justify-content: flex-start;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    .main-menu::-webkit-scrollbar {
-        display: none;
-    }
-
-    .menu-item {
-        white-space: nowrap;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    header {
-        padding: 15px 20px;
-    }
-
-    nav {
-        position: relative;
-        justify-content: center;
-    }
-
-    .nav-left {
-        display: none;
-    }
-
-    .nav-right {
-        position: absolute;
-        right: 0;
-    }
-
-    .logo {
-    margin: 0 auto;
-        padding: 5px 0;
-    }
-
-    .logo h1 {
-        font-size: 32px;
-    }
-
-    .logo-tagline {
-        font-size: 10px;
-    }
-
-    .search-bar {
-        display: none;
-    }
-
-    .nav-right {
-        gap: 15px;
-    }
-
-    .icon {
-        font-size: 0.9rem;
-    }
-
-    .main-menu, 
-    .main-menu * {
-        display: none !important;
-        visibility: hidden;
+@keyframes anubisDetailFadeIn {
+    from {
         opacity: 0;
-        height: 0;
-        width: 0;
-        padding: 0;
-        margin: 0;
-        border: none;
+        transform: translateY(20px);
     }
-
-    .menu-item .menu-text {
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    .location-selector span,
-    .contact-link {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-
-    .announcement-bar {
-        font-size: 12px;
-        padding: 10px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -997,9 +543,9 @@ nav {
 @media (max-width: 768px) {
     .product-header h1 {
         font-size: 2.2rem;
-}
-
-.product-actions {
+    }
+    
+    .product-actions {
         flex-direction: column;
     }
     
@@ -2115,7 +1661,7 @@ nav {
 
     .detail-item {
         flex-direction: column;
-    text-align: center;
+        text-align: center;
         padding: 20px 15px;
     }
 
@@ -2327,125 +1873,8 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    /* Header ajustements */
-    header {
-        padding: 10px;
-    }
-
-    nav {
-        height: 70px;
-    }
-
-    .logo h1 {
-        font-size: 28px;
-        letter-spacing: 6px;
-    }
-
-    .logo-tagline {
-        font-size: 9px;
-        letter-spacing: 3px;
-    }
-
-    .logo-location {
-        font-size: 8px;
-    }
-
-    /* Contenu principal */
-    .product-hero {
-        padding: 0.5rem 0 1rem;
-    }
-
-    .product-breadcrumb {
-        padding: 0.5rem 1.5rem;
-        font-size: 0.7rem;
-    }
-
-    .product-section {
-        padding: 0 1.5rem;
-    }
-
-    .product-container {
-        padding: 1rem;
-        gap: 2rem;
-    }
-
-    .product-header h1 {
-        font-size: 28px;
-        letter-spacing: 3px;
-        margin-bottom: 10px;
-    }
-
-    .product-subtitle {
-        font-size: 14px;
-        letter-spacing: 2px;
-    }
-
-    .luxury-text {
-        font-size: 15px;
-        line-height: 1.6;
-        margin: 20px 0;
-    }
-
-    .product-features {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .feature-item {
-        padding: 1rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    /* Ajustements plus fins pour très petits écrans */
-    .logo h1 {
-        font-size: 24px;
-        letter-spacing: 4px;
-    }
-
-    .product-header h1 {
-        font-size: 1.8rem;
-        letter-spacing: 2px;
-    }
-
-    .gallery-badge {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.6rem;
-    }
-
-    .product-container {
-        padding: 0.8rem;
-    }
-
-    .feature-icon {
-        width: 40px;
-        height: 40px;
-    }
-
-    .feature-text h4 {
-        font-size: 0.9rem;
-    }
-
-    .feature-text p {
-        font-size: 0.8rem;
-    }
-
-    /* Espacement vertical amélioré */
-    .section-spacing {
-        margin-bottom: 2rem;
-    }
-
-    .product-hero {
-        padding: 0.2rem 0 0.4rem;
-        margin-top: 12px;
-    }
-
-    .product-breadcrumb {
-        padding: 0.4rem 1.2rem;
-    }
-
-    .logo {
-        padding: 10px 0 3px;
+    .product-gallery {
+        /* ... styles produit ... */
     }
 }
 
@@ -2461,5 +1890,32 @@ footer {
 /* Amélioration des transitions */
 .smooth-transition {
     transition: all 0.3s ease-in-out;
+}
+
+/* Notification d'ajout au panier */
+.cart-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--gold);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
