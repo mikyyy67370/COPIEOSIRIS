@@ -2464,5 +2464,101 @@
     <script src="js/mobile-menu.js" defer></script>
     <script src="js/sections-animation.js" defer></script>
     <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Recherche mobile en temps réel
+        const mobileSearchInput = document.querySelector('.mobile-search-section input');
+        const mobileSearchResults = document.createElement('div');
+        mobileSearchResults.className = 'mobile-search-results';
+        
+        if (mobileSearchInput) {
+            mobileSearchInput.parentNode.appendChild(mobileSearchResults);
+            
+            mobileSearchInput.addEventListener('input', debounce(async (e) => {
+                const query = e.target.value.trim();
+                
+                if (query.length < 2) {
+                    mobileSearchResults.style.display = 'none';
+                    return;
+                }
+                
+                try {
+                    const results = await searchProducts(query);
+                    displayMobileSearchResults(results, mobileSearchResults);
+                } catch (error) {
+                    console.error('Erreur de recherche:', error);
+                }
+            }, 300));
+            
+            // Fermer les résultats au clic en dehors
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.mobile-search-section')) {
+                    mobileSearchResults.style.display = 'none';
+                }
+            });
+        }
+    });
+    
+    // Fonction pour la recherche
+    async function searchProducts(query) {
+        const products = [
+            { name: 'ANUBIS', url: 'anubis.html', type: 'Parfum Masculin' },
+            { name: 'ISIS', url: 'isis.html', type: 'Parfum Féminin' },
+            { name: 'OSIRIS ROYAL', url: 'osirisroyal.html', type: 'Parfum Masculin' },
+            { name: 'NEFERTITI', url: 'nefertiti.html', type: 'Parfum Féminin' },
+            { name: 'BASTET', url: 'bastet.html', type: 'Parfum Féminin' },
+            { name: 'HATHOR', url: 'hathor.html', type: 'Parfum Féminin' },
+            { name: 'HORUS', url: 'horus.html', type: 'Parfum Masculin' },
+            { name: 'THOT', url: 'thot.html', type: 'Parfum Masculin' },
+            { name: 'SEKHMET', url: 'sekhmet.html', type: 'Parfum Féminin' },
+            { name: 'CLEOPATRE', url: 'cleopatre.html', type: 'Parfum Féminin' }
+        ];
+        
+        return products.filter(product => 
+            product.name.toLowerCase().includes(query.toLowerCase()) ||
+            product.type.toLowerCase().includes(query.toLowerCase())
+        );
+    }
+    
+    // Affichage des résultats
+    function displayMobileSearchResults(results, container) {
+        if (results.length === 0) {
+            container.innerHTML = `
+                <div class="mobile-no-results">
+                    <p>Aucun résultat trouvé</p>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="mobile-results-list">
+                    ${results.map(result => `
+                        <a href="${result.url}" class="mobile-result-item">
+                            <div class="mobile-result-info">
+                                <h4>${result.name}</h4>
+                                <p>${result.type}</p>
+                            </div>
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+        }
+        container.style.display = 'block';
+    }
+    
+    // Utilitaire debounce
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    </script>
 </body>
 </html>

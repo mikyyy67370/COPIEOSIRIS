@@ -207,7 +207,7 @@
     left: 0;
     right: 0;
     background: white;
-    border-top: 1px solid rgba(196, 164, 124, 0.2);
+    border-top: 1px solid rgba(197, 165, 114, 0.2);
     max-height: 300px;
     overflow-y: auto;
     display: none;
@@ -229,7 +229,7 @@
 }
 
 .mobile-result-item:hover {
-    background-color: rgba(196, 164, 124, 0.1);
+    background-color: rgba(197, 165, 114, 0.1);
 }
 
 .mobile-result-item img {
@@ -309,4 +309,11 @@
 
 .mobile-result-item:hover .section-icon i {
     color: white;
+}
+
+/* Styles pour la recherche mobile */
+.mobile-no-results {
+    padding: 1rem;
+    text-align: center;
+    color: var(--color-text-medium);
 }

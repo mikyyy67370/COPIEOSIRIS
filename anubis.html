@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/product-navigation.css">
     <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="anubis.css">
-   
+    
     
     
     
@@ -32,8 +32,43 @@
     <script src="js/icons.js"></script>
     <script src="js/test-cache.js"></script>
     <script src="js/sections-animation.js" defer></script>
+    <script src="js/search.js"></script>
     
-    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Gestion des boutons + et - pour la quantité
+        const minusBtn = document.querySelector('.quantity-btn.minus');
+        const plusBtn = document.querySelector('.quantity-btn.plus');
+        const quantityInput = document.querySelector('.quantity-input');
+        
+        if (minusBtn && plusBtn && quantityInput) {
+            minusBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+            
+            plusBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue < 10) {
+                    quantityInput.value = currentValue + 1;
+                }
+            });
+            
+            // Empêcher la saisie manuelle de valeurs invalides
+            quantityInput.addEventListener('change', () => {
+                let value = parseInt(quantityInput.value);
+                if (isNaN(value) || value < 1) {
+                    value = 1;
+                } else if (value > 10) {
+                    value = 10;
+                }
+                quantityInput.value = value;
+            });
+        }
+    });
+    </script>
 
     <style>
         /* Variables de couleurs optimisées pour le contraste */
@@ -1223,10 +1258,10 @@
             </div>
             
             <div class="logo">
-                <div class="logo-symbol">◈</div>
-                <h1>OSIRIS</h1>
-                <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
-                <div class="logo-location">STRASBOURG</div>
+                    <div class="logo-symbol">◈</div>
+                    <h1>OSIRIS</h1>
+                    <div class="logo-tagline">UNE GOUTTE D'HISTOIRE</div>
+                    <div class="logo-location">STRASBOURG</div>
             </div>
 
             <div class="nav-right">
@@ -2287,8 +2322,8 @@
                 img.addEventListener('load', function() {
                     this.style.opacity = '1';
                 });
+                });
             });
-        });
     </script>
 
     <script>
@@ -2429,14 +2464,14 @@
         // Gestion du menu hamburger
         hamburger.addEventListener('click', () => {
             mobileMenu.style.display = 'block';
-            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
                 mobileMenu.classList.add('active');
             });
-        });
-        
+                });
+                
         closeBtn.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
-            setTimeout(() => {
+                setTimeout(() => {
                 mobileMenu.style.display = 'none';
             }, 300);
         });
@@ -2461,6 +2496,98 @@
             });
         });
     });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Recherche mobile en temps réel
+        const mobileSearchInput = document.querySelector('.mobile-search-section input');
+        const mobileSearchResults = document.createElement('div');
+        mobileSearchResults.className = 'mobile-search-results';
+        
+        if (mobileSearchInput) {
+            mobileSearchInput.parentNode.appendChild(mobileSearchResults);
+            
+            mobileSearchInput.addEventListener('input', debounce(async (e) => {
+                const query = e.target.value.trim();
+                
+                if (query.length < 2) {
+                    mobileSearchResults.style.display = 'none';
+                    return;
+                }
+                
+                try {
+                    // Simuler une recherche (à remplacer par votre API)
+                    const results = await searchProducts(query);
+                    displayMobileSearchResults(results, mobileSearchResults);
+                } catch (error) {
+                    console.error('Erreur de recherche:', error);
+                }
+            }, 300));
+            
+            // Fermer les résultats au clic en dehors
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.mobile-search-section')) {
+                    mobileSearchResults.style.display = 'none';
+                }
+            });
+        }
+    });
+    
+    // Fonction pour la recherche
+    async function searchProducts(query) {
+        // Simuler une recherche dans les produits
+        const products = [
+            { name: 'ANUBIS', url: 'anubis.html', type: 'Parfum Masculin' },
+            { name: 'ISIS', url: 'isis.html', type: 'Parfum Féminin' },
+            { name: 'OSIRIS ROYAL', url: 'osirisroyal.html', type: 'Parfum Masculin' },
+            { name: 'NEFERTITI', url: 'nefertiti.html', type: 'Parfum Féminin' },
+            // Ajouter tous vos produits ici
+        ];
+        
+        return products.filter(product => 
+            product.name.toLowerCase().includes(query.toLowerCase()) ||
+            product.type.toLowerCase().includes(query.toLowerCase())
+        );
+    }
+    
+    // Affichage des résultats
+    function displayMobileSearchResults(results, container) {
+        if (results.length === 0) {
+            container.innerHTML = `
+                <div class="mobile-no-results">
+                    <p>Aucun résultat trouvé</p>
+            </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="mobile-results-list">
+                    ${results.map(result => `
+                        <a href="${result.url}" class="mobile-result-item">
+                            <div class="mobile-result-info">
+                                <h4>${result.name}</h4>
+                                <p>${result.type}</p>
+            </div>
+                        </a>
+                    `).join('')}
+                    </div>
+            `;
+        }
+        container.style.display = 'block';
+    }
+    
+    // Utilitaire debounce
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
     </script>
 </body>
 </html>

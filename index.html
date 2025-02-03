@@ -20,21 +20,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
-        body {
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-        
-        body.fade-out {
-            opacity: 0;
+        /* Préchargement pour éviter le flash */
+        html, body {
+            background-color: var(--background);
         }
         
         .discover-link {
             transition: all 0.3s ease;
-        }
-        
-        .discover-link:hover {
-            transform: translateX(10px);
         }
         
         .announcement-bar {
@@ -53,6 +45,102 @@
 
         .announcement-bar a:hover {
             text-decoration: underline;
+        }
+
+        /* Animation du hero */
+        .hero {
+            opacity: 1;
+            display: block !important;
+            overflow: hidden !important;
+            background-color: var(--background);
+        }
+        
+        .hero-content {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            text-align: center !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+        }
+        
+        .hero-badge {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+        }
+        
+        .hero h1 {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+        }
+        
+        /* Animation des traits d'or */
+        .hero-content h1::before,
+        .hero-content h1::after {
+            opacity: 0;
+            width: 0;
+            animation: revealLine 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.4s forwards;
+        }
+        
+        .hero p {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+        }
+        
+        .cta-button {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes revealLine {
+            from {
+                opacity: 0;
+                width: 0;
+            }
+            to {
+                opacity: 1;
+                width: 60px;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -263,7 +351,7 @@
             <div class="bestsellers-grid">
                 <article class="product-card">
                     <div class="product-image">
-                        <img data-src="images/parfum1.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Parfum Osiris - Collection Royale">
+                        <img data-src="images/parfum1.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Parfum Osiris - Collection Royale" style="width: 100%; height: auto; display: block;">
                         <div class="product-overlay">
                             <a href="osirisroyal.html" class="discover-btn" data-transition="fade">DÉCOUVRIR</a>
                         </div>
@@ -294,7 +382,7 @@
 
                 <article class="product-card">
                     <div class="product-image">
-                        <img data-src="images/parfum2.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Parfum Néfertiti - Collection Royale">
+                        <img data-src="images/parfum2.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Parfum Néfertiti - Collection Royale" style="width: 100%; height: auto; display: block;">
                         <div class="product-overlay">
                             <a href="nefertiti.html" class="discover-btn" data-transition="fade">DÉCOUVRIR</a>
                         </div>
@@ -325,7 +413,7 @@
 
                 <article class="product-card">
                     <div class="product-image">
-                        <img data-src="images/parfum3.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Parfum Horus - Collection Royale">
+                        <img data-src="images/parfum3.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Parfum Horus - Collection Royale" style="width: 100%; height: auto; display: block;">
                         <div class="product-overlay">
                             <a href="horus.html" class="discover-btn" data-transition="fade">DÉCOUVRIR</a>
                         </div>
@@ -433,7 +521,7 @@
             <div class="collections-grid">
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="../images/collection1.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Hathor">
+                        <img data-src="images/collection1.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Hathor" style="width: 100%; height: auto; display: block;">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓁢</span>
                         </div>
@@ -452,7 +540,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="../images/collection2.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Thot">
+                        <img data-src="images/collection2.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Thot" style="width: 100%; height: auto; display: block;">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓅓</span>
                         </div>
@@ -471,7 +559,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="../images/collection3.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Isis">
+                        <img data-src="images/collection3.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Isis" style="width: 100%; height: auto; display: block;">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓇯</span>
                         </div>
@@ -490,7 +578,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="../images/collection4.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Anubis">
+                        <img data-src="images/collection4.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Anubis" style="width: 100%; height: auto; display: block;">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓃠</span>
                         </div>
@@ -509,7 +597,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="../images/collection5.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Sekhmet">
+                        <img data-src="images/collection5.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Sekhmet" style="width: 100%; height: auto; display: block;">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓃙</span>
                         </div>
@@ -528,7 +616,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="../images/collection6.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Bastet">
+                        <img data-src="images/collection6.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Bastet" style="width: 100%; height: auto; display: block;">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓃣</span>
                         </div>
@@ -613,8 +701,8 @@
             <div class="footer-section">
                 <h4>COLLECTIONS</h4>
                 <ul>
-                    <li><a href="#">Les Masculins</a></li>
-                    <li><a href="#">Les Féminins</a></li>
+                    <li><a href="lesmasculins.html">Les Masculins</a></li>
+                    <li><a href="lesfeminins.html">Les Féminins</a></li>
                     <li><a href="#">Collections Privées</a></li>
                     <li><a href="#">Éditions Limitées</a></li>
                 </ul>
@@ -697,5 +785,118 @@
     <script src="js/image-loader.js" defer></script>
     <script src="js/sections-animation.js" defer></script>
     <script src="js/performance.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Recherche mobile en temps réel
+        const mobileSearchInput = document.querySelector('.mobile-search-section input');
+        const mobileSearchResults = document.createElement('div');
+        mobileSearchResults.className = 'mobile-search-results';
+        
+        if (mobileSearchInput) {
+            mobileSearchInput.parentNode.appendChild(mobileSearchResults);
+            
+            mobileSearchInput.addEventListener('input', debounce(async (e) => {
+                const query = e.target.value.trim();
+                
+                if (query.length < 2) {
+                    mobileSearchResults.style.display = 'none';
+                    return;
+                }
+                
+                try {
+                    const results = await searchProducts(query);
+                    displayMobileSearchResults(results, mobileSearchResults);
+                } catch (error) {
+                    console.error('Erreur de recherche:', error);
+                }
+            }, 300));
+            
+            // Fermer les résultats au clic en dehors
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.mobile-search-section')) {
+                    mobileSearchResults.style.display = 'none';
+                }
+            });
+        }
+    });
+    
+    // Fonction pour la recherche
+    async function searchProducts(query) {
+        const products = [
+            { name: 'ANUBIS', url: 'anubis.html', type: 'Parfum Masculin' },
+            { name: 'ISIS', url: 'isis.html', type: 'Parfum Féminin' },
+            { name: 'OSIRIS ROYAL', url: 'osirisroyal.html', type: 'Parfum Masculin' },
+            { name: 'NEFERTITI', url: 'nefertiti.html', type: 'Parfum Féminin' },
+            { name: 'BASTET', url: 'bastet.html', type: 'Parfum Féminin' },
+            { name: 'HATHOR', url: 'hathor.html', type: 'Parfum Féminin' },
+            { name: 'HORUS', url: 'horus.html', type: 'Parfum Masculin' },
+            { name: 'THOT', url: 'thot.html', type: 'Parfum Masculin' },
+            { name: 'SEKHMET', url: 'sekhmet.html', type: 'Parfum Féminin' },
+            { name: 'CLEOPATRE', url: 'cleopatre.html', type: 'Parfum Féminin' }
+        ];
+        
+        return products.filter(product => 
+            product.name.toLowerCase().includes(query.toLowerCase()) ||
+            product.type.toLowerCase().includes(query.toLowerCase())
+        );
+    }
+    
+    // Affichage des résultats
+    function displayMobileSearchResults(results, container) {
+        if (results.length === 0) {
+            container.innerHTML = `
+                <div class="mobile-no-results">
+                    <p>Aucun résultat trouvé</p>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="mobile-results-list">
+                    ${results.map(result => `
+                        <a href="${result.url}" class="mobile-result-item">
+                            <div class="mobile-result-info">
+                                <h4>${result.name}</h4>
+                                <p>${result.type}</p>
+                            </div>
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+        }
+        container.style.display = 'block';
+    }
+    
+    // Utilitaire debounce
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: "0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            const hero = document.querySelector('.hero');
+            observer.observe(hero);
+        });
+    </script>
 </body>
 </html>

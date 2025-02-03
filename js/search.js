@@ -218,7 +218,7 @@ function displaySearchResults(results, page = 1, sortBy = 'default') {
                         <img src="${product.image}" alt="${product.name}">
                     </div>
                     <div class="result-info">
-                        <h3>${product.name}</h3>
+                <h3>${product.name}</h3>
                         <p class="result-category">${product.category}</p>
                         <p class="result-description">${product.description}</p>
                         <p class="result-price">${product.price}€</p>
