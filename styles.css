@@ -918,8 +918,9 @@ a {
 
 .bestsellers-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 80px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -955,14 +956,18 @@ a {
 
 .product-image {
     position: relative;
-    margin-bottom: 35px;
+    width: 100%;
+    padding-top: 125%; /* Ratio 4:5 pour les images de produits */
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-color: var(--cream);
 }
 
 .product-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 500px;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.8s ease;
 }
@@ -1459,9 +1464,9 @@ section {
     }
 
     .bestsellers-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
     }
 
     .product-card {
@@ -2168,11 +2173,11 @@ section {
 
 .collections-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 60px;
     position: relative;
     z-index: 2;
 }
@@ -2191,11 +2196,16 @@ section {
 
 .collection-image {
     position: relative;
-    aspect-ratio: 1;
+    width: 100%;
+    padding-top: 75%; /* Ratio 4:3 pour les images de collections */
     overflow: hidden;
+    background-color: var(--cream);
 }
 
 .collection-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;

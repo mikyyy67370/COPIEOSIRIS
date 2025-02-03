@@ -142,6 +142,237 @@
                 padding: 1rem;
             }
         }
+
+        /* Optimisation des images */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
+        .collection-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: block;
+        }
+
+        .collection-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Fix pour éviter les scintillements */
+        .hero, 
+        .collection-card,
+        .product-card {
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Section Collections */
+        .collections-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .collections-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .collections-header h2 {
+            font-family: 'Marcellus', serif;
+            font-size: 2.5rem;
+            color: var(--dark-gold);
+            margin-bottom: 1rem;
+        }
+
+        .collections-header p {
+            font-size: 1.1rem;
+            color: var(--black);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Style restauré pour la section collections */
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            height: 400px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .collection-card:hover .collection-image img {
+            transform: scale(1.05);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .collection-card:hover .collection-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8));
+        }
+
+        .collection-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .collection-content h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+
+        .collection-content p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            color: var(--white);
+        }
+
+        .collection-link {
+            margin-top: 1.5rem;
+        }
+
+        .collection-link .discover-link {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .collection-link .discover-link:hover {
+            color: var(--light-gold);
+        }
+
+        .collection-link .discover-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .collection-link .discover-link:hover i {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 1200px) {
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .collections-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .collection-card {
+                height: 350px;
+            }
+            .collections-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Correction du chemin des images */
+        .collection-card:first-child .collection-image img {
+            display: block;
+            content: url('images/collection1.jpg');
+        }
+
+        .collection-card:nth-child(2) .collection-image img {
+            display: block;
+            content: url('images/collection2.jpg');
+        }
+
+        .collection-card:nth-child(3) .collection-image img {
+            display: block;
+            content: url('images/collection3.jpg');
+        }
+
+        .collection-card:nth-child(4) .collection-image img {
+            display: block;
+            content: url('images/collection4.jpg');
+        }
+
+        .collection-card:nth-child(5) .collection-image img {
+            display: block;
+            content: url('images/collection5.jpg');
+        }
+
+        .collection-card:nth-child(6) .collection-image img {
+            display: block;
+            content: url('images/collection6.jpg');
+        }
+
+        .collection-symbol {
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body data-page-type="home">
@@ -521,7 +752,7 @@
             <div class="collections-grid">
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="images/collection1.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Hathor" style="width: 100%; height: auto; display: block;">
+                        <img src="images/collection1.jpg.jpg" alt="Collection Hathor">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓁢</span>
                         </div>
@@ -540,7 +771,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="images/collection2.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Thot" style="width: 100%; height: auto; display: block;">
+                        <img src="images/collection2.jpg" alt="Collection Thot">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓅓</span>
                         </div>
@@ -559,7 +790,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="images/collection3.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Isis" style="width: 100%; height: auto; display: block;">
+                        <img src="images/collection3.jpg" alt="Collection Isis">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓇯</span>
                         </div>
@@ -578,7 +809,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="images/collection4.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Anubis" style="width: 100%; height: auto; display: block;">
+                        <img src="images/collection4.jpg" alt="Collection Anubis">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓃠</span>
                         </div>
@@ -597,7 +828,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="images/collection5.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Sekhmet" style="width: 100%; height: auto; display: block;">
+                        <img src="images/collection5.jpg" alt="Collection Sekhmet">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓃙</span>
                         </div>
@@ -616,7 +847,7 @@
 
                 <article class="collection-card">
                     <div class="collection-image">
-                        <img data-src="images/collection6.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Collection Bastet" style="width: 100%; height: auto; display: block;">
+                        <img src="images/collection6.jpg" alt="Collection Bastet">
                         <div class="collection-overlay">
                             <span class="collection-symbol">𓃣</span>
                         </div>
