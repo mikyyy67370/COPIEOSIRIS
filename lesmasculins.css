@@ -638,37 +638,104 @@ body {
 /* Image et overlay */
 .product-image {
     position: relative;
-    height: 250px;
+    padding-bottom: 125%;
     overflow: hidden;
+    background: linear-gradient(45deg, #f8f5f1, #fff);
 }
 
 .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.product-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    object-fit: cover;
+    object-position: center 25%;
+    transform: scale(1.02);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .product-card:hover .product-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
-.product-card:hover .product-overlay {
-    opacity: 1;
+/* Ajout d'un conteneur pour mieux gérer les proportions */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Ajustement de la taille des cartes pour maintenir la cohérence */
+.product-card {
+    max-width: 320px;
+}
+
+/* Media queries pour assurer un bon affichage sur tous les écrans */
+@media (max-width: 1200px) {
+    .product-image {
+        padding-bottom: 130%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        padding-bottom: 140%;
+    }
+    
+    .product-image img {
+        object-position: center 20%;
+    }
+}
+
+/* Fallback pour les images non chargées */
+.product-image img:not([src]), 
+.product-image img[src=""] {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Assurer que les images sont chargées avec la bonne taille */
+.product-image img[src*="anubis-detail1.jpg"] {
+    content: url('../images/anubis-detail1.jpg');
+}
+
+.product-image img[src*="osirisroyal-detail1.jpg"] {
+    content: url('../images/osirisroyal-detail1.jpg');
+}
+
+.product-image img[src*="thot-detail1.jpg"] {
+    content: url('../images/thot-detail1.jpg');
+}
+
+.product-image img[src*="horus-detail1.jpg"] {
+    content: url('../images/horus-detail1.jpg');
+}
+
+/* Optimisation du chargement des images */
+.product-image {
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Force le ratio d'aspect carré */
+.product-card {
+    aspect-ratio: 1;
+    min-height: 400px;
+}
+
+/* Assure une taille minimale pour les images */
+@media (min-width: 768px) {
+    .product-card {
+        min-height: 500px;
+    }
 }
 
 /* Bouton Quick View */
@@ -2043,9 +2110,17 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.8rem;
     opacity: 0;
-    transition: all 0.4s ease;
+    transition: opacity 0.4s ease;
 }
 
 .showcase-card:hover .showcase-overlay {
@@ -2310,102 +2385,112 @@ body {
 
 /* Collection Masculine */
 .collection-section {
-    padding: 100px 0;
+    padding: 8rem 4rem;
     background: var(--cream);
+    position: relative;
 }
 
-/* En-tête */
+.collection-section::before {
+    content: '◈';
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-size: 1.2rem;
+    opacity: 0.5;
+}
+
 .collection-header {
     text-align: center;
-    margin-bottom: 80px;
-    padding: 0 20px;
+    margin-bottom: 6rem;
+    position: relative;
 }
 
 .header-badge {
     display: inline-block;
-    font-size: 12px;
+    font-family: 'Marcellus', serif;
+    font-size: 0.85rem;
     letter-spacing: 4px;
     color: var(--gold);
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
     position: relative;
+    padding: 0 2rem;
 }
 
 .collection-header h2 {
-    font-family: 'Marcellus', serif;
-    font-size: 36px;
-    letter-spacing: 6px;
+    font-size: 2.8rem;
     color: var(--black);
-    margin-bottom: 30px;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+    line-height: 1.2;
 }
 
 .header-separator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px 0;
-}
-
-.separator-symbol {
-    color: var(--gold);
-    font-size: 24px;
+    width: 100px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem auto;
     position: relative;
 }
 
-.separator-symbol::before,
-.separator-symbol::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.5;
-}
-
-.separator-symbol::before {
-    right: 40px;
-}
-
-.separator-symbol::after {
-    left: 40px;
-}
-
 .header-subtitle {
-    font-size: 15px;
+    font-size: 1.2rem;
     color: var(--dark-gold);
-    letter-spacing: 2px;
-    line-height: 1.8;
     max-width: 600px;
     margin: 0 auto;
+    line-height: 1.8;
+    font-style: italic;
 }
 
 /* Grille des produits */
 .collection-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    max-width: 1400px;
+    gap: 2.5rem;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 2rem;
 }
 
 /* Carte produit */
 .product-card {
     position: relative;
     background: var(--white);
-    transition: transform 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 340px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.product-card:hover::after {
+    opacity: 1;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(197, 165, 114, 0.15);
 }
 
 /* Image et overlay */
 .product-image {
     position: relative;
-    width: 100%;
     padding-bottom: 125%;
     overflow: hidden;
+    background: linear-gradient(45deg, #f8f5f1, #fff);
 }
 
 .product-image img {
@@ -2415,40 +2500,33 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    object-position: center 25%;
+    transform: scale(1.02);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .product-card:hover .product-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
-.product-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    transition: opacity 0.4s ease;
-}
-
-.product-card:hover .product-overlay {
-    opacity: 1;
-}
-
-/* Badge */
+/* Badge produit */
 .product-badge {
     align-self: flex-start;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--gold);
     color: var(--white);
-    font-size: 10px;
+    font-family: 'Marcellus', serif;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
     letter-spacing: 2px;
-    padding: 8px 12px;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.product-card:hover .product-badge {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 /* Bouton découvrir */
@@ -2458,18 +2536,32 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 13px;
+    gap: 0.8rem;
+    font-family: 'Marcellus', serif;
+    font-size: 0.8rem;
     letter-spacing: 3px;
-    transform: translateY(20px);
-    transition: transform 0.4s ease;
+    padding: 0.8rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.4s ease;
 }
 
 .product-card:hover .discover-btn {
     transform: translateY(0);
+    opacity: 1;
+}
+
+.discover-btn:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
 }
 
 .discover-btn i {
+    font-size: 0.75rem;
     transition: transform 0.3s ease;
 }
 
@@ -2479,69 +2571,87 @@ body {
 
 /* Informations produit */
 .product-info {
-    padding: 30px;
+    padding: 1.8rem;
     text-align: center;
+    position: relative;
+}
+
+.product-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
 }
 
 .product-info h3 {
     font-family: 'Marcellus', serif;
-    font-size: 24px;
+    font-size: 1.2rem;
     letter-spacing: 2px;
-    margin-bottom: 15px;
+    margin-bottom: 0.8rem;
     color: var(--black);
 }
 
 .product-info p {
-    font-size: 14px;
+    font-size: 0.85rem;
     line-height: 1.6;
-    color: var(--dark-gold);
-    margin-bottom: 20px;
-    min-height: 44px;
+    color: #666;
+    margin-bottom: 1.2rem;
+    min-height: 2.6em;
 }
 
 .product-details {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 1.2rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(197, 165, 114, 0.15);
 }
 
 .price {
-    font-size: 16px;
+    font-family: 'Marcellus', serif;
+    font-size: 1.1rem;
     color: var(--gold);
     letter-spacing: 1px;
 }
 
 .volume {
-    font-size: 12px;
-    color: var(--dark-gold);
-    letter-spacing: 1px;
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 /* Responsive */
-@media screen and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .collection-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
+        gap: 2rem;
+        max-width: 800px;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .collection-section {
-        padding: 60px 0;
-    }
-
-    .collection-header h2 {
-        font-size: 28px;
+        padding: 4rem 1.5rem;
     }
 
     .collection-grid {
         grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
+        max-width: 340px;
+        gap: 2.5rem;
     }
 
     .product-image {
-        padding-bottom: 100%;
+        padding-bottom: 120%;
+    }
+
+    .product-info {
+        padding: 1.5rem;
     }
 }
